@@ -272,17 +272,7 @@
 			"naam": "Aspi's",
 			"groepFoto": "",
 			"leiding": [
-				{
-					"voornaam": "Abram",
-					"achternaam": "Robijns",
-					"geboorte": "07/05/2003",
-					"gsm": "0474246110",
-					"studie": "Politiek en sociale wetenschappen",
-					"eten": "Alles met kaas",
-					"spel": "Hoe vettiger hoe prettiger",
-					"foto": "abram.jpg",
-					"taken": ["Hoofdleiding, Kamp- en weekend", "gewest", "lokaal"]
-				}
+				
 			]
 		},
 		{
