@@ -151,18 +151,8 @@
 				},
 				{
 					"voornaam": "Josefien",
-					"achternaam": "Verdonck",
-					"bijnaam": "Joske",
-					"geboorte": "17/10/2005",
-					"studie": "Revalidatiewetenschappen en kinesietherapie",
-					"eten": "Pasta",
-					"foto": "jos.jpg",
-					"spel": "Quiz",
-					"taken": ["Lokaal", "Vuilnis"]
-				},
-				{
-					"voornaam": "Josefien",
-					"achternaam": "Verdonck",   
+					"achternaam": "Verdonck", 
+					"bijnaam": "Josefoen",  
 					"geboorte": "17/10/2005", 
 					"studie": "revalidatiewetenschappen en kinesitherapie",
 					"eten": "frietjes",
@@ -224,6 +214,18 @@
 					"spel": "ruwe spelen",
 					"foto": "",
 					"taken": ["publicatie","materiaal"]
+				},
+				{
+					"voornaam": "Jarne",
+					"achternaam": "Van de Velde",
+					"bijnaam": "Jäger",
+					"geboorte": "24/10/2003",
+					"gsm": "0468405455",
+					"studie": "Toegepaste informatica ucll",
+					"eten": "Alle soorten pasta",
+					"spel": "Pleinspelen",
+					"foto": "jarne.jpg",
+					"taken": ["Kassier", "drankverantwoordelijke"]
 				}
 			]
 		},
@@ -244,18 +246,6 @@
 					"taken": ["Ledencommunicatie"]
 				},
 				{
-					"voornaam": "Jarne",
-					"achternaam": "Van de Velde",
-					"bijnaam": "Jäger",
-					"geboorte": "24/10/2003",
-					"gsm": "0468405455",
-					"studie": "Toegepaste informatica ucll",
-					"eten": "Alle soorten pasta",
-					"spel": "Pleinspelen",
-					"foto": "jarne.jpg",
-					"taken": ["Kassier", "drankverantwoordelijke"]
-				},
-				{
 					"voornaam": "Abram",
 					"achternaam": "Robijns",   
 					"geboorte": "07/05/2003", 
@@ -265,6 +255,16 @@
 					"spel": "Kwissen",
 					"foto": "abram.jpg",
 					"taken": ["Hoofdleiding"]
+				},
+				{
+					"voornaam": "Gabriël",
+					"achternaam": "Abrahams",   
+					"geboorte": "n.v.t", 
+					"studie": "Middelbaar",
+					"eten": "/",
+					"spel": "/",
+					"foto": "gabriel.jpg",
+					"taken": ["Notaris"]
 				}
 			]
 		},
