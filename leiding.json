@@ -38,15 +38,11 @@
 				},
 				{
 					"voornaam": "Noortje",
-					"achternaam": "Verbruggen",
-					"bijnaam": "Nora",
-					"geboorte": "21/09/1999",
-					"gsm": "",
-					"studie": "Master in de farmaceutische zorg, KU Leuven",
-					"eten": "Rode kool met spek",
-					"spel": "bosspel, tweedaagse",
+					"achternaam": "Verbruggen",   "geboorte": "21/09/1999", "Werk": "Site-ICRA, Abbott",
+					"eten": "rodekool met spek",
+					"spel": "Pleinspelen",
 					"foto": "noortje.jpg",
-					"taken": ["secretaris", "kamp en weekend verantwoordelijke"]
+					"taken": ["secretaris" ]
 				},
 				{
 					"voornaam": "Lode",
@@ -75,7 +71,7 @@
 				},
 				{
 					"voornaam": "Liselot",
-					"achternaam": "Boeckx",   "geboorte": "31/102006", "studie": "sportwetenschappen",
+					"achternaam": "Boeckx",   "geboorte": "31/10/2006", "studie": "sportwetenschappen",
 					"eten": "pizza",
 					"spel": "pleinspelen",
 					"foto": "",
@@ -162,15 +158,14 @@
 				},
 				{
 					"voornaam": "Anna",
-					"achternaam": "Serge Gunther Everaerts",
-					"bijnaam": "/",
-					"geboorte": "/",
-					"eten": "/",
+					"achternaam": "Everaerts",
+					"geboorte": "03/01/2007",
+					"studie": "Wetenschappen-Wiskunde",
+					"eten": "Macaroni",
+					"spel": "Pleinspelen",
 					"foto": "",
-					"spel": "/",
-					"taken": ["Lokaal", "Ledenwerving", "Orde en netheid"]
+					"taken": ["ledenwerving, orde en netheid"]
 				}
-
 			]
 		},
 		{
@@ -212,7 +207,7 @@
 					"studie": "Architecturale vorming",    
 					"eten": "stoofvlees met frietjes",
 					"spel": "ruwe spelen",
-					"foto": "",
+					"foto": "maaren.jfif",
 					"taken": ["publicatie","materiaal"]
 				},
 				{
@@ -255,16 +250,6 @@
 					"spel": "Kwissen",
 					"foto": "abram.jpg",
 					"taken": ["Hoofdleiding"]
-				},
-				{
-					"voornaam": "Gabriël",
-					"achternaam": "Abrahams",   
-					"geboorte": "n.v.t", 
-					"studie": "Middelbaar",
-					"eten": "/",
-					"spel": "/",
-					"foto": "gabriel.jpg",
-					"taken": ["Notaris"]
 				}
 			]
 		},
