@@ -69,7 +69,7 @@
 					"studie": "Filosofie",
 					"eten": "Pizza",
 					"spel": "Quiz",
-					"foto": "emma.jpg",
+					"foto": "Placeholder-Female.jpg",
 					"taken": ["Secretaris","Ledencommunicatie"]
 				},
 				{
@@ -79,7 +79,7 @@
 					"studie": "sportwetenschappen",
 					"eten": "pizza",
 					"spel": "pleinspelen",
-					"foto": "",
+					"foto": "Placeholder-Female.jpg",
 					"taken": ["publicatie","lokaal"]
 				},
 				{
@@ -174,7 +174,7 @@
 					"studie": "Wetenschappen-Wiskunde",
 					"eten": "Macaroni",
 					"spel": "Pleinspelen",
-					"foto": "",
+					"foto": "Placeholder-Female.jpg",
 					"taken": ["ledenwerving, orde en netheid"]
 				}
 			]
