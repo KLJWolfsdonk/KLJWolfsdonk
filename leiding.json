@@ -63,7 +63,10 @@
 			"leiding": [
 				{
 					"voornaam": "Emma",
-					"achternaam": "Boutens",   "geboorte": "10/10/2005", "studie": "Filosofie",
+					"achternaam": "Boutens",
+					"bijnaam": "ginger-emma",
+					"geboorte": "10/10/2005",
+					"studie": "Filosofie",
 					"eten": "Pizza",
 					"spel": "Quiz",
 					"foto": "emma.jpg",
@@ -71,7 +74,9 @@
 				},
 				{
 					"voornaam": "Liselot",
-					"achternaam": "Boeckx",   "geboorte": "31/10/2006", "studie": "sportwetenschappen",
+					"achternaam": "Boeckx",
+					"geboorte": "31/10/2006",
+					"studie": "sportwetenschappen",
 					"eten": "pizza",
 					"spel": "pleinspelen",
 					"foto": "",
@@ -79,8 +84,10 @@
 				},
 				{
 					"voornaam": "Jana",
-					"achternaam": "Pauwels",   "geboorte": "18/11/2005", "studie": "wiskunde",
-					"eten": "hesp prei en kaassaus met purree ",
+					"achternaam": "Pauwels",
+					"geboorte": "18/11/2005",
+					"studie": "wiskunde",
+					"eten": "hesp prei en kaassaus met puree ",
 					"spel": "wedden dat",
 					"foto": "jana.jpg",
 					"taken": ["KLJ voor iedereen"]
@@ -88,6 +95,7 @@
 				{
 					"voornaam": "Kobe",
 					"achternaam": "Brusseleers",
+					"bijnaam": "Kakke",
 					"geboorte": "19/04/2003",
 					"studie": "Koeltechnieken",
 					"eten": "Kaas",
@@ -99,7 +107,8 @@
 				},
 				{
 				"voornaam": "Tibo",
-				"achternaam": "Mertens",   
+				"achternaam": "Mertens",
+					"bijnaam": "titi",
 				"geboorte": "17/01/2004", 
 				"studie": "PXL-Music Muzikant",
 				"eten": "Pasta",
@@ -115,7 +124,8 @@
 			"leiding": [
 				{
 					"voornaam": "Xanty",
-					"achternaam": "Vandezande",   
+					"achternaam": "Vandezande",
+					"bijnaam": "scampi",
 					"geboorte": "03/04/2002", 
 					"studie": "bedrijfsmanagement optie KMO & Ondernemen",
 					"eten": "spinaziepuree met spekblokjes",
@@ -125,7 +135,8 @@
 				},
 				{
 					"voornaam": "Frauke",
-					"achternaam": "Jassens",   
+					"achternaam": "Jassens",
+					"bijnaam": "Frakzak, frakke",
 					"geboorte": "16/07/2002", 
 					"studie": "3de jaar bachelor rechtspraktijk",
 					"eten": "alles met pasta",
@@ -139,7 +150,7 @@
 					"bijnaam": "Schaaf",
 					"geboorte": "09/10/2001",
 					"gsm": "0483110782",
-					"studie": "Informatica UCLL",
+					"studie": "Industrieel ingenieur",
 					"eten": "Stoofvlees met frietjes!",
 					"spel": "kampen bouwen in het bos",
 					"foto": "louis.jpg",
@@ -150,11 +161,11 @@
 					"achternaam": "Verdonck", 
 					"bijnaam": "Josefoen",  
 					"geboorte": "17/10/2005", 
-					"studie": "revalidatiewetenschappen en kinesitherapie",
-					"eten": "frietjes",
-					"spel": "quiz",
+					"studie": "verpleegkunde",
+					"eten": "Soesji",
+					"spel": "kwies",
 					"foto": "jos.jpg",
-					"taken": ["EHBO","leidingsbinding"]
+					"taken": ["EBOH","baffer"]
 				},
 				{
 					"voornaam": "Anna",
@@ -174,7 +185,10 @@
 			"leiding": [
 				{        
 					"voornaam": "Warre",
-					"achternaam": "Van Dijck",   "geboorte": "23/03/2004", "studie": "Industrieel ingenieur",    
+					"achternaam": "Van Dijck",
+					"bijnaam": "sien",
+					"geboorte": "23/03/2004",
+					"studie": "Industrieel ingenieur",
 					"eten": "Frietjes",
 					"spel": "Wedden dat",
 					"foto": "warre.jpg",
@@ -192,7 +206,8 @@
 				},
 				{
 					"voornaam": "Lotte",
-					"achternaam": "Jennes",   
+					"achternaam": "Jennes",
+					"bijnaam": "lotteke",
 					"geboorte": "22/11/2004",        
 					"studie": "Verpleegkunde, ucll",
 					"eten": "pasta pesto",
@@ -213,10 +228,10 @@
 				{
 					"voornaam": "Jarne",
 					"achternaam": "Van de Velde",
-					"bijnaam": "Jäger",
+					"bijnaam": "Jarnie",
 					"geboorte": "24/10/2003",
 					"gsm": "0468405455",
-					"studie": "Toegepaste informatica ucll",
+					"studie": "Graduaat HR",
 					"eten": "Alle soorten pasta",
 					"spel": "Pleinspelen",
 					"foto": "jarne.jpg",
@@ -234,22 +249,22 @@
 					"achternaam": "Smeets",
 					"geboorte": "12/04/2004",
 					"gsm": "0477229633",
-					"studie": "Latijn wetenschappen 6de jaar",
+					"studie": "Business ofzo",
 					"eten": "Pindakaas",
 					"spel": "Stratego",
 					"foto": "jente.jpg",
-					"taken": ["Ledencommunicatie"]
+					"taken": ["zomerleiding"]
 				},
 				{
 					"voornaam": "Abram",
 					"achternaam": "Robijns",   
 					"geboorte": "07/05/2003", 
 					"gsm": "0474246110",
-					"studie": "Leerkracht lager onderwijs",
+					"studie": "Vrije mens",
 					"eten": "Wat ons mama klaarmaakt",
 					"spel": "Kwissen",
 					"foto": "abram.jpg",
-					"taken": ["Hoofdleiding"]
+					"taken": ["geen taak"]
 				}
 			]
 		},
@@ -265,19 +280,6 @@
 			"groepFoto": "wolfsboenkers.jpg",
 			"leiding": [
 				{
-					"voornaam": "Kjell",
-					"achternaam": "Mertens",
-					"bijnaam": "Wuttel",
-					"geboorte": "29/08/2002",
-					"studie": "Graduaat Othopedagogie",
-					"eten": "Braziliaans",
-					"spel": "Quiz",
-					"foto": "wortel.jpg",
-					"taken": [
-						"Leidingsbinding"
-					]
-				},
-				{
 					"voornaam": "Tijs",
 					"achternaam": "Van Woensel",
 					"bijnaam": "Woensel",
@@ -286,7 +288,7 @@
 					"eten": "BBQ",
 					"spel": "Bosstratego",
 					"foto": "tijs.jpg",
-					"taken": ["Drankverantwoordelijke"]
+					"taken": ["Leidingsbinding"]
 				}
 			]
 		}
