@@ -1,0 +1,307 @@
+<html><head><base href="https://websim.ai" /><title>Kosmische Cowboy Raadsel</title>
+<style>
+  body {
+    background-color: #0a0a2a;
+    color: #e0e0ff;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+  .game-container {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"><rect width="100%" height="100%" fill="%23000033"/><circle cx="300" cy="200" r="150" fill="%23000066"/><ellipse cx="300" cy="350" rx="250" ry="50" fill="%23331100"/></svg>') no-repeat center center;
+    border: 4px solid #4a4a8a;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #8a8aff;
+  }
+  .cowboy, .alien, .lasso {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .cowboy {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23cd853f"/><circle cx="50" cy="40" r="20" fill="%23f4a460"/><rect x="30" y="60" width="40" height="30" fill="%23a0522d"/><rect x="20" y="30" width="60" height="10" fill="%238b4513"/></svg>');
+  }
+  .alien {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%2332cd32"/><ellipse cx="50" cy="30" rx="25" ry="15" fill="%23000"/><circle cx="40" cy="25" r="5" fill="%23fff"/><circle cx="60" cy="25" r="5" fill="%23fff"/></svg>');
+  }
+  .lasso {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23ffd700" stroke-width="5"/><line x1="50" y1="10" x2="50" y2="50" stroke="%23ffd700" stroke-width="5"/></svg>');
+  }
+  #controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    background-color: #4a4a8a;
+    color: #e0e0ff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background-color: #6a6aaa;
+  }
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+  #instructions {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 250px;
+    background-color: rgba(74, 74, 138, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+  }
+  #mobileControls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  #mobileControls button {
+    font-size: 24px;
+    padding: 15px;
+  }
+  #timer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #ffd700;
+  }
+  #alienCount {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    font-size: 18px;
+    color: #32cd32;
+  }
+</style>
+</head>
+<body>
+  <div id="instructions">
+    <h2>Kosmische Cowboy Raadsel</h2>
+    <p>Help de kosmische cowboy om alle aliens te vangen met zijn ruimtelasso!</p>
+    <p>1. Gebruik pijltjestoetsen of knoppen op het scherm om de cowboy te bewegen.</p>
+    <p>2. Druk op spatiebalk of de "Werp Lasso" knop om de lasso te werpen.</p>
+    <p>3. Vang alle aliens voordat ze opnieuw verschijnen!</p>
+    <p>4. Voltooi de missie binnen 60 seconden om het geheime bericht te onthullen!</p>
+    <p>5. Let op: de lasso heeft een beperkt bereik en verdwijnt na het vangen van een alien!</p>
+    <p>6. Wees snel! Elke 5-6 seconden verschijnt er een nieuwe alien!</p>
+  </div>
+  
+  <div class="game-container" id="gameArea">
+    <div class="cowboy" id="cowboy"></div>
+    <div id="timer">60</div>
+    <div id="alienCount">Aliens: 9</div>
+  </div>
+  
+  <div id="controls">
+    <button onclick="resetGame()">Spel Resetten</button>
+  </div>
+
+  <div id="mobileControls">
+    <button onclick="moveElement(cowboy, -10, 0)">←</button>
+    <button onclick="moveElement(cowboy, 0, -10)">↑</button>
+    <button onclick="moveElement(cowboy, 10, 0)">→</button>
+    <button onclick="moveElement(cowboy, 0, 10)">↓</button>
+    <button onclick="throwLasso()">Werp Lasso</button>
+  </div>
+  
+  <div id="message"></div>
+
+  <script>
+    const gameArea = document.getElementById('gameArea');
+    const cowboy = document.getElementById('cowboy');
+    const messageDiv = document.getElementById('message');
+    const timerDiv = document.getElementById('timer');
+    const alienCountDiv = document.getElementById('alienCount');
+    let selectedElement = null;
+    let aliens = [];
+    let lasso = null;
+    let aliensLeft = 9;
+    let gameTimer;
+    let timeLeft = 60;
+    let respawnTimer;
+    let moveAliensInterval;
+    let alienRespawnInterval;
+    const LASSO_RANGE = 150;
+    const MAX_ALIENS = 15;
+    
+    function initGame() {
+      cowboy.style.left = '280px';
+      cowboy.style.top = '330px';
+      aliens = [];
+      for (let i = 0; i < 9; i++) {
+        createAlien();
+      }
+      messageDiv.textContent = '';
+      timeLeft = 60;
+      updateTimer();
+      updateAlienCount();
+      startGameTimer();
+      startMovingAliens();
+      startAlienRespawn();
+    }
+    
+    function createAlien() {
+      if (aliens.length >= MAX_ALIENS) return;
+      const alien = document.createElement('div');
+      alien.className = 'alien';
+      alien.style.left = Math.random() * 560 + 'px';
+      alien.style.top = Math.random() * 200 + 'px';
+      gameArea.appendChild(alien);
+      aliens.push(alien);
+      updateAlienCount();
+    }
+    
+    function moveElement(element, x, y) {
+      const rect = gameArea.getBoundingClientRect();
+      let newX = parseInt(element.style.left) + x;
+      let newY = parseInt(element.style.top) + y;
+      newX = Math.max(0, Math.min(newX, rect.width - 40));
+      newY = Math.max(0, Math.min(newY, rect.height - 40));
+      element.style.left = newX + 'px';
+      element.style.top = newY + 'px';
+    }
+    
+    function throwLasso() {
+      if (lasso) return;
+      lasso = document.createElement('div');
+      lasso.className = 'lasso';
+      lasso.style.left = cowboy.style.left;
+      lasso.style.top = cowboy.style.top;
+      gameArea.appendChild(lasso);
+      animateLasso();
+    }
+    
+    function animateLasso() {
+      let frame = 0;
+      const interval = setInterval(() => {
+        frame++;
+        moveElement(lasso, 0, -5);
+        if (checkCollision() || frame * 5 > LASSO_RANGE) {
+          clearInterval(interval);
+          gameArea.removeChild(lasso);
+          lasso = null;
+        }
+      }, 16);
+    }
+    
+    function checkCollision() {
+      const lassoRect = lasso.getBoundingClientRect();
+      for (let i = 0; i < aliens.length; i++) {
+        const alien = aliens[i];
+        const alienRect = alien.getBoundingClientRect();
+        if (
+          lassoRect.left < alienRect.right &&
+          lassoRect.right > alienRect.left &&
+          lassoRect.top < alienRect.bottom &&
+          lassoRect.bottom > alienRect.top
+        ) {
+          gameArea.removeChild(alien);
+          aliens.splice(i, 1);
+          aliensLeft--;
+          updateAlienCount();
+          if (aliensLeft === 0) {
+            endGame(true);
+          }
+          return true;
+        }
+      }
+      return false;
+    }
+    
+    function showMessage(text) {
+      messageDiv.textContent = text;
+    }
+    
+    function resetGame() {
+      while (gameArea.children.length > 3) {
+        gameArea.removeChild(gameArea.lastChild);
+      }
+      aliensLeft = 9;
+      clearInterval(gameTimer);
+      clearInterval(moveAliensInterval);
+      clearInterval(alienRespawnInterval);
+      initGame();
+    }
+    
+    function startGameTimer() {
+      gameTimer = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) {
+          endGame(false);
+        }
+      }, 1000);
+    }
+    
+    function updateTimer() {
+      timerDiv.textContent = timeLeft;
+    }
+
+    function updateAlienCount() {
+      alienCountDiv.textContent = `Aliens: ${aliens.length}`;
+    }
+    
+    function endGame(won) {
+      clearInterval(gameTimer);
+      clearInterval(moveAliensInterval);
+      clearInterval(alienRespawnInterval);
+      if (won) {
+        showMessage("Gefeliciteerd! Je hebt alle aliens gevangen. Het geheime bericht is: OpoEEter3n");
+      } else {
+        showMessage("Tijd is om! De aliens zijn ontsnapt. Meer geluk volgende keer, Ruimte Cowboy!");
+      }
+    }
+    
+    function startMovingAliens() {
+      moveAliensInterval = setInterval(() => {
+        aliens.forEach(alien => {
+          const dx = Math.random() * 6 - 3;
+          const dy = Math.random() * 6 - 3;
+          moveElement(alien, dx, dy);
+        });
+      }, 100);
+    }
+    
+    function startAlienRespawn() {
+      alienRespawnInterval = setInterval(() => {
+        createAlien();
+      }, 5000 + Math.random() * 1000);
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') moveElement(cowboy, -10, 0);
+      if (e.key === 'ArrowRight') moveElement(cowboy, 10, 0);
+      if (e.key === 'ArrowUp') moveElement(cowboy, 0, -10);
+      if (e.key === 'ArrowDown') moveElement(cowboy, 0, 10);
+      if (e.key === ' ') throwLasso();
+    });
+    
+    cowboy.addEventListener('click', () => {
+      selectedElement = cowboy;
+    });
+    
+    initGame();
+  </script>
+</body></html>
