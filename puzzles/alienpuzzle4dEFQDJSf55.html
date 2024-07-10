@@ -1,0 +1,305 @@
+<html><head><base href="https://websim.ai"><title>Buitenaards Dimensionaal Raadsel</title>
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Orbitron', sans-serif;
+        background: #000;
+        color: #0ff;
+        overflow: hidden;
+    }
+    .space-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 50% 50%, #1a0037 0%, #000000 100%),
+            url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white"/></svg>');
+        background-repeat: repeat;
+        animation: space-drift 60s linear infinite;
+        z-index: -1;
+    }
+    @keyframes space-drift {
+        from { background-position: 0 0; }
+        to { background-position: 1000px 1000px; }
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: rgba(0, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    h1 {
+        text-align: center;
+        text-shadow: 0 0 10px #0ff;
+    }
+    .puzzle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .dimension {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(0, 255, 255, 0.2);
+        border: 2px solid #0ff;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .dimension:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #0ff;
+    }
+    .dimension-symbol {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+    .dimension-value {
+        font-size: 24px;
+    }
+    .input-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    input {
+        width: 60px;
+        height: 60px;
+        margin: 0 10px;
+        text-align: center;
+        font-size: 24px;
+        background-color: rgba(0, 255, 255, 0.1);
+        border: 2px solid #0ff;
+        border-radius: 5px;
+        color: #0ff;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #0ff;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    button:hover {
+        background-color: #00cccc;
+        box-shadow: 0 0 10px #0ff;
+    }
+    #hint-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+    #message {
+        margin-top: 20px;
+        font-size: 18px;
+        text-align: center;
+        min-height: 50px;
+    }
+    .alien-equation {
+        text-align: center;
+        font-size: 24px;
+        margin: 20px 0;
+        letter-spacing: 5px;
+    }
+    .secret-btn {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    #secret-btn-1 { top: 10px; left: 10px; }
+    #secret-btn-2 { top: 10px; right: 10px; }
+    #secret-btn-3 { bottom: 10px; left: 10px; }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #0a0a2a;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #0ff;
+        width: 80%;
+        max-width: 600px;
+        color: #0ff;
+        border-radius: 10px;
+    }
+    .close {
+        color: #0ff;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #00ffff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    </style>
+    </head>
+    <body>
+    <div class="space-background"></div>
+    <div class="container">
+        <h1>Buitenaards Dimensionaal Raadsel</h1>
+        <p>Gegroet, kosmische ontdekkingsreiziger! Je bent gestuit op een interdimensionaal buitenaards raadsel. Ontcijfer de buitenaardse vergelijking om de geheimen van het universum te ontsluiten!</p>
+        <div class="alien-equation">
+            🌀 ⊗ 🌌 ⊕ 🌠 ⊖ 💫 = ?
+        </div>
+        <p>Instructies: Elk symbool vertegenwoordigt een unieke dimensionale waarde. Klik op de dimensionale kubussen om hun eigenschappen te onthullen. Gebruik deze eigenschappen en de buitenaardse operatoren om de vergelijking op te lossen. Voer je antwoord van twee cijfers in in de invoervakken.</p>
+        <div class="puzzle-container">
+            <div class="dimension" onclick="revealDimension(this, '🌀')">
+                <div class="dimension-symbol">🌀</div>
+                <div class="dimension-value"></div>
+            </div>
+            <div class="dimension" onclick="revealDimension(this, '🌌')">
+                <div class="dimension-symbol">🌌</div>
+                <div class="dimension-value"></div>
+            </div>
+            <div class="dimension" onclick="revealDimension(this, '🌠')">
+                <div class="dimension-symbol">🌠</div>
+                <div class="dimension-value"></div>
+            </div>
+            <div class="dimension" onclick="revealDimension(this, '💫')">
+                <div class="dimension-symbol">💫</div>
+                <div class="dimension-value"></div>
+            </div>
+        </div>
+        <div class="input-container">
+            <input type="number" id="digit1" min="0" max="9">
+            <input type="number" id="digit2" min="0" max="9">
+            <button onclick="checkAnswer()">Indienen</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    <button id="hint-btn" onclick="showHint()">Hint</button>
+    
+    <button id="secret-btn-1" class="secret-btn" onclick="showModal('secret1')"></button>
+    <button id="secret-btn-2" class="secret-btn" onclick="showModal('secret2')"></button>
+    <button id="secret-btn-3" class="secret-btn" onclick="showModal('secret3')"></button>
+    
+    <div id="secret1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('secret1')">&times;</span>
+            <h2>⊗ : Kosmische Vermenigvuldiging</h2>
+            <p>In de buitenaardse dimensie vervormt vermenigvuldiging de ruimte-tijd. Het lijkt op aardse vermenigvuldiging, maar het resultaat blijft altijd binnen het bereik van 0-99 door rond te gaan als het 99 overschrijdt.</p>
+        </div>
+    </div>
+    
+    <div id="secret2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('secret2')">&times;</span>
+            <h2>⊕ : Kwantum Optelling</h2>
+            <p>Kwantum optelling in het buitenaardse rijk combineert energieën. Het is als normale optelling, maar als de som 99 overschrijdt, gaat het rond om binnen 0-99 te blijven.</p>
+        </div>
+    </div>
+    
+    <div id="secret3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('secret3')">&times;</span>
+            <h2>⊖ : Dimensionale Aftrekking</h2>
+            <p>Dimensionale aftrekking resulteert altijd in een positieve waarde. Als het resultaat negatief zou zijn, wordt het omgekeerd naar zijn positieve tegenhanger.</p>
+        </div>
+    </div>
+    
+    <script>
+    const dimensionValues = {
+        '🌀': 31,
+        '🌌': 27,
+        '🌠': 16,
+        '💫': 14
+    };
+    
+    const alienOperations = {
+        '⊗': (a, b) => (a * b) % 100,
+        '⊕': (a, b) => (a + b) % 100,
+        '⊖': (a, b) => Math.abs(a - b)
+    };
+    
+    function revealDimension(element, symbol) {
+        const valueElement = element.querySelector('.dimension-value');
+        if (valueElement.textContent === '') {
+            valueElement.textContent = dimensionValues[symbol];
+        } else {
+            valueElement.textContent = '';
+        }
+    }
+    
+    function checkAnswer() {
+        const userAnswer = parseInt(
+            document.getElementById('digit1').value +
+            document.getElementById('digit2').value
+        );
+        
+        const correctAnswer = calculateAnswer();
+        const message = document.getElementById('message');
+        
+        if (userAnswer === correctAnswer) {
+            message.textContent = "Gefeliciteerd! Hier is de code: Je beschikt nu over ons ruimteschip. Je kan Schaaf opblazen.";
+            message.style.color = "#0f0";
+        } else {
+            message.textContent = "De kosmos blijft een mysterie. Probeer het opnieuw, waspi!";
+            message.style.color = "#f00";
+        }
+    }
+    
+    function calculateAnswer() {
+        const step1 = alienOperations['⊗'](dimensionValues['🌀'], dimensionValues['🌌']);
+        const step2 = alienOperations['⊕'](step1, dimensionValues['🌠']);
+        const finalStep = alienOperations['⊖'](step2, dimensionValues['💫']);
+        return finalStep;
+    }
+    
+    function showHint() {
+        const message = document.getElementById('message');
+        message.textContent = "Hint: De buitenaardse operatoren werken vergelijkbaar met de aardse vermenigvuldiging, optelling en aftrekking, maar met een kosmische twist. Onthoud om ze in volgorde van links naar rechts toe te passen.";
+        message.style.color = "#ff0";
+    }
+    
+    function showModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+    
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+        if (event.target.className === "modal") {
+            event.target.style.display = "none";
+        }
+    }
+    
+    // Initialize dimensions with random rotation for visual effect
+    document.querySelectorAll('.dimension').forEach(dim => {
+        dim.style.transform = `rotate(${Math.random() * 360}deg)`;
+    });
+    </script>
+    </body></html>
