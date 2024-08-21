@@ -1,0 +1,232 @@
+<html><head><base href="https://puzzlealien.websim.ai/"><title>Alien Message Decoder - WebSim Puzzle</title>
+    <style>
+      body {
+        font-family: 'Courier New', monospace;
+        background-color: #0f0f23;
+        color: #50fa7b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 2.5em;
+        text-shadow: 0 0 10px #50fa7b;
+        margin-bottom: 20px;
+      }
+      .puzzle-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .puzzle-piece {
+        width: 60px;
+        height: 60px;
+        background-color: #44475a;
+        border: 2px solid #6272a4;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .puzzle-piece:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px #50fa7b;
+      }
+      .message {
+        font-size: 1.2em;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .stars {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF;
+        animation: animStar 50s linear infinite;
+      }
+      .stars::after {
+        content: " ";
+        position: absolute;
+        top: 2000px;
+        width: 1px;
+        height: 1px;
+        background: transparent;
+        box-shadow: 1744px 122px #FFF , 134px 1321px #FFF , 92px 859px #FFF;
+      }
+      @keyframes animStar {
+        from { transform: translateY(0px); }
+        to { transform: translateY(-2000px); }
+      }
+      .help-button {
+        position: fixed;
+        bottom: 20px;
+        padding: 10px 20px;
+        background-color: #6272a4;
+        color: #f8f8f2;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .help-button:hover {
+        background-color: #8be9fd;
+        color: #282a36;
+      }
+      .help-button {
+        right: 20px;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+      }
+      .modal-content {
+        background-color: #282a36;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #6272a4;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 10px;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: #f8f8f2;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .instructions {
+        background-color: #282a36;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+    </style>
+    </head>
+    <body>
+      <div class="stars"></div>
+      <h1>Alien Message Decoder</h1>
+      <div class="instructions">
+        <p>Decode the alien message by arranging the symbols in the correct order.</p>
+        <p>Click on a symbol to change it. The first symbol is already in place!</p>
+      </div>
+      <div class="puzzle-container" id="puzzleContainer"></div>
+      <div class="message" id="message">Can you crack the code?</div>
+    
+      <button class="help-button" id="helpButton">Hint</button>
+      <!--<button class="solution-button" id="solutionButton">Show Solution</button>  
+      <div id="solutionModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Solution</h2>
+          <p>The correct order of symbols is:</p>
+          <div id="solutionGrid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin-top: 10px;"></div>
+          <p>Dit is de geheime code: "ALIEN96ARX"</p>
+        </div>
+      </div>-->
+    
+      <script>
+        const puzzlePieces = ['👽', '🌍', '🛸', '🌟', '🚀'];
+        const correctOrder = ['👽', '🌍', '🛸', '🌟', '🚀'];
+        const secretMessage = "HELLO EARTH";
+    
+        let currentOrder = ['👽', ...shuffleArray(puzzlePieces.slice(1))];
+    
+        const puzzleContainer = document.getElementById('puzzleContainer');
+        const messageElement = document.getElementById('message');
+    
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        }
+    
+        function updatePuzzle() {
+          puzzleContainer.innerHTML = '';
+          currentOrder.forEach((piece, index) => {
+            const pieceElement = document.createElement('div');
+            pieceElement.className = 'puzzle-piece';
+            pieceElement.textContent = piece;
+            if (index > 0) {
+              pieceElement.addEventListener('click', () => rotatePiece(index));
+            }
+            puzzleContainer.appendChild(pieceElement);
+          });
+        }
+    
+        function rotatePiece(index) {
+          const currentIndex = puzzlePieces.indexOf(currentOrder[index]);
+          const nextIndex = (currentIndex + 1) % puzzlePieces.length;
+          currentOrder[index] = puzzlePieces[nextIndex];
+          updatePuzzle();
+          checkSolution();
+        }
+    
+        function checkSolution() {
+          if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
+            messageElement.textContent = "Congratulations! You've decoded the alien message: " + secretMessage;
+            messageElement.style.color = '#ff79c6';
+          }
+        }
+    
+        const helpButton = document.getElementById('helpButton');
+        helpButton.addEventListener('click', () => {
+          alert("Hint: De volgorde van de symbolen stelt voor hoe een interactie met aliens zou kunnen plaatsvinden. Denk is ne keer na hoe zo'n ontmoeting eruit zou zien.");
+        });
+    
+        //const solutionButton = document.getElementById('solutionButton');
+        const solutionModal = document.getElementById('solutionModal');
+        const closeButton = document.getElementsByClassName('close')[0];
+        const solutionGrid = document.getElementById('solutionGrid');
+    
+        /*solutionButton.onclick = function() {
+          solutionModal.style.display = "block";
+          solutionGrid.innerHTML = '';
+          correctOrder.forEach(symbol => {
+            const symbolElement = document.createElement('div');
+            symbolElement.textContent = symbol;
+            symbolElement.style.fontSize = '24px';
+            symbolElement.style.textAlign = 'center';
+            solutionGrid.appendChild(symbolElement);
+          });
+        }*/
+    
+        /*closeButton.onclick = function() {
+          solutionModal.style.display = "none";
+        }*/
+    
+        window.onclick = function(event) {
+          if (event.target == solutionModal) {
+            solutionModal.style.display = "none";
+          }
+        }
+    
+        updatePuzzle();
+      </script>
+    </body>
+    </html>

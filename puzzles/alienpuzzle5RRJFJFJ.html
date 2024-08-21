@@ -1,0 +1,229 @@
+<html><head><base href="https://websim.ai/" />
+    <title>🛸 Kosmische Cowboy Conundrum 🤠</title>
+    <style>
+      body {
+        font-family: 'Courier New', monospace;
+        background-color: #000033;
+        color: #00ff00;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #game-container {
+        background-color: rgba(0, 0, 102, 0.8);
+        border: 4px solid #00ff00;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        max-width: 800px;
+        width: 90%;
+        z-index: 10;
+      }
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px #00ff00;
+      }
+      .level {
+        display: none;
+        margin-bottom: 20px;
+      }
+      .level.active {
+        display: block;
+      }
+      input[type="text"] {
+        background-color: #000033;
+        border: 2px solid #00ff00;
+        color: #00ff00;
+        padding: 5px 10px;
+        font-size: 1em;
+        margin-right: 10px;
+      }
+      button {
+        background-color: #00ff00;
+        color: #000033;
+        border: none;
+        padding: 5px 10px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #00cc00;
+      }
+      #hint-btn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      #stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      .star {
+        position: absolute;
+        background-color: #ffffff;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        animation: twinkle 5s infinite;
+      }
+      #ufo {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3em;
+        animation: hover 3s infinite ease-in-out;
+      }
+      @keyframes hover {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-20px); }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+      }
+      .alien {
+        position: fixed;
+        font-size: 3em;
+        animation: float 15s infinite linear;
+        z-index: -1;
+      }
+      @keyframes float {
+        0% { transform: translate(-100vw, -100vh) rotate(0deg); }
+        100% { transform: translate(100vw, 100vh) rotate(360deg); }
+      }
+      .planet {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.7;
+        z-index: -1;
+      }
+    </style>
+    </head>
+    <body>
+    <div id="stars"></div>
+    <div id="game-container">
+      <div id="ufo">🛸</div>
+      <h1>🤠 Kosmische Cowboy Conundrum 🌟</h1>
+      
+      <div id="level1" class="level active">
+        <p>Howdy, aardse partner! Decodeer ons buitenaardse lasso-bericht:</p>
+        <p>"01001000 01101111 01110111 01100100 01111001"</p>
+        <input type="text" id="answer1" placeholder="Voer je antwoord in">
+        <button onclick="checkAnswer(1)">Yee-haw!</button>
+      </div>
+      
+      <div id="level2" class="level">
+        <p>Vang deze ruimtekoeien door de vergelijking op te lossen:</p>
+        <p>🐄 + 🐄 + 🐎 = 40</p>
+        <p>🐄 + 🐎 + 🐎 = 38</p>
+        <p>🐄 + 🐄 + 🐄 = ?</p>
+        <input type="text" id="answer2" placeholder="Voer je antwoord in">
+        <button onclick="checkAnswer(2)">Vooruit!</button>
+      </div>
+      
+      <div id="level3" class="level">
+        <p>Ontwar het favoriete woord van de buitenaardse cowboy:</p>
+        <p>"DOROE"</p>
+        <input type="text" id="answer3" placeholder="Voer je antwoord in">
+        <button onclick="checkAnswer(3)">Schiet op!</button>
+      </div>
+      
+      <div id="secret-message" style="display:none;">
+        <p>🌠 Gefeliciteerd, kosmische cowboy! 🌠</p>
+        <p>Je hebt bewezen dat je waardig bent om deel te nemen aan onze intergalactische rodeo!</p>
+        <p>Geheime code: WAZAAAAP</p>
+      </div>
+      
+      <button id="hint-btn" onclick="showHint()">👽 Buitenaardse Fluistering</button>
+    </div>
+    
+    <script>
+    let currentLevel = 1;
+    const answers = ["howdy", "42", "rodeo"];
+    
+    function checkAnswer(level) {
+      const userAnswer = document.getElementById(`answer${level}`).value.toLowerCase().trim();
+      if (userAnswer === answers[level-1]) {
+        if (level < 3) {
+          document.getElementById(`level${level}`).classList.remove('active');
+          currentLevel++;
+          document.getElementById(`level${currentLevel}`).classList.add('active');
+        } else {
+          document.querySelectorAll('.level').forEach(el => el.style.display = 'none');
+          document.getElementById('secret-message').style.display = 'block';
+        }
+      } else {
+        alert('Oei, dat is niet helemaal juist, partner. Probeer het nog eens!');
+      }
+    }
+    
+    function showHint() {
+      const hints = [
+        "Het is een binaire howdy, partner!",
+        "Elk ruimtedier heeft zijn eigen waarde. Tel ze op!",
+        "Dit woord heeft rodeo er helemaal over geschreven!"
+      ];
+      alert(`Buitenaardse Hint voor Level ${currentLevel}: ${hints[currentLevel-1]}`);
+    }
+    
+    // Creëer twinkelende sterren
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        starsContainer.appendChild(star);
+      }
+    }
+    
+    // Creëer zwevende aliens
+    function createAliens() {
+      const aliens = ['👾', '👽', '🛸', '🪐'];
+      for (let i = 0; i < 5; i++) {
+        const alien = document.createElement('div');
+        alien.className = 'alien';
+        alien.textContent = aliens[Math.floor(Math.random() * aliens.length)];
+        alien.style.left = `${Math.random() * 100}%`;
+        alien.style.top = `${Math.random() * 100}%`;
+        alien.style.animationDuration = `${15 + Math.random() * 15}s`;
+        alien.style.animationDelay = `-${Math.random() * 15}s`;
+        document.body.appendChild(alien);
+      }
+    }
+    
+    // Creëer planeten
+    function createPlanets() {
+      const colors = ['#ff9999', '#99ff99', '#9999ff', '#ffff99'];
+      for (let i = 0; i < 3; i++) {
+        const planet = document.createElement('div');
+        planet.className = 'planet';
+        const size = 50 + Math.random() * 100;
+        planet.style.width = `${size}px`;
+        planet.style.height = `${size}px`;
+        planet.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        planet.style.left = `${Math.random() * 100}%`;
+        planet.style.top = `${Math.random() * 100}%`;
+        document.body.appendChild(planet);
+      }
+    }
+    
+    createStars();
+    createAliens();
+    createPlanets();
+    </script>
+    </body></html>
