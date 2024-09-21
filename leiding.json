@@ -2,7 +2,7 @@
 	"leiding": [
 		{
 			"naam": "Wolfkes",
-			"groepFoto": "wolfjes_groepsfoto.jpg",
+			"groepFoto": "wolven.jpg",
 			"leiding": [
 				{
 					"voornaam": "Liselot",
@@ -41,7 +41,7 @@
 
 		{
 			"naam": "Girry's",
-			"groepFoto": "girrys_groepsfoto.jpg",
+			"groepFoto": "girrys.jpg",
 			"leiding": [
 				{
 					"voornaam": "Jana",
@@ -95,7 +95,7 @@
 		},
 		{
 			"naam": "Squirrels",
-			"groepFoto": "squirrels24.jpg",
+			"groepFoto": "squirrels.jpg",
 			"leiding": [
 				{
 					"voornaam": "Lotte",
@@ -142,7 +142,7 @@
 		},
 		{
 			"naam": "Skunks",
-			"groepFoto": "skunks_groepsfoto.jpg",
+			"groepFoto": "skunks.jpg",
 			"leiding": [
 				{
 					"voornaam": "Frauke",
@@ -180,7 +180,7 @@
 
 		{
 			"naam": "Waspi's",
-			"groepFoto": "waspis_groepsfoto.jpg",
+			"groepFoto": "waspis.jpg",
 			"leiding": [
 				{
 					"voornaam": "Louis",
@@ -220,7 +220,7 @@
 		},
 		{
 			"naam": "Aspi's",
-			"groepFoto": "",
+			"groepFoto": "aspis.jpg",
 			"leiding": [
 				{
 					"voornaam": "Louise",
