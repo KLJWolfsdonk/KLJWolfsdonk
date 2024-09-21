@@ -34,7 +34,7 @@
 					"eten": "Pasta",
 					"spel": "Brute pleinspelen",
 					"foto": "tibo.jpg",
-					"taken": ["Hoofdleiding","lokaal","gewest"]
+					"taken": ["Lokaal","gewest"]
 				}
 			]
 		},
@@ -61,7 +61,7 @@
 					"achternaam": "Brusseleers",
 					"bijnaam": "Kakke",
 					"geboorte": "19/04/2003",
-					"studie": "Koeltechnieken",
+					"werk": "Koeltechnieker NMBS",
 					"eten": "Kaas",
 					"spel": "tweedaagse",
 					"foto": "kobe.jpg",
@@ -73,13 +73,13 @@
 					"voornaam": "Ferre",
 					"achternaam": "Brusseleers",
 					"bijnaam": "Fekke",
-					"geboorte": "??/??/????",
-					"studie": "Koeltechnieken",
+					"geboorte": "Niet nader bepaald",
+					"werk": "werken",
 					"eten": "Kaas",
-					"spel": "tweedaagse",
-					"foto": "kobe.jpg",
+					"spel": "driedaagse",
+					"foto": "seppe.jpg",
 					"taken": [
-						"Dorpsraad","lokaal comité"
+						"Kassier","Klusjesman"
 					]
 				},
 				{
@@ -92,7 +92,7 @@
 					"eten": "Alle soorten pasta",
 					"spel": "Pleinspelen",
 					"foto": "jarne.jpg",
-					"taken": ["Kassier", "drankverantwoordelijke"]
+					"taken": ["Drankverantwoordelijke"]
 				}
 			]
 		},
@@ -105,18 +105,17 @@
 					"achternaam": "Jennes",                                                                                                                                                                                                                                          "geboorte": "22/11/2004",                                                                                                                                                                                                                                             "studie": "Verpleegkunde, ucll",
 					"eten": "pasta pesto",
 					"spel": "dorpspel en estafette",
-					"foto": "",
+					"foto": "sien.jpg",
 					"taken": ["kledingverantwoordelijke","EHBO", "Secretaris"] 
 				},
 				{
                     "voornaam": "Maaren",
                     "achternaam": "Vermeulen",
-                    "bijnaam": " ",
                     "geboorte": "23/10/2006",
                     "studie": "bachelor architectuur",
                     "eten": "frietjes met stoofvlees",
                     "spel": "ruwe spelen",
-                    "foto": " ",
+                    "foto": "Placeholder-Female.jpg",
                     "taken": [
                         "Kledingverantwoordelijke","publicatie"
                     ]                                                                       
@@ -134,12 +133,12 @@
 				{         
 					"voornaam": "Senne", 
 					"achternaam": "Achternaam",   
-					"geboorte": "??????????", 
-					"studie": "?",     
-					"eten": "?", 
-					"spel": "??", 
-					"foto": "?", 
-					"taken": ["?","?"] 
+					"geboorte": "04/04/2007", 
+					"studie": "school",     
+					"eten": "lekker", 
+					"spel": "kaktus bloem", 
+					"foto": "senne.jpg", 
+					"taken": ["Vuilnismeester"] 
 				}
 			]
 		},
@@ -164,7 +163,7 @@
 					"voornaam": "Lode",
 					"achternaam": "Degelin",
 					"geboorte": "07/06/1999",
-					"studie": "Master Criminologische wetenschappen",
+					"werk": "Leerkracht",
 					"eten": "Videe met kroketten",
 					"spel": "Laddertocht",
 					"foto": "lode.jpg",
@@ -173,12 +172,12 @@
 				{
 					"voornaam": "Gabriël",
 					"achternaam": "Achternaams",
-					"geboorte": "?",
-					"studie": "?",
-					"eten": "?",
+					"geboorte": "N.v.t.",
+					"studie": "Middelbaar",
+					"eten": "Alles",
 					"spel": "?",
 					"foto": "lode.jpg",
-					"taken": ["?", "?"]
+					"taken": ["Notaris"]
 				}
 			]
 		},
