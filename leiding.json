@@ -44,15 +44,18 @@
 			"groepFoto": "girrys.jpg",
 			"leiding": [
 				{
-					"voornaam": "Jana",
-					"achternaam": "Pauwels",
-					"geboorte": "18/11/2005",
-					"studie": "wiskunde",
-					"eten": "hesp prei en kaassaus met puree ",
-					"spel": "wedden dat",
-					"foto": "jana.jpg",
-					"taken": ["KLJ voor iedereen"]
-				},
+                    "voornaam": "Jana",
+                    "achternaam": "Pauwels",
+                    "bijnaam": "/",
+                    "geboorte": "18/11/2005",
+                    "studie": "wiskunde",
+                    "eten": "hesp/prei en kaassaus",
+                    "spel": "wedden dat ",
+                    "foto": "kan ik gwn zelfde vorig jaar pakken?",
+                    "taken": [
+                        "Ledenwerving"
+                    ]
+                },
 				{
 					"voornaam": "Kobe",
 					"achternaam": "Brusseleers",
@@ -99,25 +102,25 @@
 			"leiding": [
 				{
 					"voornaam": "Lotte",
-					"achternaam": "Jennes",
-					"bijnaam": "lotteke",
-					"geboorte": "22/11/2004",        
-					"studie": "Verpleegkunde, ucll",
+					"achternaam": "Jennes",                                                                                                                                                                                                                                          "geboorte": "22/11/2004",                                                                                                                                                                                                                                             "studie": "Verpleegkunde, ucll",
 					"eten": "pasta pesto",
-					"spel": "dorpspel en Quiz",
-					"foto": "lotteke.jpg",
-					"taken": ["kledingverantwoordelijke","EHBO"]
+					"spel": "dorpspel en estafette",
+					"foto": "",
+					"taken": ["kledingverantwoordelijke","EHBO", "Secretaris"] 
 				},
-				{        
-					"voornaam": "Maaren",
-					"achternaam": "Vermeulen",   
-					"geboorte": "23/10/2006", 
-					"studie": "Architecturale vorming",    
-					"eten": "stoofvlees met frietjes",
-					"spel": "ruwe spelen",
-					"foto": "maaren.jfif",
-					"taken": ["publicatie","materiaal"]
-				},
+				{
+                    "voornaam": "Maaren",
+                    "achternaam": "Vermeulen",
+                    "bijnaam": " ",
+                    "geboorte": "23/10/2006",
+                    "studie": "bachelor architectuur",
+                    "eten": "frietjes met stoofvlees",
+                    "spel": "ruwe spelen",
+                    "foto": " ",
+                    "taken": [
+                        "Kledingverantwoordelijke","publicatie"
+                    ]                                                                       
+},
 				{         
 					"voornaam": "Vic", 
 					"achternaam": "Siongers",   
@@ -145,15 +148,17 @@
 			"groepFoto": "skunks.jpg",
 			"leiding": [
 				{
-					"voornaam": "Frauke",
-					"achternaam": "Jasens",
-					"bijnaam": "Frakzak, frakke",
-					"geboorte": "16/07/2002", 
-					"studie": "3de jaar bachelor rechtspraktijk",
-					"eten": "alles met pasta",
-					"spel": "competitieve spelletjes",
-					"foto": "frauke.jpg",
-					"taken": ["kledingverantwoordelijke","leidingsbinding"]
+                    "voornaam": "Frauke",
+                    "achternaam": "Jasens",
+                    "bijnaam": "Frakke",
+                    "geboorte": "16/07/2002",
+                    "studie": "Educatieve bachelor lager onderwijs",
+                    "eten": "Alles met pasta",
+                    "spel": "Competitieve spelletjes",
+                    "foto": "",
+                    "taken": [
+                        "Kledingverantwoordelijke","Publicatie", "Kamp en weekend verantwoordelijke"
+                    ]                                                                       
 				},
 				{
 					"voornaam": "Lode",
@@ -226,11 +231,11 @@
 					"voornaam": "Louise",
 					"achternaam": "Verdonck",   
 					"geboorte": "27/09/2003", 
-					"studie": "Biomedische laboratoriumtechnologie, Thomas More Geel",
+					"werk": "biomedisch laborant",
 					"eten": "spaghetti carbonara",
 					"spel": "stadsspel, quiz",
 					"foto": "louise.jpg",
-					"taken": ["notulist","EHBO","bestuur","leidingsbinding"]
+					"taken": ["Hoofdleiding"]
 				},
 				{
 					"voornaam": "Jente",
@@ -244,15 +249,17 @@
 					"taken": ["zomerleiding"]
 				},
 				{
-					"voornaam": "Josefien",
-					"achternaam": "Verdonck", 
-					"bijnaam": "Josefoen",  
-					"geboorte": "17/10/2005", 
-					"studie": "verpleegkunde",
-					"eten": "Soesji",
-					"spel": "kwies",
-					"foto": "jos.jpg",
-					"taken": ["EBOH","baffer"]
+                    "voornaam": "Josefien",
+                    "achternaam": "Verdonck",
+                    "bijnaam": "Joske",
+                    "geboorte": "17/10/2005",
+                    "studie": "Verpleegkunde",
+                    "eten": "Soesji/Pasta pesto",
+                    "spel": "Quiz",
+                    "foto": "",
+                    "taken": [
+                        "Eboh","Ledencommunicatie","Kuisverantwoordelijke"
+                    ]                                                                       
 				}
 			]
 		},
