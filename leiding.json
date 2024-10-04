@@ -22,7 +22,7 @@
 					"studie": "Industrieel ingenieur",
 					"eten": "Frietjes",
 					"spel": "Wedden dat",
-					"foto": "sien.jpg",
+					"foto": "warre.jpg",
 					"taken": ["kassier","groepsverantwoordelijke”,kamp-en-weekendplaatsen"]
 				},
 				{
@@ -77,7 +77,7 @@
 					"werk": "werken",
 					"eten": "Kaas",
 					"spel": "driedaagse",
-					"foto": "seppe.jpg",
+					"foto": "Placeholder-Female.jpg",
 					"taken": [
 						"Kassier","Klusjesman"
 					]
@@ -105,7 +105,7 @@
 					"achternaam": "Jennes",                                                                                                                                                                                                                                          "geboorte": "22/11/2004",                                                                                                                                                                                                                                             "studie": "Verpleegkunde, ucll",
 					"eten": "pasta pesto",
 					"spel": "dorpspel en estafette",
-					"foto": "Tinneke.jpg",
+					"foto": "lotteke.jpg",
 					"taken": ["kledingverantwoordelijke","EHBO", "Secretaris"] 
 				},
 				{
@@ -115,7 +115,7 @@
                     "studie": "bachelor architectuur",
                     "eten": "frietjes met stoofvlees",
                     "spel": "ruwe spelen",
-                    "foto": "Placeholder-Female.jpg",
+                    "foto": "maaren.jfif",
                     "taken": [
                         "Kledingverantwoordelijke","publicatie"
                     ]                                                                       
@@ -148,8 +148,8 @@
 			"leiding": [
 				{
                     "voornaam": "Frauke",
-                    "achternaam": "Jasens",
-                    "bijnaam": "Frakke",
+                    "achternaam": "Janssens",
+                    "bijnaam": "Freagle",
                     "geboorte": "16/07/2002",
                     "studie": "Educatieve bachelor lager onderwijs",
                     "eten": "Alles met pasta",
@@ -176,7 +176,7 @@
 					"studie": "Middelbaar",
 					"eten": "Alles",
 					"spel": "?",
-					"foto": "junior.jpg",
+					"foto": "Placeholder-Female.jpg",
 					"taken": ["Notaris"]
 				}
 			]
@@ -253,11 +253,11 @@
                     "bijnaam": "Joske",
                     "geboorte": "17/10/2005",
                     "studie": "Verpleegkunde",
-                    "eten": "Soesji/Pasta pesto",
+                    "eten": "Sushi/Pasta pesto",
                     "spel": "Quiz",
                     "foto": "jos.jpg",
                     "taken": [
-                        "Eboh","Ledencommunicatie","Kuisverantwoordelijke"
+                        "EHBO","Ledencommunicatie","Kuisverantwoordelijke"
                     ]                                                                       
 				}
 			]
@@ -280,7 +280,7 @@
 				{
 					"voornaam": "Kjell",
 					"achternaam": "Mesotten",   
-					"geboorte": "XX/XX/XXXX", 
+					"geboorte": "/", 
 					"studie": "Master ingenieurswetenschappen",
 					"eten": "Ribeye",
 					"spel": "",
