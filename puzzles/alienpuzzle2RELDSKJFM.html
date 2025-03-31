@@ -1,0 +1,130 @@
+<html><head><base href="https://websim.ai/c/cowboyalienraadsel">
+    <title>Buitenaards Cowboy Raadsel</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4a4a4a;
+        }
+        #puzzle-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #alien-message {
+            font-family: 'Courier New', monospace;
+            background-color: #e0ffe0;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #secret-message {
+            display: none;
+            background-color: #ffe0e0;
+            border: 2px solid #FF4500;
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        #solution-btn, #hint-btn {
+            position: fixed;
+            bottom: 20px;
+            padding: 10px;
+            font-size: 18px;
+        }
+        #solution-btn {
+            left: 20px;
+            background-color: #FF4500;
+        }
+        #hint-btn {
+            right: 20px;
+            background-color: #1E90FF;
+        }
+        #hint-container {
+            display: none;
+            position: fixed;
+            right: 20px;
+            bottom: 70px;
+            background-color: #e6f3ff;
+            border: 2px solid #1E90FF;
+            padding: 10px;
+            max-width: 250px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buitenaards Cowboy Raadsel 2</h1>
+    <div id="puzzle-container">
+        <p>Welkom, aardbewoners! Wij, de leiders van Katholieke AlienJeugd van planeet BirgMargGrarg, hebben jullie "cowboys" bestudeerd. Los dit raadsel op om onze bevindingen te ontcijferen:</p>
+        <div id="alien-message">
+            🤠 = 👢 + 🐎 + 🔫<br>
+            👢 = 2🌵<br>
+            🐎 = 4👢<br>
+            🔫 = 3🌵<br>
+            🤠 + 👢 + 🐎 + 🔫 + 🌵 = ?
+        </div>
+        <p><strong>Een klein hulpje:</strong> 🐎 = de vierkantswortel van 64</p>
+        <div class="input-group">
+            <input type="text" id="answer-input" placeholder="Voer je antwoord in">
+            <button onclick="checkAnswer()">Controleer</button>
+        </div>
+        <div id="secret-message"></div>
+    </div>
+    <!--<button id="solution-btn" onclick="showSolution()">Oplossing</button>-->
+    <button id="hint-btn" onclick="toggleHint()">?</button>
+    <div id="hint-container">
+        <p>Hint 1: Begin met het oplossen van de eenvoudigste vergelijking.</p>
+        <p>Hint 2: Vervang symbolen door hun equivalenten in andere vergelijkingen.</p>
+        <p>Hint 3: Tel alles bij elkaar op en vereenvoudig.</p>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer-input').value;
+            if (answer === '27') {
+                document.getElementById('secret-message').innerHTML = "Gefeliciteerd! De geheime code is FLG{91GOEBEZIGMANNEN}";
+                document.getElementById('secret-message').style.display = 'block';
+            } else {
+                alert('Dat is niet correct. Probeer het nog eens!');
+            }
+        }
+
+        function showSolution() {
+            alert('Oplossing: 27\n\n🌵 = 1\n👢 = 2\n🐎 = 8\n🔫 = 3\n🤠 = 13\n\nDus, 🤠 + 👢 + 🐎 + 🔫 + 🌵 = 13 + 2 + 8 + 3 + 1 = 27');
+        }
+
+        function toggleHint() {
+            const hintContainer = document.getElementById('hint-container');
+            hintContainer.style.display = hintContainer.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body></html>
