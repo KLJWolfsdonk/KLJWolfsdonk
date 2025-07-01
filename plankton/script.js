@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Configuratie ---
-    // De nieuwe codes van de gebruiker. De logica werkt nu met deze codes.
     const SUB_CODES = ["KR@B", "BURG3R", "seke-kaka", "nieuwpo0rt"];
     
-    const MISSION_TEXT = "Agenten. Jullie, de leden van KLJ Wolfsdonk, zijn door mij, Plankton, geselecteerd om de ultieme kraak te zetten. Jullie missie: infiltreer de Krokante Krab en steel het meest waardevolle bezit van Bikinibroek... de geheime formule van de Krabburger. Maar pas op. Krabs heeft die eekhoorn, Sandy, ingehuurd om een meesterlijk beveiligingssysteem te installeren. Talloze pogingen om het te doorbreken zijn al mislukt. Misluk niet. Succes.";
+    const MISSION_TEXT = "Gegroet. Jullie, de leden van KLJ Wolfsdonk, zijn door mij, Plankton, geselecteerd om de ultieme diefstal te plegen. Jullie missie: infiltreer de Krokante Krab en steel het meest waardevolle bezit van Bikinibroek... de geheime formule van de Krabburger. Maar pas op. Krabs heeft die eekhoorn, Sandy, ingehuurd om een meesterlijk beveiligingssysteem te installeren. Talloze pogingen om het te doorbreken zijn al mislukt. Voor jullie is falen geen optie. Succes.";
     
     let unlockedLayers = {};
 
     // --- Element Selecties ---
-    // (Deze blijven allemaal hetzelfde)
     const loginScreen = document.getElementById('login-screen');
     const missionScreen = document.getElementById('mission-screen');
     const successScreen = document.getElementById('success-screen');
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Kernfuncties ---
 
-    // Initialiseer het spel (ongewijzigd)
     function initializeGame() {
         const savedCrewName = localStorage.getItem('crewName');
         if (savedCrewName) {
@@ -47,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Werkt de visuele voortgangsindicator bij
     function updateProgressIndicator() {
         SUB_CODES.forEach((code, index) => {
             // FIX #2: Gebruik de index van de code om de juiste ID te vinden (bv. 'layer-0', 'layer-1', etc.)
@@ -99,9 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         passcode_input.value = '';
     });
-
-    // --- Onveranderde Functies ---
-    // (Alle overige functies blijven exact hetzelfde als voorheen)
 
     function startTypewriter() {
         let i = 0;
