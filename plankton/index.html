@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P.E.A.M. Interface</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NIEUWE MISSION BRIEFING MODAL -->
+    <div id="mission-modal-container">
+        <div id="mission-modal-content">
+            <h3>Inkomend Bericht... Transmissie van: PLANKTON</h3>
+            <p id="modal-text"></p>
+            <button id="modal-close-btn" class="hidden">BEGIN INFILTRATIE</button>
+        </div>
+    </div>
+    <div id="app-container">
+        
+        <!-- ====================== -->
+        <!--      LOGIN SCHERM      -->
+        <!-- ====================== -->
+        <div id="login-screen" class="screen">
+            <header>
+                <h1>Planktons Elite Agenten voor Misdaden</h1>
+                <h2>(P.E.A.M.)</h2>
+            </header>
+            <img src="./plankton.png" alt="Plankton" class="plankton-logo">
+            <form id="login-form">
+                <input type="text" id="crew-name-input" placeholder="Voer de naam van je crew in..." required>
+                <button type="submit">START MISSIE</button>
+            </form>
+        </div>
+
+        <!-- ====================== -->
+        <!--     MISSIE SCHERM      -->
+        <!-- ====================== -->
+        <div id="mission-screen" class="screen hidden">
+            <header>
+                <h1>Welkom, <span class="crew-name-display">Crew</span>. Het doelwit bevindt zich in de grijze beveiligingskast op onderstaande
+                bewakingsbeelden.</h1>
+            </header>
+            <div class="mission-content">
+                
+                <!-- RE-ADDED: LIVE SECURITY FEED -->
+                <div class="security-feed">
+                    <img src="./krabby.gif" alt="Spongebob die Krabburgers bakt">
+                    <p>- LIVE BEWAKINGSBEELDEN -</p>
+                </div>
+
+                <!-- PROGRESS INDICATOR -->
+                <div class="progress-tracker">
+                    <h3>BEVEILIGINGSSTATUS</h3>
+                    <ul>
+                        <!-- AANGEPAST: ID's zijn nu simpel en voorspelbaar -->
+                        <li id="layer-0" class="locked"><span>🔒</span> Laag 1: VERGRENDELD</li>
+                        <li id="layer-1" class="locked"><span>🔒</span> Laag 2: VERGRENDELD</li>
+                        <li id="layer-2" class="locked"><span>🔒</span> Laag 3: VERGRENDELD</li>
+                        <li id="layer-3" class="locked"><span>🔒</span> Laag 4: VERGRENDELD</li>
+                    </ul>
+                </div>
+
+                <div class="briefing">
+                    <p>"Voer een code in die je hebt bemachtigd om een beveiligingslaag uit te schakelen. Schakel alle vier de lagen uit om de kluis te kraken en het geheime Krabburgerrecept te stelen!"</p>
+                </div>
+                
+                <form id="heist-form">
+                    <h3>CODE INVOEREN</h3>
+                    <input type="text" id="passcode-input" placeholder="Voer een code in...">
+                    <button type="submit" id="heist-button">ONTSLEUTEL</button>
+                    <p id="feedback-message" class="hidden">...</p>
+                </form>
+                <a href="#" id="reset-link">Reset Spel</a> <!-- NEW RESET LINK -->
+            </div>
+        </div>
+        
+        <!-- ====================== -->
+        <!--    SUCCES SCHERM     -->
+        <!-- ====================== -->
+        <div id="success-screen" class="screen hidden">
+            <header>
+                <h1>OVERWINNING!</h1>
+            </header>
+            <div class="success-content">
+                <img src="./recipe.png" alt="Geheime Formule onthuld" class="formula-img">
+                <p>De formule is VAN ONS! Jouw crew, <strong class="crew-name-display">Crew</strong>, heeft de kraak voltooid! Laat dit bericht zo snel mogelijk aan de leiding zien.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

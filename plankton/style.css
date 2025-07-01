@@ -1,0 +1,283 @@
+body {
+    background-color: #0c1a2c;
+    color: #a2d2ff;
+    font-family: 'VT323', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+#app-container {
+    width: 90%;
+    max-width: 500px;
+    background-color: #1b2f4a;
+    border: 3px solid #4a89c8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(74, 137, 200, 0.5);
+    text-align: center;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+header h1 {
+    color: #f7b801;
+    margin: 0;
+    font-size: 2rem;
+}
+
+header h2 {
+    color: #a2d2ff;
+    margin: 0 0 20px 0;
+}
+
+.plankton-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #f7b801;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #0c1a2c;
+    border: 2px solid #4a89c8;
+    border-radius: 5px;
+    color: #a2d2ff;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+input[type="text"]::placeholder {
+    color: #4a89c8;
+}
+
+button {
+    background-color: #f7b801;
+    color: #1b2f4a;
+    border: none;
+    padding: 15px 30px;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    border-bottom: 4px solid #c99600;
+}
+
+button:hover {
+    background-color: #ffce40;
+}
+
+button:active {
+    transform: translateY(2px);
+    border-bottom: 2px solid #c99600;
+}
+
+/* --- STYLES FOR RE-ADDED LIVE FEED --- */
+.security-feed {
+    border: 2px dashed #4a89c8;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #0c1a2c;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.security-feed img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.security-feed p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    color: #f7b801;
+    animation: blink 1.5s linear infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* --- STYLES FOR PROGRESS TRACKER --- */
+.progress-tracker {
+    width: 100%;
+    background-color: #0c1a2c;
+    border: 2px solid #4a89c8;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.progress-tracker h3 {
+    margin: 0 0 10px 0;
+    color: #f7b801;
+    text-align: center;
+}
+
+.progress-tracker ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.progress-tracker li {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 1.3rem;
+    transition: all 0.5s ease;
+}
+
+.progress-tracker li span {
+    margin-right: 10px;
+}
+
+.locked {
+    background-color: #4d2323;
+    color: #ff8a8a;
+}
+
+.unlocked {
+    background-color: #1e4d2b;
+    color: #8aff8a;
+    text-decoration: line-through;
+}
+
+/* --- OTHER STYLES --- */
+.briefing {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#heist-form h3 {
+    color: #f7b801; /* Changed to match theme */
+    margin-bottom: 10px;
+}
+
+#feedback-message {
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+#feedback-message.success { background-color: #1e4d2b; color: #8aff8a; }
+#feedback-message.warn { background-color: #5e5a2a; color: #f7b801; }
+#feedback-message.error { background-color: #4d2323; color: #ff8a8a; }
+
+.formula-img {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 10px;
+    border: 5px solid #f7b801;
+}
+
+.success-content p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+.success-content strong {
+    color: #f7b801;
+}
+
+#reset-link {
+    color: #4a89c8;
+    text-decoration: none;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+#reset-link:hover {
+    color: #a2d2ff;
+    text-decoration: underline;
+}
+
+/* --- MODAL STYLES --- */
+#mission-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 26, 44, 0.85); /* Donkere, thematische overlay */
+    z-index: 1000;
+    display: none; /* Standaard verborgen */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#mission-modal-content {
+    background-color: #1b2f4a;
+    border: 3px solid #4a89c8;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(74, 137, 200, 0.6);
+    width: 90%;
+    max-width: 600px;
+    color: #a2d2ff;
+    text-align: left;
+}
+
+#mission-modal-content h3 {
+    color: #f7b801;
+    margin: 0 0 20px 0;
+    text-align: center;
+    animation: blink 1.5s linear infinite; /* Hergebruik de blink animatie */
+}
+
+#modal-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    min-height: 200px; /* Zorgt voor ruimte en voorkomt schokken */
+}
+
+/* De knipperende cursor voor het typewriter effect */
+#modal-text::after {
+    content: '█';
+    animation: cursor-blink 1s step-end infinite;
+    color: #8aff8a;
+    margin-left: 5px;
+}
+
+@keyframes cursor-blink {
+    50% { opacity: 0; }
+}
+
+/* Verberg cursor als het typen klaar is */
+#modal-text.typing-complete::after {
+    animation: none;
+    opacity: 0;
+}
+
+#modal-close-btn {
+    display: block;
+    margin: 20px auto 0;
+    font-size: 1.2rem;
+}
