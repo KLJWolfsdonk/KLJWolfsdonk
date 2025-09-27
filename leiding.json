@@ -88,13 +88,13 @@
 				},
 				{
 					"voornaam": "Nore",
-					"achternaam": "Placeholder",
-					"geboorte": "01/01/2005",
-					"studie": "Placeholder studie",
-					"eten": "Placeholder eten",
-					"spel": "Placeholder spel",
-					"foto": "Placeholder-Female.jpg",
-					"taken": ["Placeholder taak"]
+					"achternaam": "Zeelmaekers",
+					"geboorte": "11/01/2008",
+					"studie": "Opvoeding en begeleiding",
+					"eten": "Frietjes",
+					"spel": "Ruwe pleinspelen",
+					"foto": "Nore_zeelmaekers.jpeg",
+					"taken": ["Ledenwerving, Notulist"]
 				}
 			]
 		},
@@ -218,6 +218,30 @@
 					"spel": "stadsspel, quiz",
 					"foto": "louise.jpg",
 					"taken": ["placeholder"]
+				}
+			]
+		},
+		{
+			"naam": "Vliegende Leiding",
+			"groepFoto": "/",
+			"leiding": [
+				{
+					"voornaam": "Xanty",
+					"achternaam": "Vandezande",
+					"geboorte": "03/04/2002",
+					"studie": "BanaBa Advanced Business Management Digital Supply Chain",
+					"eten": "Spinaziepuree met spekjes, zalm en een hardgekookt eitje.",
+					"spel": "stadsspel",
+					"foto": "xanty.jpg"
+				},
+				{
+					"voornaam": "Noortje",
+					"achternaam": "Verbruggen",
+					"geboorte": "jaren 60",
+					"werk": "iets met klinische studies",
+					"eten": "pizza",
+					"spel": "pleinspelen",
+					"foto": "noortje.jpg"
 				}
 			]
 		}
