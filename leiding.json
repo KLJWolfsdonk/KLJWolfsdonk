@@ -2,16 +2,16 @@
 	"leiding": [
 		{
 			"naam": "Wolfkes",
-			"groepFoto": "wolven.jpg",
+			"groepFoto": "groepsfoto_wolven202526.png",
 			"leiding": [
 				{
 					"voornaam": "Free",
-					"achternaam": "Placeholder",
-					"geboorte": "01/01/2000",
-					"studie": "Placeholder studie",
-					"eten": "Placeholder eten",
-					"spel": "Placeholder spel",
-					"foto": "Placeholder-Male.jpg",
+					"achternaam": "Mannaerts",
+					"geboorte": "19/09/2008",
+					"studie": "Wetenschappen-Wiskunde",
+					"eten": "sushi",
+					"spel": "quiz",
+					"foto": "free2526.jpg",
 					"taken": ["Placeholder taak"]
 				},
 				{
@@ -19,9 +19,10 @@
 					"achternaam": "Pauwels",
 					"bijnaam": "/",
 					"geboorte": "18/11/2005",
-					"studie": "wiskunde",
+					"gsm": "468 46 24 81",
+				    "studie": "wiskunde",
 					"eten": "hesp/prei en kaassaus",
-					"spel": "wedden dat",
+					"spel": "pleinspelletjes",
 					"foto": "jana.jpg",
 					"taken": ["Ledenwerving"]
 				},
@@ -31,20 +32,20 @@
 					"bijnaam": "Karper",
 					"geboorte": "05/08/2005",
 					"gsm": "0472805694",
-					"studie": "chemie",
-					"eten": "pizza",
-					"spel": "dropping",
-					"foto": "jari.jpeg",
+					"studie": "financieën en verzekeringen",
+					"eten": "Tagliatelle met brocoli, scampi en zalm",
+					"spel": "bosspel",
+					"foto": "jari2526.jpeg",
 					"taken": ["materiaal", "vuilnis verantwoordelijke"]
 				},
 				{
 					"voornaam": "Vic",
 					"achternaam": "Siongers",
 					"geboorte": "27/12/2003",
-					"studie": "Graduaat Orthopedagogische begeleiding",
+					"studie": "Orthopedagogische begeleiding",
 					"eten": "ribbekes",
 					"spel": "bosspel",
-					"foto": "vic.jpg",
+					"foto": "vic2526.jpg",
 					"taken": ["jeugdraad", "notulist"]
 				}
 			]
@@ -69,19 +70,20 @@
 					"achternaam": "Mertens",
 					"bijnaam": "titi",
 					"geboorte": "17/01/2004",
-					"studie": "PXL-Music Muzikant",
-					"eten": "Pasta",
-					"spel": "Brute pleinspelen",
+					"gsm": "0468 14 85 95",
+					"studie": "Muziek",
+					"eten": "Lasagne",
+					"spel": "ruwe pleinspelen",
 					"foto": "tibo.jpg",
 					"taken": ["Lokaal", "gewest"]
 				},
 				{
 					"voornaam": "Frauke",
 					"achternaam": "Janssens",
-					"bijnaam": "Freagle",
+					"bijnaam": "Frakke",
 					"geboorte": "16/07/2002",
-					"studie": "Educatieve bachelor lager onderwijs",
-					"eten": "Alles met pasta",
+					"studie": "Orthopedagogische begeleiding",
+					"eten": "Alles met courgette",
 					"spel": "Competitieve spelletjes",
 					"foto": "frauke.jpg",
 					"taken": ["Kledingverantwoordelijke", "Publicatie", "Kamp en weekend verantwoordelijke"]
@@ -100,31 +102,32 @@
 		},
 		{
 			"naam": "Squirrels",
-			"groepFoto": "squirrels2.jpg",
+			"groepFoto": "groepsfoto_squirrels_2526.jpg",
 			"leiding": [
 				{
-					"voornaam": "Emillie",
-					"achternaam": "Placeholder",
-					"geboorte": "01/01/2005",
-					"studie": "Placeholder studie",
-					"eten": "Placeholder eten",
-					"spel": "Placeholder spel",
-					"foto": "Placeholder-Female.jpg",
-					"taken": ["Placeholder taak"]
+					"voornaam": "Emilie",
+					"achternaam": "Faes",
+					"geboorte": "22/12/2008",
+					"studie": "Humane Wetenschappen",
+					"eten": "Videe",
+					"spel": "Ruwe pleinspelen",
+					"foto": "Emilie2526.jpeg",
+					"taken": [" taak"]
 				},
 				{
 					"voornaam": "Martha",
-					"achternaam": "Placeholder",
-					"geboorte": "01/01/2006",
-					"studie": "Placeholder studie",
-					"eten": "Placeholder eten",
-					"spel": "Placeholder spel",
-					"foto": "Placeholder-Female.jpg",
-					"taken": ["Placeholder taak"]
+					"achternaam": "Pelgrims",
+					"geboorte": "30/05/2008",
+					"studie": "Moderne Talen",
+					"eten": "sushi",
+					"spel": "Robin Hood/quiz",
+					"foto": "martha2526.jpg",
+					"taken": [" taak"]
 				},
 				{
 					"voornaam": "Senne",
 					"achternaam": "Achternaam",
+					"bijnaam": "Seke",
 					"geboorte": "04/04/2007",
 					"studie": "school",
 					"eten": "lekker",
@@ -156,19 +159,20 @@
 					"geboorte": "09/10/2001",
 					"gsm": "0483110782",
 					"studie": "Industrieel ingenieur",
-					"eten": "Stoofvlees met frietjes!",
+					"eten": "kapsalon pita",
 					"spel": "kampen bouwen in het bos",
 					"foto": "louis.jpg",
 					"taken": ["Hoofdleiding"]
 				},
 				{
 					"voornaam": "Liselot",
-					"achternaam": "Placeholder",
-					"geboorte": "01/01/2004",
-					"studie": "Placeholder studie",
-					"eten": "Placeholder eten",
-					"spel": "Placeholder spel",
-					"foto": "Placeholder-Female.jpg",
+					"achternaam": "Boeckx",
+					"bijnaam": "Lotje",
+					"geboorte": "'31/10/2006",
+					"studie": "Revalidatiewetenschappen en kinesitherapie",
+					"eten": "Pasta, pizza, sushi",
+					"spel": "ruwe pleinspelen",
+					"foto": "liselot2526",
 					"taken": ["Hoofdleiding"]
 				}
 			]
@@ -181,7 +185,7 @@
 					"voornaam": "Anna",
 					"achternaam": "Everaerts",
 					"geboorte": "03/01/2007",
-					"studie": "Wetenschappen-Wiskunde",
+					"studie": "vroedkunde",
 					"eten": "Macaroni",
 					"spel": "Pleinspelen",
 					"foto": "Placeholder-Female.jpg",
@@ -190,12 +194,12 @@
 				{
 					"voornaam": "Jarne",
 					"achternaam": "Van de Velde",
-					"bijnaam": "Jarnie",
+					
 					"geboorte": "24/10/2003",
 					"gsm": "0468405455",
-					"studie": "Graduaat HR",
-					"eten": "Alle soorten pasta",
-					"spel": "Pleinspelen",
+					"studie": "Planner containers maes",
+					"eten": "vlees",
+					"spel": "tikkertje",
 					"foto": "jarne.jpg",
 					"taken": ["Drankverantwoordelijke"]
 				},
@@ -206,16 +210,16 @@
 					"studie": "Verpleegkunde, ucll",
 					"eten": "pasta pesto",
 					"spel": "dorpspel en estafette",
-					"foto": "lotteke.jpg",
+					"foto": "lotteke2526.jpg",
 					"taken": ["kledingverantwoordelijke", "EHBO", "Secretaris"]
 				},
 				{
 					"voornaam": "Louise",
 					"achternaam": "Verdonck",
 					"geboorte": "27/09/2003",
-					"werk": "biomedisch laborant",
-					"eten": "spaghetti carbonara",
-					"spel": "stadsspel, quiz",
+					"werk": "Ik studeer niet meer maar ik ben Medisch Laborant 💩🔬🩸🧫",
+					"eten": "Spaghetti carbonara van oudleider wuttel",
+					"spel": "Een goeie stevige wandeltocht 🥾",
 					"foto": "louise.jpg",
 					"taken": ["placeholder"]
 				}
@@ -227,6 +231,7 @@
 			"leiding": [
 				{
 					"voornaam": "Xanty",
+					"bijnaam": "scampi",
 					"achternaam": "Vandezande",
 					"geboorte": "03/04/2002",
 					"studie": "BanaBa Advanced Business Management Digital Supply Chain",
