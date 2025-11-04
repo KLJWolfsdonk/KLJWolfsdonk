@@ -12,7 +12,7 @@
 					"eten": "sushi",
 					"spel": "quiz",
 					"foto": "free2526.jpg",
-					"taken": ["Placeholder taak"]
+					
 				},
 				{
 					"voornaam": "Jana",
@@ -24,7 +24,7 @@
 					"eten": "hesp/prei en kaassaus",
 					"spel": "pleinspelletjes",
 					"foto": "jana.jpg",
-					"taken": ["Ledenwerving"]
+					
 				},
 				{
 					"voornaam": "Jari",
@@ -36,7 +36,7 @@
 					"eten": "Tagliatelle met brocoli, scampi en zalm",
 					"spel": "bosspel",
 					"foto": "jari2526.jpeg",
-					"taken": ["materiaal", "vuilnis verantwoordelijke"]
+					
 				},
 				{
 					"voornaam": "Vic",
@@ -46,7 +46,7 @@
 					"eten": "ribbekes",
 					"spel": "bosspel",
 					"foto": "vic2526.jpg",
-					"taken": ["jeugdraad", "notulist"]
+					
 				}
 			]
 		},
@@ -63,7 +63,7 @@
 					"eten": "Sushi/Pasta pesto",
 					"spel": "Quiz",
 					"foto": "jos.jpg",
-					"taken": ["EHBO", "Ledencommunicatie", "Kuisverantwoordelijke"]
+					
 				},
 				{
 					"voornaam": "Tibo",
@@ -75,7 +75,7 @@
 					"eten": "Lasagne",
 					"spel": "ruwe pleinspelen",
 					"foto": "tibo.jpg",
-					"taken": ["Lokaal", "gewest"]
+					
 				},
 				{
 					"voornaam": "Frauke",
@@ -86,7 +86,7 @@
 					"eten": "Alles met courgette",
 					"spel": "Competitieve spelletjes",
 					"foto": "frauke.jpg",
-					"taken": ["Kledingverantwoordelijke", "Publicatie", "Kamp en weekend verantwoordelijke"]
+					
 				},
 				{
 					"voornaam": "Nore",
@@ -96,7 +96,7 @@
 					"eten": "Frietjes",
 					"spel": "Ruwe pleinspelen",
 					"foto": "Nore_zeelmaekers.jpeg",
-					"taken": ["Ledenwerving, Notulist"]
+					
 				}
 			]
 		},
@@ -112,7 +112,7 @@
 					"eten": "Videe",
 					"spel": "Ruwe pleinspelen",
 					"foto": "Emilie2526.jpeg",
-					"taken": [" taak"]
+				
 				},
 				{
 					"voornaam": "Martha",
@@ -122,7 +122,7 @@
 					"eten": "sushi",
 					"spel": "Robin Hood/quiz",
 					"foto": "martha2526.jpg",
-					"taken": [" taak"]
+					
 				},
 				{
 					"voornaam": "Senne",
@@ -133,7 +133,7 @@
 					"eten": "lekker",
 					"spel": "kaktus bloem",
 					"foto": "senne.jpg",
-					"taken": ["Vuilnismeester"]
+					
 				},
 				{
 					"voornaam": "Warre",
@@ -144,7 +144,7 @@
 					"eten": "Frietjes",
 					"spel": "Wedden dat",
 					"foto": "warre.jpg",
-					"taken": ["kassier", "groepsverantwoordelijke", "kamp-en-weekendplaatsen"]
+					
 				}
 			]
 		},
@@ -189,7 +189,7 @@
 					"eten": "Macaroni",
 					"spel": "Pleinspelen",
 					"foto": "Placeholder-Female.jpg",
-					"taken": ["ledenwerving, orde en netheid"]
+					
 				},
 				{
 					"voornaam": "Jarne",
@@ -201,7 +201,7 @@
 					"eten": "vlees",
 					"spel": "tikkertje",
 					"foto": "jarne.jpg",
-					"taken": ["Drankverantwoordelijke"]
+					
 				},
 				{
 					"voornaam": "Lotteke",
@@ -211,7 +211,7 @@
 					"eten": "pasta pesto",
 					"spel": "dorpspel en estafette",
 					"foto": "lotteke2526.jpg",
-					"taken": ["kledingverantwoordelijke", "EHBO", "Secretaris"]
+					
 				},
 				{
 					"voornaam": "Louise",
@@ -221,7 +221,7 @@
 					"eten": "Spaghetti carbonara van oudleider wuttel",
 					"spel": "Een goeie stevige wandeltocht 🥾",
 					"foto": "louise.jpg",
-					"taken": ["placeholder"]
+					
 				}
 			]
 		},
