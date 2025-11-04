@@ -1,254 +1,241 @@
 {
-	"leiding": [
-		{
-			"naam": "Wolfkes",
-			"groepFoto": "groepsfoto_wolven202526.png",
-			"leiding": [
-				{
-					"voornaam": "Free",
-					"achternaam": "Mannaerts",
-					"geboorte": "19/09/2008",
-					"studie": "Wetenschappen-Wiskunde",
-					"eten": "sushi",
-					"spel": "quiz",
-					"foto": "free2526.jpg",
-					
-				},
-				{
-					"voornaam": "Jana",
-					"achternaam": "Pauwels",
-					"bijnaam": "/",
-					"geboorte": "18/11/2005",
-					"gsm": "468 46 24 81",
-				    "studie": "wiskunde",
-					"eten": "hesp/prei en kaassaus",
-					"spel": "pleinspelletjes",
-					"foto": "jana.jpg",
-					
-				},
-				{
-					"voornaam": "Jari",
-					"achternaam": "Wynants",
-					"bijnaam": "Karper",
-					"geboorte": "05/08/2005",
-					"gsm": "0472805694",
-					"studie": "financieën en verzekeringen",
-					"eten": "Tagliatelle met brocoli, scampi en zalm",
-					"spel": "bosspel",
-					"foto": "jari2526.jpeg",
-					
-				},
-				{
-					"voornaam": "Vic",
-					"achternaam": "Siongers",
-					"geboorte": "27/12/2003",
-					"studie": "Orthopedagogische begeleiding",
-					"eten": "ribbekes",
-					"spel": "bosspel",
-					"foto": "vic2526.jpg",
-					
-				}
-			]
-		},
-		{
-			"naam": "Girry's",
-			"groepFoto": "girrys.jpg",
-			"leiding": [
-				{
-					"voornaam": "Josefien",
-					"achternaam": "Verdonck",
-					"bijnaam": "Joske",
-					"geboorte": "17/10/2005",
-					"studie": "Verpleegkunde",
-					"eten": "Sushi/Pasta pesto",
-					"spel": "Quiz",
-					"foto": "jos.jpg",
-					
-				},
-				{
-					"voornaam": "Tibo",
-					"achternaam": "Mertens",
-					"bijnaam": "titi",
-					"geboorte": "17/01/2004",
-					"gsm": "0468 14 85 95",
-					"studie": "Muziek",
-					"eten": "Lasagne",
-					"spel": "ruwe pleinspelen",
-					"foto": "tibo.jpg",
-					
-				},
-				{
-					"voornaam": "Frauke",
-					"achternaam": "Janssens",
-					"bijnaam": "Frakke",
-					"geboorte": "16/07/2002",
-					"studie": "Orthopedagogische begeleiding",
-					"eten": "Alles met courgette",
-					"spel": "Competitieve spelletjes",
-					"foto": "frauke.jpg",
-					
-				},
-				{
-					"voornaam": "Nore",
-					"achternaam": "Zeelmaekers",
-					"geboorte": "11/01/2008",
-					"studie": "Opvoeding en begeleiding",
-					"eten": "Frietjes",
-					"spel": "Ruwe pleinspelen",
-					"foto": "Nore_zeelmaekers.jpeg",
-					
-				}
-			]
-		},
-		{
-			"naam": "Squirrels",
-			"groepFoto": "groepsfoto_squirrels_2526.jpg",
-			"leiding": [
-				{
-					"voornaam": "Emilie",
-					"achternaam": "Faes",
-					"geboorte": "22/12/2008",
-					"studie": "Humane Wetenschappen",
-					"eten": "Videe",
-					"spel": "Ruwe pleinspelen",
-					"foto": "Emilie2526.jpeg",
-				
-				},
-				{
-					"voornaam": "Martha",
-					"achternaam": "Pelgrims",
-					"geboorte": "30/05/2008",
-					"studie": "Moderne Talen",
-					"eten": "sushi",
-					"spel": "Robin Hood/quiz",
-					"foto": "martha2526.jpg",
-					
-				},
-				{
-					"voornaam": "Senne",
-					"achternaam": "Achternaam",
-					"bijnaam": "Seke",
-					"geboorte": "04/04/2007",
-					"studie": "school",
-					"eten": "lekker",
-					"spel": "kaktus bloem",
-					"foto": "senne.jpg",
-					
-				},
-				{
-					"voornaam": "Warre",
-					"achternaam": "Van Dijck",
-					"bijnaam": "sien",
-					"geboorte": "23/03/2004",
-					"studie": "Industrieel ingenieur",
-					"eten": "Frietjes",
-					"spel": "Wedden dat",
-					"foto": "warre.jpg",
-					
-				}
-			]
-		},
-		{
-			"naam": "Skunks",
-			"groepFoto": "skunks.jpg",
-			"leiding": [
-				{
-					"voornaam": "Louis",
-					"achternaam": "Schaaf",
-					"bijnaam": "Schaaf",
-					"geboorte": "09/10/2001",
-					"gsm": "0483110782",
-					"studie": "Industrieel ingenieur",
-					"eten": "kapsalon pita",
-					"spel": "kampen bouwen in het bos",
-					"foto": "louis.jpg",
-					"taken": ["Hoofdleiding"]
-				},
-				{
-					"voornaam": "Liselot",
-					"achternaam": "Boeckx",
-					"bijnaam": "Lotje",
-					"geboorte": "'31/10/2006",
-					"studie": "Revalidatiewetenschappen en kinesitherapie",
-					"eten": "Pasta, pizza, sushi",
-					"spel": "ruwe pleinspelen",
-					"foto": "liselot2526",
-					"taken": ["Hoofdleiding"]
-				}
-			]
-		},
-		{
-			"naam": "Waspis/Aspis",
-			"groepFoto": "waspis.jpg",
-			"leiding": [
-				{
-					"voornaam": "Anna",
-					"achternaam": "Everaerts",
-					"geboorte": "03/01/2007",
-					"studie": "vroedkunde",
-					"eten": "Macaroni",
-					"spel": "Pleinspelen",
-					"foto": "Placeholder-Female.jpg",
-					
-				},
-				{
-					"voornaam": "Jarne",
-					"achternaam": "Van de Velde",
-					
-					"geboorte": "24/10/2003",
-					"gsm": "0468405455",
-					"studie": "Planner containers maes",
-					"eten": "vlees",
-					"spel": "tikkertje",
-					"foto": "jarne.jpg",
-					
-				},
-				{
-					"voornaam": "Lotteke",
-					"achternaam": "Jennes",
-					"geboorte": "22/11/2004",
-					"studie": "Verpleegkunde, ucll",
-					"eten": "pasta pesto",
-					"spel": "dorpspel en estafette",
-					"foto": "lotteke2526.jpg",
-					
-				},
-				{
-					"voornaam": "Louise",
-					"achternaam": "Verdonck",
-					"geboorte": "27/09/2003",
-					"werk": "Ik studeer niet meer maar ik ben Medisch Laborant 💩🔬🩸🧫",
-					"eten": "Spaghetti carbonara van oudleider wuttel",
-					"spel": "Een goeie stevige wandeltocht 🥾",
-					"foto": "louise.jpg",
-					
-				}
-			]
-		},
-		{
-			"naam": "Vliegende Leiding",
-			"groepFoto": "/",
-			"leiding": [
-				{
-					"voornaam": "Xanty",
-					"bijnaam": "scampi",
-					"achternaam": "Vandezande",
-					"geboorte": "03/04/2002",
-					"studie": "BanaBa Advanced Business Management Digital Supply Chain",
-					"eten": "Spinaziepuree met spekjes, zalm en een hardgekookt eitje.",
-					"spel": "stadsspel",
-					"foto": "xanty.jpg"
-				},
-				{
-					"voornaam": "Noortje",
-					"achternaam": "Verbruggen",
-					"geboorte": "jaren 60",
-					"werk": "iets met klinische studies",
-					"eten": "pizza",
-					"spel": "pleinspelen",
-					"foto": "noortje.jpg"
-				}
-			]
-		}
-	]
+  "leiding": [
+    {
+      "naam": "Wolfkes",
+      "groepFoto": "groepsfoto_wolven202526.png",
+      "leiding": [
+        {
+          "voornaam": "Free",
+          "achternaam": "Mannaerts",
+          "geboorte": "19/09/2008",
+          "studie": "Wetenschappen-Wiskunde",
+          "eten": "sushi",
+          "spel": "quiz",
+          "foto": "free2526.jpg"
+        },
+        {
+          "voornaam": "Jana",
+          "achternaam": "Pauwels",
+          "bijnaam": "/",
+          "geboorte": "18/11/2005",
+          "gsm": "468 46 24 81",
+          "studie": "wiskunde",
+          "eten": "hesp/prei en kaassaus",
+          "spel": "pleinspelletjes",
+          "foto": "jana.jpg"
+        },
+        {
+          "voornaam": "Jari",
+          "achternaam": "Wynants",
+          "bijnaam": "Karper",
+          "geboorte": "05/08/2005",
+          "gsm": "0472805694",
+          "studie": "financieën en verzekeringen",
+          "eten": "Tagliatelle met brocoli, scampi en zalm",
+          "spel": "bosspel",
+          "foto": "jari2526.jpeg"
+        },
+        {
+          "voornaam": "Vic",
+          "achternaam": "Siongers",
+          "geboorte": "27/12/2003",
+          "studie": "Orthopedagogische begeleiding",
+          "eten": "ribbekes",
+          "spel": "bosspel",
+          "foto": "vic2526.jpg"
+        }
+      ]
+    },
+    {
+      "naam": "Girry's",
+      "groepFoto": "girrys.jpg",
+      "leiding": [
+        {
+          "voornaam": "Josefien",
+          "achternaam": "Verdonck",
+          "bijnaam": "Joske",
+          "geboorte": "17/10/2005",
+          "studie": "Verpleegkunde",
+          "eten": "Sushi/Pasta pesto",
+          "spel": "Quiz",
+          "foto": "jos.jpg"
+        },
+        {
+          "voornaam": "Tibo",
+          "achternaam": "Mertens",
+          "bijnaam": "titi",
+          "geboorte": "17/01/2004",
+          "gsm": "0468 14 85 95",
+          "studie": "Muziek",
+          "eten": "Lasagne",
+          "spel": "ruwe pleinspelen",
+          "foto": "tibo.jpg"
+        },
+        {
+          "voornaam": "Frauke",
+          "achternaam": "Janssens",
+          "bijnaam": "Frakke",
+          "geboorte": "16/07/2002",
+          "studie": "Orthopedagogische begeleiding",
+          "eten": "Alles met courgette",
+          "spel": "Competitieve spelletjes",
+          "foto": "frauke.jpg"
+        },
+        {
+          "voornaam": "Nore",
+          "achternaam": "Zeelmaekers",
+          "geboorte": "11/01/2008",
+          "studie": "Opvoeding en begeleiding",
+          "eten": "Frietjes",
+          "spel": "Ruwe pleinspelen",
+          "foto": "Nore_zeelmaekers.jpeg"
+        }
+      ]
+    },
+    {
+      "naam": "Squirrels",
+      "groepFoto": "groepsfoto_squirrels_2526.jpg",
+      "leiding": [
+        {
+          "voornaam": "Emilie",
+          "achternaam": "Faes",
+          "geboorte": "22/12/2008",
+          "studie": "Humane Wetenschappen",
+          "eten": "Videe",
+          "spel": "Ruwe pleinspelen",
+          "foto": "Emilie2526.jpeg"
+        },
+        {
+          "voornaam": "Martha",
+          "achternaam": "Pelgrims",
+          "geboorte": "30/05/2008",
+          "studie": "Moderne Talen",
+          "eten": "sushi",
+          "spel": "Robin Hood/quiz",
+          "foto": "martha2526.jpg"
+        },
+        {
+          "voornaam": "Senne",
+          "achternaam": "Achternaam",
+          "bijnaam": "Seke",
+          "geboorte": "04/04/2007",
+          "studie": "school",
+          "eten": "lekker",
+          "spel": "kaktus bloem",
+          "foto": "senne.jpg"
+        },
+        {
+          "voornaam": "Warre",
+          "achternaam": "Van Dijck",
+          "bijnaam": "sien",
+          "geboorte": "23/03/2004",
+          "studie": "Industrieel ingenieur",
+          "eten": "Frietjes",
+          "spel": "Wedden dat",
+          "foto": "warre.jpg"
+        }
+      ]
+    },
+    {
+      "naam": "Skunks",
+      "groepFoto": "skunks.jpg",
+      "leiding": [
+        {
+          "voornaam": "Louis",
+          "achternaam": "Schaaf",
+          "bijnaam": "Schaaf",
+          "geboorte": "09/10/2001",
+          "gsm": "0483110782",
+          "studie": "Industrieel ingenieur",
+          "eten": "kapsalon pita",
+          "spel": "kampen bouwen in het bos",
+          "foto": "louis.jpg",
+          "taken": [
+            "Hoofdleiding"
+          ]
+        },
+        {
+          "voornaam": "Liselot",
+          "achternaam": "Boeckx",
+          "bijnaam": "Lotje",
+          "geboorte": "31/10/2006",
+          "studie": "Revalidatiewetenschappen en kinesitherapie",
+          "eten": "Pasta, pizza, sushi",
+          "spel": "ruwe pleinspelen",
+          "foto": "liselot2526",
+          "taken": [
+            "Hoofdleiding"
+          ]
+        }
+      ]
+    },
+    {
+      "naam": "Waspis/Aspis",
+      "groepFoto": "waspis.jpg",
+      "leiding": [
+        {
+          "voornaam": "Anna",
+          "achternaam": "Everaerts",
+          "geboorte": "03/01/2007",
+          "studie": "vroedkunde",
+          "eten": "Macaroni",
+          "spel": "Pleinspelen",
+          "foto": "Placeholder-Female.jpg"
+        },
+        {
+          "voornaam": "Jarne",
+          "achternaam": "Van de Velde",
+          "geboorte": "24/10/2003",
+          "gsm": "0468405455",
+          "studie": "Planner containers maes",
+          "eten": "vlees",
+          "spel": "tikkertje",
+          "foto": "jarne.jpg"
+        },
+        {
+          "voornaam": "Lotteke",
+          "achternaam": "Jennes",
+          "geboorte": "22/11/2004",
+          "studie": "Verpleegkunde, ucll",
+          "eten": "pasta pesto",
+          "spel": "dorpspel en estafette",
+          "foto": "lotteke2526.jpg"
+        },
+        {
+          "voornaam": "Louise",
+          "achternaam": "Verdonck",
+          "geboorte": "27/09/2003",
+          "werk": "Ik studeer niet meer maar ik ben Medisch Laborant 💩🔬🧫",
+          "eten": "Spaghetti carbonara van oudleider wuttel",
+          "spel": "Een goeie stevige wandeltocht 🥾",
+          "foto": "louise.jpg"
+        }
+      ]
+    },
+    {
+      "naam": "Vliegende Leiding",
+      "groepFoto": "/",
+      "leiding": [
+        {
+          "voornaam": "Xanty",
+          "bijnaam": "scampi",
+          "achternaam": "Vandezande",
+          "geboorte": "03/04/2002",
+          "studie": "BanaBa Advanced Business Management Digital Supply Chain",
+          "eten": "Spinaziepuree met spekjes, zalm en een hardgekookt eitje.",
+          "spel": "stadsspel",
+          "foto": "xanty.jpg"
+        },
+        {
+          "voornaam": "Noortje",
+          "achternaam": "Verbruggen",
+          "geboorte": "jaren 60",
+          "werk": "iets met klinische studies",
+          "eten": "pizza",
+          "spel": "pleinspelen",
+          "foto": "noortje.jpg"
+        }
+      ]
+    }
+  ]
 }
