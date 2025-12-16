@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC De Kampioenen - Top Focus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS STYLING --- */
+        :root {
+            --fcdk-green: #2ecc71;
+            --fcdk-dark-green: #218c54;
+            --fcdk-yellow: #f1c40f;
+            --fcdk-brown: #d35400;
+            --field-lines: rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #1a1a1a;
+        }
+
+        /* --- HET VOETBALVELD --- */
+        .soccer-field {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--fcdk-dark-green);
+            z-index: -3;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), 
+                linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+        }
+
+        .field-line-center { position: absolute; top: 50%; left: 0; width: 100%; height: 4px; background-color: var(--field-lines); transform: translateY(-50%); }
+        .field-circle { position: absolute; top: 50%; left: 50%; width: 300px; height: 300px; border: 4px solid var(--field-lines); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .field-dot { position: absolute; top: 50%; left: 50%; width: 16px; height: 16px; background-color: var(--field-lines); border-radius: 50%; transform: translate(-50%, -50%); }
+        .penalty-box-top, .penalty-box-bottom { position: absolute; left: 50%; width: 60%; height: 15vh; border: 4px solid var(--field-lines); transform: translateX(-50%); background: rgba(0,0,0,0.05); }
+        .penalty-box-top { top: -4px; border-top: none; border-radius: 0 0 10px 10px;}
+        .penalty-box-bottom { bottom: -4px; border-bottom: none; border-radius: 10px 10px 0 0;}
+
+        /* --- STUITERENDE BAL --- */
+        #bg-animation-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
+        #bouncing-ball { position: absolute; font-size: 80px; color: rgba(255, 255, 255, 0.9); filter: drop-shadow(5px 10px 10px rgba(0,0,0,0.4)); animation: spinBall 4s linear infinite; top: 0; left: 0; will-change: transform, top, left; }
+        @keyframes spinBall { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- CONTAINER (Terug breed) --- */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            text-align: center;
+            max-width: 400px; /* Terug naar 400px */
+            width: 90%;
+            border: 5px solid var(--fcdk-yellow);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        h1 { color: var(--fcdk-dark-green); margin-bottom: 1.5rem; text-shadow: 1px 1px var(--fcdk-yellow); }
+        select { width: 100%; padding: 12px; font-size: 16px; border-radius: 8px; border: 2px solid #ddd; margin-bottom: 20px; cursor: pointer; background-color: #f8fdf8; }
+        .cool-btn { background-color: var(--fcdk-yellow); color: var(--fcdk-dark-green); font-size: 1.2rem; font-weight: bold; padding: 15px 30px; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 0 #c29d0b; transition: all 0.2s; text-transform: uppercase; display: flex; align-items: center; justify-content: center; margin: 0 auto; gap: 10px; }
+        .cool-btn:hover i { transform: rotate(360deg) scale(1.2); }
+        .cool-btn:active { box-shadow: 0 2px 0 #c29d0b; transform: translateY(3px); }
+        
+        .card { margin-top: 30px; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.15); display: none; animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); border: 1px solid #eee; }
+        .card.active { display: block; }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+        /* --- DE BELANGRIJKE AANPASSING VOOR DE FOTO --- */
+        .card-img {
+            width: 100%;
+            height: 250px; /* Vaste hoogte voor de brede kaart */
+            object-fit: cover; /* Zorgt dat de container gevuld is */
+            
+            /* HIER IS DE MAGIE: Focus op de bovenkant van de foto */
+            object-position: top center; 
+            
+            background-color: #ddd;
+            border-bottom: 4px solid var(--fcdk-green);
+        }
+
+        .card-content { padding: 20px; text-align: left; }
+        .card-name { font-size: 1.6rem; color: var(--fcdk-brown); margin: 0 0 5px 0; display: flex; align-items: center; gap: 10px; }
+        .card-role { font-weight: bold; color: #7f8c8d; margin-bottom: 15px; display: block; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .card-quote-box { background: #fff8e1; padding: 15px; border-left: 5px solid var(--fcdk-yellow); border-radius: 0 5px 5px 0; font-style: italic; color: #555; }
+
+    </style>
+</head>
+<body>
+
+    <div class="soccer-field">
+        <div class="penalty-box-top"></div>
+        <div class="field-line-center"></div>
+        <div class="field-circle"></div>
+        <div class="field-dot"></div>
+        <div class="penalty-box-bottom"></div>
+    </div>
+
+    <div id="bg-animation-container">
+        <i id="bouncing-ball" class="fas fa-futbol"></i>
+    </div>
+
+    <div class="container">
+        <h1><i class="fas fa-trophy" style="color: gold;"></i> FC De Kampioenen</h1>
+        <p>Selecteer een speler voor de opstelling:</p>
+        
+        <select id="char-select">
+            <option value="" disabled selected>-- Kies je speler --</option>
+            <option value="boma">Balthasar Boma</option>
+            <option value="pascale">Pascale Naessens</option>
+            <option value="xavier">Xavier Waterslaeghers</option>
+            <option value="carmen">Carmen Waterslaeghers</option>
+            <option value="fernand">Fernand Costermans</option>
+            <option value="marcske">Mark Vertongen</option>
+            <option value="bieke">Bieke Crucke</option>
+            <option value="pol">Pol De Tremmerie</option>
+            <option value="doortje">Doortje Van Hoeck</option>
+        </select>
+
+        <button class="cool-btn" id="show-btn">
+            <i class="fas fa-futbol"></i> Mijn Gedacht!
+        </button>
+
+        <div id="result-card" class="card">
+            <img src="" alt="Karakter foto" id="card-img" class="card-img">
+            <div class="card-content">
+                <h2 class="card-name">
+                    <span id="card-name-text">Naam</span>
+                    <i class="fas fa-check-circle" title="Kampioen"></i>
+                </h2>
+                <span id="card-role" class="card-role">Rol</span>
+                
+                <div class="card-quote-box">
+                    <i class="fas fa-quote-left"></i>
+                    <span id="card-quote">Quote</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const characters = {
+            boma: { name: "Balthasar Boma", role: "Voorzitter & PDG", quote: "Mijn gedacht!", img: "./img/Boma.jpg" },
+            pascale: { name: "Pascale Naessens", role: "Cafébazin", quote: "Maurice, laat dat staan!", img: "./img/Pascale.webp" },
+            xavier: { name: "Xavier Waterslaeghers", role: "Keeper", quote: "Een dagschotel, Pascalleke!", img: "./img/Xavier.webp" },
+            carmen: { name: "Carmen Waterslaeghers", role: "Kuisvrouw", quote: "Daar se, mijn sjoeke!", img: "./img/Carmen.webp" },
+            fernand: { name: "Fernand Costermans", role: "Antiek & Brocante", quote: "Man, man, man, miserie!", img: "./img/Fernand.webp" },
+            marcske: { name: "Mark Vertongen", role: "Spits", quote: "Zeg euh... Bieke?", img: "./img/Marc.webp" },
+            bieke: { name: "Bieke Crucke", role: "Marketing", quote: "Ma, doe nu toch eens normaal!", img: "./img/Bieke.webp" },
+            pol: { name: "Pol De Tremmerie", role: "Trainer", quote: "Zal 't gaan, ja?", img: "./img/Pol.webp" },
+            doortje: { name: "Doortje Van Hoeck", role: "Secretaresse", quote: "Rikki toch!", img: "./img/Doortje.webp" },
+            ddt: { name: "DDT", role: "Mascotte", quote: "Woef woef!", img: "./img/DDT.webp" },
+            maurice: { name: "Maurice De Praetere", role: "Barman", quote: "Wat mag het zijn, mijnheer?", img: "./img/Maurice.webp" },
+            pico: { name: "Pico Coppens", role: "Barman", quote: "Wat mag het zijn, mijnheer?", img: "./img/Pico.webp" },
+            goedele: { name: "Goedele Liekens", role: "Psychologe", quote: "Laten we er samen over praten.", img: "./img/Goedele.webp" }
+
+
+        };
+
+        // --- ELEMENTEN ---
+        const selectBox = document.getElementById('char-select');
+        const showBtn = document.getElementById('show-btn');
+        const card = document.getElementById('result-card');
+        const cardNameText = document.getElementById('card-name-text');
+        const cardRole = document.getElementById('card-role');
+        const cardQuote = document.getElementById('card-quote');
+        const cardImg = document.getElementById('card-img');
+
+        // --- CLICK EVENT ---
+        showBtn.addEventListener('click', () => {
+            const selectedValue = selectBox.value;
+            if (!selectedValue) {
+                showBtn.style.animation = "shake 0.5s";
+                setTimeout(() => showBtn.style.animation = "", 500);
+                return;
+            }
+            const data = characters[selectedValue];
+            cardNameText.innerText = data.name;
+            cardRole.innerText = data.role;
+            cardQuote.innerText = data.quote;
+            cardImg.src = data.img;
+            card.classList.remove('active');
+            void card.offsetWidth; 
+            card.classList.add('active');
+        });
+
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }`;
+        document.head.appendChild(style);
+
+        // ==========================================
+        // --- STUITERENDE BAL LOGICA ---
+        // ==========================================
+        const ball = document.getElementById('bouncing-ball');
+        
+        // Variabelen voor positie en snelheid
+        let posX = Math.random() * (window.innerWidth - 80); // Start ergens willekeurig horizontaal
+        let posY = Math.random() * (window.innerHeight - 80); // Start ergens willekeurig verticaal
+        let velX = (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1); // Snelheid X (tussen 2 en 6 pixels per frame)
+        let velY = (Math.random() * 4 + 2) * (Math.random() < 0.5 ? 1 : -1); // Snelheid Y
+
+        const ballSize = 80; // Moet overeenkomen met font-size in CSS (ongeveer)
+        let maxWidth = window.innerWidth - ballSize;
+        let maxHeight = window.innerHeight - ballSize;
+
+        // Update schermgrenzen als het venster van grootte verandert
+        window.addEventListener('resize', () => {
+            maxWidth = window.innerWidth - ballSize;
+            maxHeight = window.innerHeight - ballSize;
+        });
+
+        function animateBall() {
+            // Positie updaten
+            posX += velX;
+            posY += velY;
+
+            // Botsing detectie (links of rechts)
+            if (posX >= maxWidth || posX <= 0) {
+                velX = -velX; // Draai horizontale richting om
+            }
+
+            // Botsing detectie (boven of onder)
+            if (posY >= maxHeight || posY <= 0) {
+                velY = -velY; // Draai verticale richting om
+            }
+
+            // Pas de nieuwe positie toe op het element
+            ball.style.left = posX + 'px';
+            ball.style.top = posY + 'px';
+
+            // Vraag de browser om de volgende frame te tekenen
+            requestAnimationFrame(animateBall);
+        }
+
+        // Start de animatie
+        animateBall();
+
+    </script>
+</body>
+</html>
