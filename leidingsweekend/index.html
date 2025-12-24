@@ -115,19 +115,29 @@
         
         <select id="char-select">
             <option value="" disabled selected>-- Kies je speler --</option>
-            <option value="boma">Balthasar Boma</option>
-            <option value="pascale">Pascale Naessens</option>
-            <option value="xavier">Xavier Waterslaeghers</option>
-            <option value="carmen">Carmen Waterslaeghers</option>
-            <option value="fernand">Fernand Costermans</option>
-            <option value="marcske">Mark Vertongen</option>
-            <option value="bieke">Bieke Crucke</option>
-            <option value="pol">Pol De Tremmerie</option>
-            <option value="doortje">Doortje Van Hoeck</option>
+            <option value="balthasar-boma">Tibo</option>
+            <option value="goedele">Anna</option>
+            <option value="ronaldinho">Jari</option>
+            <option value="pascale-de-backer">Joske</option>
+            <option value="maurice-de-praetere">Vic</option>
+            <option value="dimitri-de-tremmerie">Senne</option>
+            <option value="marc-vertongen">Warre</option>
+            <option value="carmen-waterslaeghers">Frauke</option>
+            <option value="xavier-waterslaegers">Xanty</option>
+            <option value="bieke">Liselot</option>
+            <option value="doortje">Nore</option>
+            <option value="pol">Kakke</option>
+            <option value="fernand">Schaaf</option>
+            <option value="oscar-crucke">Free</option>
+            <option value="bernard">Martha</option>
+            <option value="bertha-boma">Lotteke</option>
+            <option value="mimi-pussycat">Louise</option>
+            <option value="kaat">Emilie</option>
+            <option value="helga-botermans">Jana</option>
         </select>
 
         <button class="cool-btn" id="show-btn">
-            <i class="fas fa-futbol"></i> Mijn Gedacht!
+            <i class="fas fa-futbol"></i> Wie is mijn Karakter?
         </button>
 
         <div id="result-card" class="card">
@@ -150,21 +160,29 @@
     <script>
         // --- DATA ---
         const characters = {
-            boma: { name: "Balthasar Boma", role: "Voorzitter & PDG", quote: "Mijn gedacht!", img: "./img/Boma.jpg" },
-            pascale: { name: "Pascale Naessens", role: "Cafébazin", quote: "Maurice, laat dat staan!", img: "./img/Pascale.webp" },
-            xavier: { name: "Xavier Waterslaeghers", role: "Keeper", quote: "Een dagschotel, Pascalleke!", img: "./img/Xavier.webp" },
-            carmen: { name: "Carmen Waterslaeghers", role: "Kuisvrouw", quote: "Daar se, mijn sjoeke!", img: "./img/Carmen.webp" },
-            fernand: { name: "Fernand Costermans", role: "Antiek & Brocante", quote: "Man, man, man, miserie!", img: "./img/Fernand.webp" },
-            marcske: { name: "Mark Vertongen", role: "Spits", quote: "Zeg euh... Bieke?", img: "./img/Marc.webp" },
-            bieke: { name: "Bieke Crucke", role: "Marketing", quote: "Ma, doe nu toch eens normaal!", img: "./img/Bieke.webp" },
-            pol: { name: "Pol De Tremmerie", role: "Trainer", quote: "Zal 't gaan, ja?", img: "./img/Pol.webp" },
-            doortje: { name: "Doortje Van Hoeck", role: "Secretaresse", quote: "Rikki toch!", img: "./img/Doortje.webp" },
-            ddt: { name: "DDT", role: "Mascotte", quote: "Woef woef!", img: "./img/DDT.webp" },
-            maurice: { name: "Maurice De Praetere", role: "Barman", quote: "Wat mag het zijn, mijnheer?", img: "./img/Maurice.webp" },
-            pico: { name: "Pico Coppens", role: "Barman", quote: "Wat mag het zijn, mijnheer?", img: "./img/Pico.webp" },
-            goedele: { name: "Goedele Liekens", role: "Psychologe", quote: "Laten we er samen over praten.", img: "./img/Goedele.webp" }
-
-
+            "balthasar-boma": { name: "Balthasar Boma", role: "Voorzitter & PDG", quote: "Mijn gedacht!", img: "./img/Boma.jpg" },
+            "goedele": { name: "Goedele", role: "Antropologe", quote: "Goedele Decocq, met cq!", img: "./img/Goedele.webp" },
+            "ronaldinho": { name: "Ronaldinho", role: "Gastspeler", quote: "Whoppa! Brasil!", img: "./img/Ronaldinho.jpg" },
+            "pascale-de-backer": { name: "Pascale De Backer", role: "Cafébazin", quote: "Wat zal ons Madeleine daarvan zeggen?", img: "./img/Pascale.webp" },
+            "maurice-de-praetere": { name: "Maurice de Praetere", role: "Kasteeleigenaar, barman", quote: "Ik zeg altijd ...", img: "./img/Maurice.webp" },
+            "dimitri-de-tremmerie": { name: "Dimitri de Tremmerie", role: "Garagist", quote: "Zal 't gaan, ja?", img: "./img/DDT.jpg" },
+            "marc-vertongen": { name: "Marc Vertongen", role: "Omroeper bij Radio Hallo", quote: "Voor mij een chocco!", img: "./img/Marc.webp" },
+            "carmen-waterslaeghers": { name: "Carmen Waterslaeghers", role: "Poetsvrouw", quote: "Daar se, mijn sjoeke!", img: "./img/Carmen.webp" },
+            "xavier-waterslaegers": { name: "Xavier Waterslaegers", role: "Keeper, soldaat", quote: "Een dagschotel, Pascalleke!", img: "./img/Xavier.webp" },
+            "bieke": { name: "Bieke", role: "Schrijfster bij Publi-Time", quote: "Doe nu toch eens normaal!", img: "./img/Bieke.webp" },
+            "doortje": { name: "Doortje", role: "Secretaresse", quote: "Zeg merci hè!", img: "./img/Doortje.webp" },
+            "pol": { name: "Pol", role: "Trainer", quote: "Zal 't gaan, ja?", img: "./img/Pol.webp" },
+            "fernand": { name: "Fernand", role: "Voddenmarchant", quote: "Man man man miserie miserie miserie!", img: "./img/Fernand.webp" },
+            "oscar-crucke": { name: "Oscar Crucke", role: "Hulptrainer", quote: "Pascalleke, begint nie hé!", img: "./img/Oscar.jpg" },
+            "bernard": { name: "Bernard Theofiel Waterslaeghers", role: "Chefkok", quote: "Heb ik gelijk of heb ik gelijk?", img: "./img/Bernard.jpg" },
+            "bertha-boma": { name: "Bertha Boma", role: "PDG van de andere boma bedrijven", quote: "Als je iets goed wilt doen moet je het zelf doen.", img: "./img/Bertha.jpg" },
+            "nero": { name: "Nero", role: "Hondje van carmen", quote: "Waf waf!", img: "./img/nero.png" },
+            "mimi-pussycat": { name: "Mimi (pussycat)", role: "Stripster", quote: "Dag balleke!", img: "./img/mimi.webp" },
+            "burgemeester-freddy-van-overloop": { name: "Burgemeester Freddy Van Overloop", role: "Burgemeester", quote: "Agneske, secretareske.", img: "./img/burgemeester.jpeg" },
+            "paulientje": { name: "Paulientje", role: "Kind", quote: "Hihi!", img: "./img/Paulientje.webp" },
+            "het-7e-zieke-kindje-van-fernand": { name: "Het 7e zieke kindje van Fernand", role: "Kind", quote: "Kuch...", img: "./img/zevende_zieke_kindje.png" },
+            "helga-botermans": { name: "Helga Botermans", role: "psychotherapeute gespecialiseerd in gedragstherapie", quote: "U-NI-VER-SEEL!", img: "./img/helga.jpg" },
+            "kaat": { name: "Kaat", role: "Reporter", quote: "Xavier, Kaat!", img: "./img/kaat.jpg" }
         };
 
         // --- ELEMENTEN ---
