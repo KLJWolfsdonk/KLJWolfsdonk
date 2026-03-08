@@ -2,7 +2,7 @@
   "leiding": [
     {
       "naam": "Wolfkes",
-      "groepFoto": "groepsfoto_wolven202526.png",
+      "groepFoto": "assets/img/leiding/Wolfkes_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Free",
@@ -48,7 +48,7 @@
     },
     {
       "naam": "Girry's",
-      "groepFoto": "girrys.jpg",
+      "groepFoto": "assets/img/leiding/Girry_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Josefien",
@@ -94,7 +94,7 @@
     },
     {
       "naam": "Squirrels",
-      "groepFoto": "assets/img/leiding/groepsfoto_squirrels_202526.jpg",
+      "groepFoto": "assets/img/leiding/Squirrel_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Emilie",
@@ -138,7 +138,7 @@
     },
     {
       "naam": "Skunks",
-      "groepFoto": "skunks.jpg",
+      "groepFoto": "assets/img/leiding/Skunk_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Louis",
@@ -171,7 +171,7 @@
     },
     {
       "naam": "Waspis/Aspis",
-      "groepFoto": "waspis.jpg",
+      "groepFoto": "assets/img/leiding/Waspis_Aspis_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Anna",
@@ -214,7 +214,7 @@
     },
     {
       "naam": "Vliegende Leiding",
-      "groepFoto": "/",
+      "groepFoto": "assets/img/leiding/Vliegende_leiding.jpg",
       "leiding": [
         {
           "voornaam": "Xanty",
