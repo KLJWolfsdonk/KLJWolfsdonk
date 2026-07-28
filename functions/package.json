@@ -1,0 +1,13 @@
+{
+	"name": "klj-wolfsdonk-functions",
+	"private": true,
+	"type": "module",
+	"main": "index.js",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"lint": "echo \"Add linting later\"",
+		"start": "firebase emulators:start --only functions"
+	}
+}

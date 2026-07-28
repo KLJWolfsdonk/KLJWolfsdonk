@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="nl">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>KLJ Wolfsdonk | Verhuur</title>
+		<meta
+			name="description"
+			content="Overzicht van verhuurartikelen, reservaties en beschikbaarheid van KLJ Wolfsdonk."
+		/>
+		<link rel="stylesheet" href="./verhuur.css" />
+		<script type="module" src="./verhuur.js"></script>
+	</head>
+	<body>
+		<main class="app-shell">
+			<header class="hero card">
+				<p class="eyebrow">KLJ Wolfsdonk</p>
+				<h1>Verhuurmodule</h1>
+				<p>
+					Zoek materiaal, filter per categorie en vraag een reservatie aan voor een gekozen periode.
+				</p>
+			</header>
+
+			<section class="card toolbar" aria-label="Filters en zoekopties">
+				<div id="period-filter"></div>
+				<div id="category-filter"></div>
+				<div id="search-filter"></div>
+			</section>
+
+			<section class="grid-layout">
+				<div class="card" id="product-list" aria-live="polite"></div>
+				<aside class="card" id="booking-panel"></aside>
+			</section>
+		</main>
+	</body>
+</html>
