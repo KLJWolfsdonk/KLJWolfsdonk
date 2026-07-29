@@ -1,13 +1,18 @@
 :root {
-	--color-bg: #0f172a;
-	--color-surface: #111c34;
-	--color-surface-elevated: #172544;
-	--color-text: #f8fafc;
-	--color-muted: #cbd5e1;
-	--color-border: rgba(148, 163, 184, 0.18);
-	--color-accent: #38bdf8;
-	--shadow-soft: 0 18px 45px rgba(2, 6, 23, 0.3);
-	--radius-lg: 24px;
+	--color-bg: #86c9ef;
+	--color-surface: #ffffff;
+	--color-text: #444444;
+	--color-muted: #6e6e6e;
+	--color-border: rgba(68, 68, 68, 0.18);
+	--color-card-border: #f5a138;
+	--color-accent: #0082bf;
+	--color-confirm: #2f7d32;
+	--color-warning: #f5a138;
+	--color-danger: #c0392b;
+	--color-info: #0082bf;
+	--shadow-soft: 0 6px 18px rgba(68, 68, 68, 0.15);
+	--radius-lg: 16px;
+	--radius-md: 12px;
 	--space-1: 0.5rem;
 	--space-2: 0.875rem;
 	--space-3: 1.25rem;
@@ -23,11 +28,9 @@ html,
 body {
 	margin: 0;
 	min-height: 100%;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: var(--color-text);
-	background:
-		radial-gradient(circle at top right, rgba(56, 189, 248, 0.14), transparent 30%),
-		linear-gradient(180deg, #0b1222 0%, var(--color-bg) 100%);
+	background: var(--color-bg);
 }
 
 body {
@@ -35,19 +38,27 @@ body {
 }
 
 .admin-shell {
-	max-width: 1280px;
+	max-width: 1100px;
 	margin: 0 auto;
 	display: grid;
 	gap: var(--space-4);
 }
 
 .card {
-	background: rgba(17, 28, 52, 0.92);
-	backdrop-filter: blur(18px);
-	border: 1px solid var(--color-border);
+	background: var(--color-surface);
+	border: 3px solid var(--color-card-border);
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-soft);
 	padding: var(--space-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: var(--color-accent);
+	font-weight: bold;
 }
 
 .hero h1,
@@ -56,9 +67,9 @@ body {
 }
 
 .hero h1 {
-	font-size: clamp(2rem, 4vw, 3.4rem);
-	line-height: 1.05;
+	font-size: clamp(1.8rem, 3.4vw, 2.6rem);
 	margin-top: 0.35rem;
+	color: var(--color-accent);
 }
 
 .eyebrow {
@@ -70,23 +81,406 @@ body {
 	font-weight: 700;
 }
 
-.grid-layout {
+.toolbar {
 	display: grid;
-	grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.6fr);
-	gap: var(--space-4);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-3);
 }
 
-#login-view,
-#dashboard-view {
-	min-height: 260px;
+.field-group {
+	display: grid;
+	gap: 0.55rem;
+	font-weight: 600;
+	color: var(--color-text);
 }
 
-@media (max-width: 900px) {
+.field-group span {
+	font-size: 0.92rem;
+}
+
+.field-group input,
+.field-group select {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.9rem 1rem;
+	font: inherit;
+	background: #fff;
+	color: var(--color-text);
+	width: 100%;
+}
+
+.inline-fields {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.inline-fields .field-group {
+	flex: 1 1 160px;
+}
+
+.ghost-button {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.7rem 1.1rem;
+	font: inherit;
+	cursor: pointer;
+	background: rgba(0, 130, 191, 0.08);
+	color: var(--color-text);
+	transition: background 0.15s ease;
+}
+
+.ghost-button:hover {
+	background: rgba(0, 130, 191, 0.16);
+}
+
+.activate-btn {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+	font-weight: 700;
+}
+
+.activate-btn:hover {
+	background: rgba(47, 125, 50, 0.22);
+}
+
+.deactivate-btn {
+	background: rgba(192, 57, 43, 0.1);
+	color: var(--color-danger);
+	font-weight: 700;
+}
+
+.deactivate-btn:hover {
+	background: rgba(192, 57, 43, 0.18);
+}
+
+.delete-btn {
+	background: rgba(192, 57, 43, 0.1);
+	color: var(--color-danger);
+	font-weight: 700;
+	margin-left: auto;
+}
+
+.delete-btn:hover {
+	background: rgba(192, 57, 43, 0.18);
+}
+
+#reservation-list {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.reservation-card {
+	background: var(--color-surface);
+	border: 3px solid var(--color-card-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+	padding: var(--space-4);
+}
+
+.reservation-card header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-bottom: var(--space-3);
+}
+
+.status {
+	padding: 0.35rem 0.85rem;
+	border-radius: 999px;
+	font-size: 0.8rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	background: rgba(68, 68, 68, 0.08);
+	white-space: nowrap;
+}
+
+.status.aanvraag {
+	background: rgba(245, 161, 56, 0.22);
+	color: #a86414;
+}
+
+.status.bevestigd {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+}
+
+.status.geweigerd {
+	background: rgba(192, 57, 43, 0.12);
+	color: var(--color-danger);
+}
+
+.status.voltooid {
+	background: rgba(0, 130, 191, 0.12);
+	color: var(--color-info);
+}
+
+.status.payment-paid {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+}
+
+.status.payment-none {
+	background: rgba(68, 68, 68, 0.08);
+	color: var(--color-muted);
+}
+
+.reservation-actions .mark-paid-btn {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+	font-weight: 700;
+}
+
+.reservation-actions .mark-paid-btn:hover {
+	background: rgba(47, 125, 50, 0.22);
+}
+
+.reservation-card ul {
+	padding-left: 1.2rem;
+	margin: 0;
+}
+
+.reservation-total {
+	border-top: 1px solid var(--color-border);
+	margin-top: var(--space-3);
+	padding-top: var(--space-3);
+	display: grid;
+	gap: 0.4rem;
+}
+
+.status-select {
+	width: 100%;
+	padding: 0.85rem 1rem;
+	margin-top: var(--space-2);
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	font: inherit;
+	background: #fff;
+	color: var(--color-text);
+}
+
+.reservation-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: var(--space-2);
+}
+
+.reservation-actions button {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.7rem 1.1rem;
+	font: inherit;
+	cursor: pointer;
+	background: rgba(68, 68, 68, 0.06);
+	color: var(--color-text);
+	transition: background 0.15s ease;
+}
+
+.reservation-actions button:hover {
+	background: rgba(68, 68, 68, 0.12);
+}
+
+.reservation-actions .approve-btn {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+	font-weight: 700;
+}
+
+.reservation-actions .approve-btn:hover {
+	background: rgba(47, 125, 50, 0.22);
+}
+
+.reservation-actions .reject-btn {
+	background: rgba(192, 57, 43, 0.1);
+	color: var(--color-danger);
+	font-weight: 700;
+}
+
+.reservation-actions .reject-btn:hover {
+	background: rgba(192, 57, 43, 0.18);
+}
+
+.reservation-actions .complete-btn {
+	background: rgba(0, 130, 191, 0.12);
+	color: var(--color-info);
+	font-weight: 700;
+}
+
+.reservation-actions .complete-btn:hover {
+	background: rgba(0, 130, 191, 0.2);
+}
+
+.reservation-actions .reopen-btn {
+	color: var(--color-muted);
+}
+
+.reservation-actions .delete-reservation-btn {
+	background: rgba(192, 57, 43, 0.1);
+	color: var(--color-danger);
+	font-weight: 700;
+	margin-left: auto;
+}
+
+.reservation-actions .delete-reservation-btn:hover {
+	background: rgba(192, 57, 43, 0.18);
+}
+
+.customer-info {
+	background: rgba(68, 68, 68, 0.05);
+	padding: var(--space-3);
+	border-radius: var(--radius-md);
+	margin-bottom: var(--space-3);
+}
+
+.customer-info h3 {
+	margin-top: 0;
+}
+
+.customer-info a {
+	color: var(--color-accent);
+	text-decoration: none;
+}
+
+.customer-info a:hover {
+	text-decoration: underline;
+}
+
+.error-message {
+	color: var(--color-danger);
+}
+
+.hero-actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: var(--space-3);
+	flex-wrap: wrap;
+}
+
+.hero-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+}
+
+.hero-actions .ghost-button {
+	background: rgba(68, 68, 68, 0.06);
+	border: 1px solid var(--color-border);
+	border-radius: 14px;
+	padding: 0.7rem 1.1rem;
+	font: inherit;
+	cursor: pointer;
+	white-space: nowrap;
+	display: inline-block;
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+.hero-actions .ghost-button:hover {
+	background: rgba(68, 68, 68, 0.12);
+}
+
+.product-manager-card {
+	background: var(--color-surface);
+	border: 3px solid var(--color-card-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+	padding: var(--space-4);
+}
+
+.product-manager-card.is-inactive {
+	opacity: 0.6;
+}
+
+.product-manager-list {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.product-manager-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	gap: var(--space-3);
+	flex-wrap: wrap;
+}
+
+.product-manager-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: var(--space-2);
+}
+
+.product-manager-photo {
+	display: block;
+	width: 100%;
+	max-height: 220px;
+	object-fit: cover;
+	border-radius: var(--radius-md);
+	margin-bottom: var(--space-3);
+	background: rgba(68, 68, 68, 0.06);
+}
+
+.photo-thumb-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-bottom: var(--space-3);
+}
+
+.photo-thumb {
+	position: relative;
+	width: 90px;
+	height: 90px;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	background: rgba(68, 68, 68, 0.06);
+}
+
+.photo-thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.remove-photo-btn {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	width: 22px;
+	height: 22px;
+	border: none;
+	border-radius: 999px;
+	background: rgba(192, 57, 43, 0.85);
+	color: #fff;
+	font-size: 1rem;
+	line-height: 1;
+	cursor: pointer;
+	display: grid;
+	place-items: center;
+}
+
+.remove-photo-btn:hover {
+	background: var(--color-danger);
+}
+
+@media (max-width: 700px) {
 	body {
 		padding: var(--space-3);
 	}
 
-	.grid-layout {
+	.toolbar {
 		grid-template-columns: 1fr;
+	}
+
+	.reservation-card header {
+		align-items: start;
 	}
 }

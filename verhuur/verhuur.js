@@ -1,17 +1,576 @@
-import { initBookingModule } from './booking.js';
-import { initCalendarModule } from './calendar.js';
-import { initProductsModule } from './products.js';
-import { getFirebaseConfig } from './firebase.js';
+import { ProductList }
+	from "./components/ProductList.js";
 
-/**
- * Hoofdentry voor de publieke verhuurpagina.
- * DOM-rendering en datalaag blijven bewust opgesplitst in losse modules.
- */
-function bootstrapRentalModule() {
-	getFirebaseConfig();
-	initProductsModule();
-	initCalendarModule();
-	initBookingModule();
+import { BookingPanel }
+	from "./components/BookingPanel.js";
+
+import { PeriodFilter }
+	from "./components/PeriodFilter.js";
+
+import { CategoryFilter }
+	from "./components/CategoryFilter.js";
+
+import { SearchFilter }
+	from "./components/SearchFilter.js";
+
+
+import { productService }
+	from "../src/services/ProductService.js";
+
+import { reservationService }
+	from "../src/services/ReservationService.js";
+
+
+import {
+	addProduct,
+	getProducts,
+    clearCart
+} from "../src/state/ReservationCart.js";
+
+import {
+	isNonEmptyString,
+	isValidEmail,
+	isValidDateRange
+} from "../src/shared/validators.js";
+
+import { normalizeText }
+	from "../src/shared/helpers.js";
+
+import { notifyAdminsOfNewReservation }
+	from "../src/shared/notifications.js";
+
+
+
+let selectedPeriod = {
+
+	startDatum: "2026-08-01",
+
+	eindDatum: "2026-08-03"
+
+};
+
+
+
+let allProducts = [];
+
+let activeCategory = "alle";
+
+let activeSearch = "";
+
+
+
+const productContainer =
+	document.getElementById(
+		"product-list"
+	);
+
+
+
+const bookingPanel =
+	new BookingPanel(
+		document.getElementById(
+			"booking-panel"
+		),
+		submitReservation,
+		selectedPeriod
+	);
+
+
+
+
+
+//
+// PERIODE FILTER
+//
+
+const periodFilter =
+	new PeriodFilter(
+
+		document.getElementById(
+			"period-filter"
+		),
+
+		(period) => {
+
+
+			selectedPeriod = period;
+
+            bookingPanel.period = period;
+
+            loadProducts(period);
+
+            bookingPanel.render();
+
+
+		}
+
+	);
+
+
+
+periodFilter.render();
+
+
+
+
+//
+// CATEGORIE FILTER
+//
+
+const categoryFilter =
+	new CategoryFilter(
+
+		document.getElementById(
+			"category-filter"
+		),
+
+		(category) => {
+
+			activeCategory = category;
+
+			renderFilteredProducts();
+
+		}
+
+	);
+
+
+
+//
+// ZOEKFILTER
+//
+
+const searchFilter =
+	new SearchFilter(
+
+		document.getElementById(
+			"search-filter"
+		),
+
+		(search) => {
+
+			activeSearch = search;
+
+			renderFilteredProducts();
+
+		}
+
+	);
+
+searchFilter.render();
+
+
+
+
+//
+// PRODUCT LIST
+//
+
+const productList =
+	new ProductList(
+
+		productContainer,
+
+		(product) => {
+
+
+			addProduct(product);
+
+
+
+			bookingPanel.render();
+
+
+		},
+
+		(productId) => productService.getAvailabilityCalendarData(productId)
+
+	);
+
+
+
+
+//
+// PRODUCTEN LADEN
+//
+
+async function loadProducts(period = {}) {
+
+
+	try {
+
+
+		allProducts =
+			await productService.getAll(
+				period
+			);
+
+
+		categoryFilter.setCategories(
+			getUniqueCategories(allProducts)
+		);
+
+
+		renderFilteredProducts();
+
+
+	}
+	catch(error) {
+
+
+		console.error(
+			"Fout bij laden producten:",
+			error
+		);
+
+
+	}
+
+
 }
 
-document.addEventListener('DOMContentLoaded', bootstrapRentalModule);
+
+
+function getUniqueCategories(products) {
+
+	const categories =
+		products
+			.map(product => product.categorie)
+			.filter(Boolean);
+
+	return [...new Set(categories)];
+
+}
+
+
+
+function renderFilteredProducts() {
+
+
+	const search =
+		normalizeText(activeSearch);
+
+
+	const filtered =
+		allProducts.filter(product => {
+
+
+			const matchesCategory =
+				activeCategory === "alle" ||
+				product.categorie === activeCategory;
+
+
+			const searchable =
+				[product.naam, product.beschrijving, product.categorie]
+					.filter(Boolean)
+					.join(" ");
+
+			const matchesSearch =
+				search === "" ||
+				normalizeText(searchable).includes(search);
+
+
+			return matchesCategory && matchesSearch;
+
+		});
+
+
+	productList.render(filtered);
+
+}
+
+
+
+
+//
+// RESERVATIE VERSTUREN
+//
+
+function validateReservationInput(input) {
+
+	const errors = [];
+
+
+	if (!isNonEmptyString(input.klant)) {
+
+		errors.push("Vul je naam in.");
+
+	}
+
+
+	if (!isValidEmail(input.email)) {
+
+		errors.push("Vul een geldig e-mailadres in.");
+
+	}
+
+
+	if (!isNonEmptyString(input.telefoon)) {
+
+		errors.push("Vul je telefoonnummer in.");
+
+	}
+
+
+	if (!isValidDateRange(input.startDatum, input.eindDatum)) {
+
+		errors.push("Kies een geldige periode (startdatum voor of gelijk aan einddatum).");
+
+	}
+
+
+	return errors;
+
+}
+
+
+
+async function submitReservation() {
+
+
+	const products =
+		getProducts();
+
+
+
+
+	if(products.length === 0) {
+
+
+		alert(
+			"Kies eerst materiaal."
+		);
+
+
+		return;
+
+	}
+
+
+
+	const reservation = {
+
+
+
+		klant:
+
+			document
+				.getElementById(
+					"customer-name"
+				)
+				.value
+				.trim(),
+
+
+
+
+		email:
+
+			document
+				.getElementById(
+					"customer-email"
+				)
+				.value
+				.trim(),
+
+
+
+
+		telefoon:
+
+			document
+				.getElementById(
+					"customer-phone"
+				)
+				.value
+				.trim(),
+
+
+
+
+		startDatum:
+
+			document
+				.getElementById(
+					"start-date"
+				)
+				.value,
+
+
+
+
+		eindDatum:
+
+			document
+				.getElementById(
+					"end-date"
+				)
+				.value,
+
+
+
+
+		producten:
+
+			products.map(product => ({
+
+
+				productId:
+					product.id,
+
+
+				quantity:
+					product.quantity ?? 1
+
+
+			})),
+
+
+
+
+		opmerkingen:
+
+			"Online aanvraag"
+
+
+	};
+
+
+
+	const validationErrors =
+		validateReservationInput(reservation);
+
+
+	if (validationErrors.length > 0) {
+
+
+		alert(
+			validationErrors.join("\n")
+		);
+
+
+		return;
+
+	}
+
+
+
+	try {
+
+
+		const result =
+			await reservationService.create(
+				reservation
+			);
+
+
+		const adminLink =
+			new URL(
+				`../admin/index.html?id=${result.id}`,
+				window.location.href
+			).toString();
+
+		notifyAdminsOfNewReservation(
+			result,
+			adminLink
+		);
+
+
+		clearCart();
+
+
+        showConfirmation(result);
+	}
+	catch(error) {
+
+
+		console.error(
+			"Reservatie fout:",
+			error
+		);
+
+
+
+
+		alert(
+			"Reservatie kon niet worden verstuurd."
+		);
+
+
+	}
+
+
+}
+
+function showConfirmation(reservation) {
+
+
+	const panel =
+		document.getElementById(
+			"booking-panel"
+		);
+
+
+
+	panel.innerHTML = `
+
+
+		<p class="section-label">Reservatie</p>
+		<h2>Bedankt voor je aanvraag!</h2>
+
+
+		<p>
+			Je reservatieaanvraag werd ontvangen.
+		</p>
+
+
+		<p>
+			Referentie:
+			<strong>
+				${reservation.id}
+			</strong>
+		</p>
+
+
+		<p>
+			We nemen zo snel mogelijk contact met je op.
+		</p>
+
+
+		<button type="button" id="new-reservation" class="ghost-button">
+			Nieuwe reservatie
+		</button>
+
+
+	`;
+
+
+
+	document
+		.getElementById(
+			"new-reservation"
+		)
+		.addEventListener(
+			"click",
+			() => {
+
+				bookingPanel.render();
+
+			}
+		);
+
+}
+
+
+
+
+
+
+
+//
+// START
+//
+
+bookingPanel.render();
+
+loadProducts(selectedPeriod);

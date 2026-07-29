@@ -39,6 +39,8 @@ export class Product {
 		this.afbeeldingen = Array.isArray(props.afbeeldingen) ? props.afbeeldingen : [];
 		/** @type {boolean} */
 		this.actief = props.actief ?? true;
+		/** @type {number} */
+		this.sortOrder = props.sortOrder ?? 0;
 		/** @type {string | undefined} */
 		this.createdAt = props.createdAt;
 		/** @type {string | undefined} */
@@ -67,6 +69,7 @@ export class Product {
 			voorraad: this.voorraad,
 			afbeeldingen: [...this.afbeeldingen],
 			actief: this.actief,
+			sortOrder: this.sortOrder,
 			createdAt: this.createdAt,
 			updatedAt: this.updatedAt,
 		};

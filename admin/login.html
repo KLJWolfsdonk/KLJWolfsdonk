@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+KLJ Wolfsdonk Admin | Inloggen
+</title>
+
+<link rel="stylesheet" href="./admin.css">
+
+<script type="module" src="./login.js"></script>
+
+</head>
+
+
+<body>
+
+<main class="admin-shell" style="max-width: 420px;">
+
+<header class="hero card">
+<p class="eyebrow">KLJ Wolfsdonk</p>
+<h1>Inloggen</h1>
+<p>Log in met je beheerdersaccount om reservaties te bekijken en te beheren.</p>
+</header>
+
+<section class="card">
+
+	<form id="login-form">
+
+		<label class="field-group">
+			<span>E-mail</span>
+			<input id="login-email" type="email" autocomplete="username" required>
+		</label>
+
+		<div style="height: 1rem;"></div>
+
+		<label class="field-group">
+			<span>Wachtwoord</span>
+			<input id="login-password" type="password" autocomplete="current-password" required>
+		</label>
+
+		<div style="height: 1.25rem;"></div>
+
+		<p id="login-error" class="error-message" hidden></p>
+
+		<button type="submit" id="login-submit" class="ghost-button">
+			Inloggen
+		</button>
+
+	</form>
+
+</section>
+
+</main>
+
+</body>
+
+</html>

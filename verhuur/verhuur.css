@@ -1,15 +1,17 @@
 :root {
-	--color-bg: #f4f7f0;
+	--color-bg: #86c9ef;
 	--color-surface: #ffffff;
-	--color-text: #17301f;
-	--color-muted: #5d6d62;
-	--color-border: rgba(23, 48, 31, 0.12);
-	--color-accent: #2f7d32;
-	--color-warning: #d97706;
-	--color-danger: #b91c1c;
-	--shadow-soft: 0 18px 45px rgba(14, 32, 20, 0.1);
-	--radius-lg: 24px;
-	--radius-md: 16px;
+	--color-text: #444444;
+	--color-muted: #6e6e6e;
+	--color-border: rgba(68, 68, 68, 0.18);
+	--color-card-border: #f5a138;
+	--color-accent: #0082bf;
+	--color-confirm: #2f7d32;
+	--color-warning: #f5a138;
+	--color-danger: #c0392b;
+	--shadow-soft: 0 6px 18px rgba(68, 68, 68, 0.15);
+	--radius-lg: 16px;
+	--radius-md: 12px;
 	--space-1: 0.5rem;
 	--space-2: 0.875rem;
 	--space-3: 1.25rem;
@@ -25,11 +27,9 @@ html,
 body {
 	margin: 0;
 	min-height: 100%;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: var(--color-text);
-	background:
-		radial-gradient(circle at top left, rgba(47, 125, 50, 0.12), transparent 34%),
-		linear-gradient(180deg, #f8faf5 0%, var(--color-bg) 100%);
+	background: var(--color-bg);
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 }
 
 .app-shell {
-	max-width: 1200px;
+	max-width: 1600px;
 	margin: 0 auto;
 	display: grid;
 	gap: var(--space-4);
@@ -45,10 +45,19 @@ body {
 
 .card {
 	background: var(--color-surface);
-	border: 1px solid var(--color-border);
+	border: 3px solid var(--color-card-border);
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-soft);
 	padding: var(--space-4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: var(--color-accent);
+	font-weight: bold;
 }
 
 .hero h1,
@@ -60,6 +69,7 @@ body {
 	font-size: clamp(2rem, 4vw, 3.5rem);
 	line-height: 1.05;
 	margin-top: 0.35rem;
+	color: var(--color-accent);
 }
 
 .eyebrow {
@@ -117,12 +127,12 @@ body {
 
 .ghost-button {
 	white-space: nowrap;
-	background: rgba(47, 125, 50, 0.08);
+	background: rgba(0, 130, 191, 0.08);
 	cursor: pointer;
 }
 
 .ghost-button:hover {
-	background: rgba(47, 125, 50, 0.14);
+	background: rgba(0, 130, 191, 0.16);
 }
 
 .grid-layout {
@@ -167,7 +177,7 @@ body {
 .overview-stats span,
 .sidebar-box {
 	border-radius: 999px;
-	background: rgba(23, 48, 31, 0.05);
+	background: rgba(0, 130, 191, 0.08);
 	padding: 0.55rem 0.9rem;
 	font-size: 0.92rem;
 }
@@ -186,13 +196,14 @@ body {
 }
 
 .product-media {
-	min-height: 150px;
+	height: 150px;
 	display: grid;
 	place-items: center;
-	background: linear-gradient(135deg, rgba(47, 125, 50, 0.13), rgba(215, 121, 6, 0.12));
+	background: linear-gradient(135deg, rgba(0, 130, 191, 0.16), rgba(245, 161, 56, 0.22));
 	font-size: 2.2rem;
 	font-weight: 800;
-	color: rgba(23, 48, 31, 0.55);
+	color: rgba(68, 68, 68, 0.55);
+	overflow: hidden;
 }
 
 .product-media img {
@@ -218,6 +229,7 @@ body {
 .empty-state h3 {
 	margin: 0.2rem 0 0;
 	font-size: 1.2rem;
+	color: var(--color-accent);
 }
 
 .product-description {
@@ -248,16 +260,16 @@ body {
 
 .status-pill--beschikbaar {
 	background: rgba(47, 125, 50, 0.12);
-	color: var(--color-accent);
+	color: var(--color-confirm);
 }
 
 .status-pill--onder-voorbehoud {
-	background: rgba(215, 121, 6, 0.14);
-	color: var(--color-warning);
+	background: rgba(245, 161, 56, 0.2);
+	color: #a86414;
 }
 
 .status-pill--verhuurd {
-	background: rgba(185, 28, 28, 0.12);
+	background: rgba(192, 57, 43, 0.12);
 	color: var(--color-danger);
 }
 
@@ -285,7 +297,7 @@ body {
 .sidebar-box {
 	border-radius: var(--radius-md);
 	padding: var(--space-3);
-	background: rgba(47, 125, 50, 0.06);
+	background: rgba(0, 130, 191, 0.06);
 }
 
 .status-legend {
@@ -308,13 +320,255 @@ body {
 	min-height: 240px;
 }
 
+.product-list {
+	display: grid;
+	gap: var(--space-3);
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.product-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+}
+
+.product-actions .ghost-button {
+	flex: 1 1 140px;
+	text-align: center;
+}
+
+.ghost-button {
+	transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.ghost-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.ghost-button--outline {
+	background: transparent;
+	border: 1px solid var(--color-border);
+}
+
+.ghost-button--outline:hover {
+	background: rgba(68, 68, 68, 0.06);
+}
+
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: grid;
+	place-items: center;
+	padding: var(--space-3);
+	z-index: 1000;
+}
+
+.modal-overlay[hidden] {
+	display: none;
+}
+
+.modal-box {
+	background: var(--color-surface);
+	border: 3px solid var(--color-card-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-soft);
+	max-width: 600px;
+	width: 100%;
+	max-height: 85vh;
+	overflow-y: auto;
+	padding: var(--space-4);
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--space-2);
+	margin-bottom: var(--space-3);
+}
+
+.modal-title {
+	margin: 0;
+	color: var(--color-accent);
+}
+
+.modal-close {
+	border: none;
+	background: transparent;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+	color: var(--color-text);
+	padding: 0 0.4rem;
+}
+
+.modal-close:hover {
+	color: var(--color-danger);
+}
+
+.photo-gallery-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+	gap: 0.6rem;
+}
+
+.photo-gallery-grid a {
+	display: block;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+}
+
+.photo-gallery-grid img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.calendar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.6rem;
+	font-size: 0.9rem;
+}
+
+.calendar-nav {
+	border: 1px solid var(--color-border);
+	background: #fff;
+	border-radius: 999px;
+	width: 1.9rem;
+	height: 1.9rem;
+	cursor: pointer;
+	line-height: 1;
+}
+
+.calendar-nav:hover {
+	background: rgba(68, 68, 68, 0.08);
+}
+
+.calendar-weekdays,
+.calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 0.3rem;
+	text-align: center;
+}
+
+.calendar-weekdays {
+	margin-bottom: 0.3rem;
+	font-size: 0.75rem;
+	color: var(--color-muted);
+	text-transform: uppercase;
+}
+
+.calendar-cell {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1 / 1;
+	border-radius: 8px;
+	font-size: 0.8rem;
+}
+
+.calendar-cell--empty {
+	background: transparent;
+}
+
+.calendar-cell--free {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+}
+
+.calendar-cell--partial {
+	background: rgba(245, 161, 56, 0.22);
+	color: #a86414;
+}
+
+.calendar-cell--booked {
+	background: rgba(192, 57, 43, 0.14);
+	color: var(--color-danger);
+}
+
+.calendar-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.9rem;
+	margin-top: 0.6rem;
+	font-size: 0.78rem;
+	color: var(--color-muted);
+	align-items: center;
+}
+
+.calendar-legend span {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+}
+
+.calendar-legend .calendar-cell {
+	width: 0.85rem;
+	height: 0.85rem;
+	border-radius: 4px;
+	aspect-ratio: unset;
+}
+
+.booking-products {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 0.6rem;
+}
+
+.booking-product-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	background: rgba(68, 68, 68, 0.05);
+	border-radius: var(--radius-md);
+	padding: 0.6rem 0.8rem;
+}
+
+.qty-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.qty-btn {
+	width: 1.8rem;
+	height: 1.8rem;
+	border-radius: 999px;
+	border: 1px solid var(--color-border);
+	background: #fff;
+	cursor: pointer;
+	font: inherit;
+}
+
+.qty-btn:hover {
+	background: rgba(68, 68, 68, 0.08);
+}
+
+.qty-btn--remove {
+	border-radius: 999px;
+	width: auto;
+	padding: 0 0.75rem;
+	color: var(--color-danger);
+}
+
 @media (max-width: 900px) {
 	body {
 		padding: var(--space-3);
 	}
 
 	.toolbar,
-	.grid-layout {
+	.grid-layout,
+	.product-list {
 		grid-template-columns: 1fr;
 	}
 

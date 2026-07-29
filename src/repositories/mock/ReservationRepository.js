@@ -75,6 +75,24 @@ export class ReservationRepository extends BaseMockRepository {
 		const items = await super.search(query);
 		return items.map((item) => Reservation.from(item));
 	}
+
+	/**
+	 * Lightweight shape matching SupabaseReservationRepository.getAllForAvailability.
+	 * @returns {Promise<Array<{id: string, status: string, startDatum: string, eindDatum: string, producten: Array<{productId: string, quantity: number}>}>>}
+	 */
+	async getAllForAvailability() {
+		const reservations = await this.getAll();
+		return reservations.map((reservation) => ({
+			id: reservation.id,
+			status: reservation.status,
+			startDatum: reservation.startDatum,
+			eindDatum: reservation.eindDatum,
+			producten: (reservation.producten ?? []).map((line) => ({
+				productId: line.productId,
+				quantity: line.quantity,
+			})),
+		}));
+	}
 }
 
 export const reservationRepository = new ReservationRepository();

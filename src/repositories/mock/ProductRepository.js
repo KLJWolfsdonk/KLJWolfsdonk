@@ -53,6 +53,13 @@ export class ProductRepository extends BaseMockRepository {
 	}
 
 	/**
+	 * @returns {Promise<Product[]>}
+	 */
+	async getAllIncludingInactive() {
+		return this.getAll();
+	}
+
+	/**
 	 * @param {string} id
 	 * @param {Object} data
 	 * @returns {Promise<Product|null>}

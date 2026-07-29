@@ -1,12 +1,11 @@
-import { productRepository } from '../repositories/mock/ProductRepository.js';
-import { reservationService } from './ReservationService.js';
-import { normalizeText } from '../shared/dateUtils.js';
+import { normalizeText } from '../shared/helpers.js';
+import { repositories } from '../repositories/container.js';
 
 /**
  * Business rules for products.
  */
 export class ProductService {
-	constructor(products = productRepository, reservations = reservationService) {
+	constructor(products = repositories.products, reservations = repositories.reservations) {
 		this.products = products;
 		this.reservations = reservations;
 	}
@@ -58,6 +57,17 @@ export class ProductService {
 	}
 
 	/**
+	 * For admin product management: every product regardless of active flag,
+	 * without the availability enrichment (not meaningful outside a booking
+	 * context), so deactivated products can still be found and reactivated.
+	 * @returns {Promise<Array<Object>>}
+	 */
+	async getAllForAdmin() {
+		const products = await this.products.getAllIncludingInactive();
+		return products.map((product) => product.toJSON());
+	}
+
+	/**
 	 * @param {Object} input
 	 * @returns {Promise<Object>}
 	 */
@@ -83,13 +93,48 @@ export class ProductService {
 	}
 
 	/**
-	 * Computes availability from current reservations without storing it on the product itself.
+	 * Data for a per-product availability calendar: total units owned plus every
+	 * active (aanvraag/bevestigd) date range booking some of them.
+	 * @param {string} productId
+	 * @returns {Promise<{voorraad: number, bookedRanges: Array<{startDatum: string, eindDatum: string, quantity: number}>}>}
+	 */
+	async getAvailabilityCalendarData(productId) {
+		const [product, reservations] = await Promise.all([
+			this.products.getById(productId),
+			this.reservations.getAllForAvailability(),
+		]);
+
+		const bookedRanges = reservations
+			.filter((reservation) => this._reservationCountsAgainstAvailability(reservation))
+			.map((reservation) => {
+				const line = (reservation.producten ?? []).find((item) => item.productId === productId);
+				return line
+					? {
+							startDatum: reservation.startDatum,
+							eindDatum: reservation.eindDatum,
+							quantity: line.quantity ?? 1,
+					}
+					: null;
+			})
+			.filter(Boolean);
+
+		return {
+			voorraad: product?.voorraad ?? 0,
+			bookedRanges,
+		};
+	}
+
+	/**
+	 * voorraad is the fixed total number of units owned (source of truth in Supabase).
+	 * Availability for a given period is computed live by subtracting whatever's
+	 * already booked (aanvraag/bevestigd) for overlapping dates, so an item frees
+	 * up automatically once its reservation period has passed.
 	 * @param {Array<Object>} products
 	 * @param {Object} [period]
 	 * @returns {Promise<Array<Object>>}
 	 */
 	async _enrichWithAvailability(products, period = null) {
-		const reservations = await this.reservations.getAll();
+		const reservations = await this.reservations.getAllForAvailability();
 		return products.map((product) => {
 			const reservedQuantity = reservations.reduce((total, reservation) => {
 				if (!this._reservationCountsAgainstAvailability(reservation)) {
@@ -152,7 +197,7 @@ export class ProductService {
 	 * @returns {boolean}
 	 */
 	_reservationCountsAgainstAvailability(reservation) {
-		return ['aanvraag', 'goedgekeurd', 'betaald'].includes(reservation.status);
+		return ['aanvraag', 'bevestigd'].includes(reservation.status);
 	}
 }
 
