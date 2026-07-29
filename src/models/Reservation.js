@@ -126,6 +126,12 @@ export class Reservation {
 		this.afgehandeldDoor = props.afgehandeldDoor;
 		/** @type {number} */
 		this.versie = props.versie ?? 1;
+		/** @type {string | null} */
+		this.contractSignedAt = props.contractSignedAt ?? null;
+		/** @type {string | null} */
+		this.contractSignatureData = props.contractSignatureData ?? null;
+		/** @type {Object | null} */
+		this.contractSnapshot = props.contractSnapshot ?? null;
 	}
 
 	/**
@@ -164,6 +170,9 @@ export class Reservation {
 			goedgekeurdDoor: this.goedgekeurdDoor,
 			afgehandeldDoor: this.afgehandeldDoor,
 			versie: this.versie,
+			contractSignedAt: this.contractSignedAt,
+			contractSignatureData: this.contractSignatureData,
+			contractSnapshot: this.contractSnapshot,
 		};
 	}
 }

@@ -4,6 +4,8 @@ export const appConfig = Object.freeze({
 
     repositoryMode: DEFAULT_REPOSITORY_MODE,
 
+    siteUrl: "https://kljwolfsdonk.be",
+
     supabaseUrl: "https://zlzluhqycboyxyvsbsmy.supabase.co",
 
     supabaseKey: "sb_publishable_ixhvo5M26RhzBMJYxOAO3A_d1_xvnO3",

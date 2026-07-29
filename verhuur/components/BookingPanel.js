@@ -196,6 +196,34 @@ export class BookingPanel {
 			<div class="inline-fields">
 
 				<label class="field-group">
+					<span>Straat</span>
+					<input id="customer-street">
+				</label>
+
+				<label class="field-group">
+					<span>Huisnummer</span>
+					<input id="customer-house-number">
+				</label>
+
+			</div>
+
+			<div class="inline-fields">
+
+				<label class="field-group">
+					<span>Postcode</span>
+					<input id="customer-postal-code">
+				</label>
+
+				<label class="field-group">
+					<span>Gemeente</span>
+					<input id="customer-city">
+				</label>
+
+			</div>
+
+			<div class="inline-fields">
+
+				<label class="field-group">
 					<span>Startdatum</span>
 					<input
 						id="start-date"

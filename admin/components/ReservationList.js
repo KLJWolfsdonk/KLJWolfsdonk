@@ -1,4 +1,5 @@
 import { escapeHtml } from "../../src/shared/helpers.js";
+import { downloadContractPdf } from "../../src/shared/contractPdf.js";
 
 
 export class ReservationList {
@@ -39,6 +40,8 @@ export class ReservationList {
 
 		}
 
+
+		this.reservations = reservations;
 
 
 
@@ -112,6 +115,16 @@ export class ReservationList {
 
 						<span class="status payment-${reservation.betaling?.status === "paid" ? "paid" : "none"}">
 							${reservation.betaling?.status === "paid" ? "Betaald" : "Niet betaald"}
+						</span>
+
+						<span class="status contract-${reservation.contractSignedAt ? "signed" : "unsigned"}">
+							${
+								reservation.contractSignedAt
+								?
+								`Contract getekend (${new Date(reservation.contractSignedAt).toLocaleString("nl-BE")})`
+								:
+								"Contract niet getekend"
+							}
 						</span>
 
 
@@ -351,6 +364,33 @@ export class ReservationList {
 
 
 
+					${
+						reservation.contractSignatureData
+						?
+						`
+
+						<section class="contract-signature">
+
+							<h3>
+								Handtekening
+							</h3>
+
+							<img
+								src="${reservation.contractSignatureData}"
+								alt="Handtekening van ${klant}"
+								class="signature-image"
+							>
+
+						</section>
+
+						`
+						:
+						""
+					}
+
+
+
+
 					<section class="reservation-status">
 
 
@@ -513,6 +553,25 @@ export class ReservationList {
                             data-id="${reservation.id}"
                         >
                             Markeer als betaald
+                        </button>
+
+                        `
+                        :
+                        ""
+                    }
+
+
+
+                    ${
+                        reservation.contractSignedAt
+                        ?
+                        `
+
+                        <button
+                            class="download-contract-btn"
+                            data-id="${reservation.id}"
+                        >
+                            Download contract (PDF)
                         </button>
 
                         `
@@ -748,6 +807,31 @@ export class ReservationList {
 		});
 
 
+
+
+		this.container
+		.querySelectorAll(".download-contract-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					this.handleDownloadContract(
+						button.dataset.id,
+						button
+					);
+
+
+				}
+			);
+
+
+		});
+
+
 	}
 
 
@@ -910,6 +994,50 @@ export class ReservationList {
 
 			element.disabled = false;
 
+
+		}
+
+	}
+
+
+
+
+	async handleDownloadContract(id, element) {
+
+		const reservation =
+			this.reservations?.find(
+				item => item.id === id
+			);
+
+		if (!reservation) {
+			return;
+		}
+
+		try {
+
+			element.disabled = true;
+
+			await downloadContractPdf(reservation);
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Kon contract-PDF niet genereren:",
+				error
+			);
+
+
+			alert(
+				`Kon contract-PDF niet genereren: ${error.message}`
+			);
+
+
+		}
+		finally {
+
+			element.disabled = false;
 
 		}
 

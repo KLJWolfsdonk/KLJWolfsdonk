@@ -16,7 +16,14 @@ function mapReservation(row) {
 		customerSnapshot: {
 			naam: customer.name ?? '',
 			email: customer.email ?? '',
-			telefoon: customer.phone ?? ''
+			telefoon: customer.phone ?? '',
+			adres: {
+				street: customer.street ?? '',
+				houseNumber: customer.house_number ?? '',
+				postalCode: customer.postal_code ?? '',
+				city: customer.city ?? '',
+				country: customer.country ?? ''
+			}
 		},
 
 
@@ -66,6 +73,12 @@ function mapReservation(row) {
 			status: row.calendar_status ?? 'pending',
 			googleCalendarId: row.google_calendar_id ?? null
 		},
+
+
+
+		contractSignedAt: row.contract_signed_at ?? null,
+		contractSignatureData: row.contract_signature_data ?? null,
+		contractSnapshot: row.contract_snapshot ?? null,
 
 
 
@@ -132,7 +145,12 @@ export class SupabaseReservationRepository {
 					id,
 					name,
 					email,
-					phone
+					phone,
+					street,
+					house_number,
+					postal_code,
+					city,
+					country
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
 					*
@@ -167,7 +185,12 @@ export class SupabaseReservationRepository {
 					id,
 					name,
 					email,
-					phone
+					phone,
+					street,
+					house_number,
+					postal_code,
+					city,
+					country
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
 					*
@@ -494,7 +517,12 @@ export class SupabaseReservationRepository {
 					id,
 					name,
 					email,
-					phone
+					phone,
+					street,
+					house_number,
+					postal_code,
+					city,
+					country
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
 					*

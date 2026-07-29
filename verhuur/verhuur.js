@@ -312,6 +312,18 @@ function validateReservationInput(input) {
 	}
 
 
+	if (
+		!isNonEmptyString(input.adres?.street) ||
+		!isNonEmptyString(input.adres?.houseNumber) ||
+		!isNonEmptyString(input.adres?.postalCode) ||
+		!isNonEmptyString(input.adres?.city)
+	) {
+
+		errors.push("Vul je volledig adres in (straat, huisnummer, postcode, gemeente).");
+
+	}
+
+
 	if (!isValidDateRange(input.startDatum, input.eindDatum)) {
 
 		errors.push("Kies een geldige periode (startdatum voor of gelijk aan einddatum).");
@@ -384,6 +396,47 @@ async function submitReservation() {
 				)
 				.value
 				.trim(),
+
+
+
+
+		adres: {
+
+			street:
+				document
+					.getElementById(
+						"customer-street"
+					)
+					.value
+					.trim(),
+
+			houseNumber:
+				document
+					.getElementById(
+						"customer-house-number"
+					)
+					.value
+					.trim(),
+
+			postalCode:
+				document
+					.getElementById(
+						"customer-postal-code"
+					)
+					.value
+					.trim(),
+
+			city:
+				document
+					.getElementById(
+						"customer-city"
+					)
+					.value
+					.trim(),
+
+			country: "België"
+
+		},
 
 
 

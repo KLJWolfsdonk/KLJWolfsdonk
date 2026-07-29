@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+KLJ Wolfsdonk Admin | Handtekening
+</title>
+
+<link rel="stylesheet" href="./admin.css">
+
+<script type="module" src="./signature.js"></script>
+
+</head>
+
+
+<body>
+
+<main class="admin-shell">
+
+<header class="hero card">
+<div class="hero-actions">
+<div>
+<p class="eyebrow">KLJ Wolfsdonk</p>
+<h1>Handtekening verhuurder</h1>
+<p>
+	Teken hieronder eenmalig de handtekening die automatisch op elk huurcontract
+	namens KLJ Wolfsdonk wordt geplaatst.
+</p>
+</div>
+<div class="hero-nav">
+<a href="./index.html" class="ghost-button">Reservaties</a>
+<button type="button" id="logout-button" class="ghost-button" hidden>Uitloggen</button>
+</div>
+</div>
+</header>
+
+
+<section class="card">
+
+	<canvas id="signature-pad" width="600" height="200"></canvas>
+
+	<div class="inline-fields" style="margin-top: 1rem;">
+		<button type="button" id="clear-signature" class="ghost-button">Wis</button>
+		<button type="button" id="download-signature" class="ghost-button">Download PNG</button>
+	</div>
+
+	<p id="signature-hint" class="muted" style="margin-top: 1rem;">
+		Na het downloaden: sla het bestand op als
+		<code>assets/img/verhuurder-handtekening.png</code> in de repository
+		(overschrijf het bestaande bestand als je opnieuw tekent) en commit/push die wijziging.
+		Deze handtekening wordt daarna automatisch gebruikt op elk contract.
+	</p>
+
+</section>
+
+</main>
+
+
+</body>
+
+</html>

@@ -172,11 +172,16 @@ export async function notifyCustomerOfConfirmation(reservation) {
 		(reservation.prijs?.totaal ?? 0) +
 		(reservation.waarborg?.totaal ?? 0);
 
+	const contractLink =
+		`${appConfig.siteUrl}/verhuur/contract.html?id=${reservation.id}`;
+
 	const detailsMessage =
 		`Te betalen: <strong>${formatMoney(teBetalen)}</strong> ` +
 		`(huur ${formatMoney(reservation.prijs?.totaal ?? 0)} + waarborg ${formatMoney(reservation.waarborg?.totaal ?? 0)}).<br>` +
 		`Gelieve dit over te schrijven naar <strong>${appConfig.payment.iban}</strong> ` +
-		`met als mededeling <strong>${buildPaymentReference(reservation)}</strong>.`;
+		`met als mededeling <strong>${buildPaymentReference(reservation)}</strong>.<br><br>` +
+		`Gelieve ook het huurcontract te ondertekenen via deze link: ` +
+		`<a href="${contractLink}">${contractLink}</a>`;
 
 	await sendCustomerStatusEmail(
 

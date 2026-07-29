@@ -96,12 +96,20 @@ export class SupabaseCustomerRepository {
 
 	async create(customer) {
 
+		const adres = customer.adres ?? {};
+
 		const { data, error } = await supabase
 			.from('customers')
 			.insert({
 				name: customer.naam,
 				email: customer.email,
 				phone: customer.telefoon,
+
+				street: adres.street ?? null,
+				house_number: adres.houseNumber ?? null,
+				postal_code: adres.postalCode ?? null,
+				city: adres.city ?? null,
+				country: adres.country ?? null,
 
 				active: true
 			})
@@ -124,6 +132,11 @@ export class SupabaseCustomerRepository {
 			name: customer.naam,
 			email: customer.email,
 			phone: customer.telefoon,
+			street: adres.street ?? null,
+			house_number: adres.houseNumber ?? null,
+			postal_code: adres.postalCode ?? null,
+			city: adres.city ?? null,
+			country: adres.country ?? null,
 			active: true
 		});
 	}
