@@ -221,28 +221,6 @@ export class BookingPanel {
 
 			</div>
 
-			<div class="inline-fields">
-
-				<label class="field-group">
-					<span>Startdatum</span>
-					<input
-						id="start-date"
-						type="date"
-						value="${this.period.startDatum ?? ""}"
-					>
-				</label>
-
-				<label class="field-group">
-					<span>Einddatum</span>
-					<input
-						id="end-date"
-						type="date"
-						value="${this.period.eindDatum ?? ""}"
-					>
-				</label>
-
-			</div>
-
 			<label class="field-group field-group--checkbox">
 				<input type="checkbox" id="privacy-ack">
 				<span>

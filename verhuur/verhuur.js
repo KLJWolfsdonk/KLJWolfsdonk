@@ -443,22 +443,14 @@ async function submitReservation() {
 
 		startDatum:
 
-			document
-				.getElementById(
-					"start-date"
-				)
-				.value,
+			selectedPeriod.startDatum,
 
 
 
 
 		eindDatum:
 
-			document
-				.getElementById(
-					"end-date"
-				)
-				.value,
+			selectedPeriod.eindDatum,
 
 
 
