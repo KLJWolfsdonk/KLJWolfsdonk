@@ -14,6 +14,17 @@ export function isValidDateRange(startDate, endDate) {
 	return !Number.isNaN(startTime) && !Number.isNaN(endTime) && startTime <= endTime;
 }
 
+export function isNotInPast(dateValue) {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) {
+    return false;
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  date.setHours(0, 0, 0, 0);
+  return date.getTime() >= today.getTime();
+}
+
 export function isValidReservationStatus(value) {
 	return RESERVATION_STATUSES.includes(value);
 }

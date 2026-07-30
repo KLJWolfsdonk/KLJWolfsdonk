@@ -53,6 +53,17 @@ body {
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-soft);
 	padding: var(--space-4);
+	/*
+		.card is used as a grid item throughout (.app-shell, .grid-layout).
+		Grid/flex items default to min-width:auto, meaning they refuse to
+		shrink below their widest descendant's content-based minimum width
+		(e.g. an unwrapped table) — the item just overflows its track
+		instead of the intended child scrollbar kicking in. min-width: 0
+		lets this card shrink to the grid track's actual width so a
+		descendant's own overflow-x:auto (see .contract-table-wrapper) is
+		what scrolls, not the whole page.
+	*/
+	min-width: 0;
 }
 
 h1,
@@ -576,8 +587,14 @@ h5 {
 	color: var(--color-danger);
 }
 
+.contract-table-wrapper {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
 .contract-table {
 	width: 100%;
+	min-width: 480px;
 	border-collapse: collapse;
 	font-size: 0.92rem;
 }

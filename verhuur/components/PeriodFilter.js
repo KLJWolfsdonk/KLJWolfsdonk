@@ -1,3 +1,6 @@
+import { toDateInputValue } from "../../src/shared/helpers.js";
+
+
 export class PeriodFilter {
 
 	constructor(container, onChange) {
@@ -44,9 +47,28 @@ export class PeriodFilter {
 
 
 
-		start.value = "2026-08-01";
+		const today =
+			new Date();
 
-		end.value = "2026-08-03";
+		const tomorrow =
+			new Date(today.getTime() + 24 * 60 * 60 * 1000);
+
+		const todayValue =
+			toDateInputValue(today);
+
+
+
+		// Dates in the past aren't bookable — the browser's native date
+		// picker enforces this via `min`, but it doesn't stop someone from
+		// typing/pasting a past date, so verhuur.js validates again before
+		// submitting.
+		start.min = todayValue;
+
+		start.value = todayValue;
+
+		end.min = toDateInputValue(tomorrow);
+
+		end.value = toDateInputValue(tomorrow);
 
 
 
@@ -66,7 +88,26 @@ export class PeriodFilter {
 
 		start.addEventListener(
 			"change",
-			update
+			() => {
+
+				// Whenever the start date changes, default the end date to
+				// one day later — most people expect a fresh, valid end
+				// date rather than having to re-pick it every time.
+				const dayAfterStart =
+					new Date(
+						new Date(start.value).getTime() + 24 * 60 * 60 * 1000
+					);
+
+				const minEnd =
+					start.value;
+
+				end.min = minEnd;
+
+				end.value = toDateInputValue(dayAfterStart);
+
+				update();
+
+			}
 		);
 
 

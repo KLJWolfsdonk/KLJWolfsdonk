@@ -30,10 +30,11 @@ import {
 import {
 	isNonEmptyString,
 	isValidEmail,
-	isValidDateRange
+	isValidDateRange,
+	isNotInPast
 } from "../src/shared/validators.js";
 
-import { normalizeText }
+import { normalizeText, toDateInputValue }
 	from "../src/shared/helpers.js";
 
 import { notifyAdminsOfNewReservation }
@@ -41,11 +42,17 @@ import { notifyAdminsOfNewReservation }
 
 
 
+const today = new Date();
+
+const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+
+
+
 let selectedPeriod = {
 
-	startDatum: "2026-08-01",
+	startDatum: toDateInputValue(today),
 
-	eindDatum: "2026-08-03"
+	eindDatum: toDateInputValue(tomorrow)
 
 };
 
@@ -327,6 +334,11 @@ function validateReservationInput(input) {
 	if (!isValidDateRange(input.startDatum, input.eindDatum)) {
 
 		errors.push("Kies een geldige periode (startdatum voor of gelijk aan einddatum).");
+
+	}
+	else if (!isNotInPast(input.startDatum)) {
+
+		errors.push("De startdatum mag niet in het verleden liggen.");
 
 	}
 

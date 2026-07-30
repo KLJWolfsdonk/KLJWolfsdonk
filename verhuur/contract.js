@@ -143,28 +143,30 @@ function renderContract(reservation) {
 		</div>
 
 		<h3>Bijlage 1 — Materiaallijst</h3>
-		<table class="contract-table">
-			<thead>
-				<tr>
-					<th>Materiaal</th>
-					<th>Aantal</th>
-					<th>Prijs/dag</th>
-					<th>Waarborg/stuk</th>
-					<th>Totaal</th>
-				</tr>
-			</thead>
-			<tbody>
-				${producten.map(item => `
+		<div class="contract-table-wrapper">
+			<table class="contract-table">
+				<thead>
 					<tr>
-						<td>${escapeHtml(item.naam)}</td>
-						<td>${item.quantity}</td>
-						<td>${formatMoney(item.prijsPerDag)}</td>
-						<td>${formatMoney(item.waarborgPerStuk)}</td>
-						<td>${formatMoney(item.linePrijs)}</td>
+						<th>Materiaal</th>
+						<th>Aantal</th>
+						<th>Prijs/dag</th>
+						<th>Waarborg/stuk</th>
+						<th>Totaal</th>
 					</tr>
-				`).join("")}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					${producten.map(item => `
+						<tr>
+							<td>${escapeHtml(item.naam)}</td>
+							<td>${item.quantity}</td>
+							<td>${formatMoney(item.prijsPerDag)}</td>
+							<td>${formatMoney(item.waarborgPerStuk)}</td>
+							<td>${formatMoney(item.linePrijs)}</td>
+						</tr>
+					`).join("")}
+				</tbody>
+			</table>
+		</div>
 
 		<div class="overview-stats">
 			<span>Huur totaal: ${formatMoney(reservation.totaal)}</span>
