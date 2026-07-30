@@ -77,6 +77,28 @@ export class ReservationRepository extends BaseMockRepository {
 	}
 
 	/**
+	 * @param {string} id
+	 * @param {string} text
+	 * @returns {Promise<Reservation|null>}
+	 */
+	async addNote(id, text) {
+		const current = await this.getById(id);
+		if (!current) {
+			return null;
+		}
+		const notities = [
+			...current.notities,
+			{
+				id: `note-${Date.now()}`,
+				tekst: text,
+				auteurEmail: 'dev@localhost',
+				aangemaaktOp: new Date().toISOString(),
+			},
+		];
+		return this.update(id, { notities });
+	}
+
+	/**
 	 * Lightweight shape matching SupabaseReservationRepository.getAllForAvailability.
 	 * @returns {Promise<Array<{id: string, status: string, startDatum: string, eindDatum: string, producten: Array<{productId: string, quantity: number}>}>>}
 	 */

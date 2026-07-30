@@ -10,7 +10,7 @@ export class ReservationList {
 		onUpdated = null,
 		onMarkPaid = null,
 		onDelete = null,
-		onUpdateNotes = null,
+		onAddNote = null,
 		onResendConfirmation = null,
 		onResetContract = null,
 		onEditDetails = null
@@ -20,7 +20,7 @@ export class ReservationList {
 		this.onUpdated = onUpdated;
 		this.onMarkPaid = onMarkPaid;
 		this.onDelete = onDelete;
-		this.onUpdateNotes = onUpdateNotes;
+		this.onAddNote = onAddNote;
 		this.onResendConfirmation = onResendConfirmation;
 		this.onResetContract = onResetContract;
 		this.onEditDetails = onEditDetails;
@@ -231,19 +231,43 @@ export class ReservationList {
 							Admin notities
 						</h3>
 
+						<ul class="admin-notes-list">
+							${
+								(reservation.notities ?? []).length
+								?
+								reservation.notities
+								.map(note => `
+									<li class="admin-note">
+										<div class="admin-note-meta">
+											<span class="admin-note-author">${escapeHtml(note.auteurEmail)}</span>
+											<span class="admin-note-date">${new Date(note.aangemaaktOp).toLocaleString("nl-BE")}</span>
+										</div>
+										<p class="admin-note-text">${escapeHtml(note.tekst)}</p>
+									</li>
+								`)
+								.join("")
+								:
+								`
+									<li class="admin-note admin-note-empty">
+										Nog geen notities.
+									</li>
+								`
+							}
+						</ul>
+
 						<textarea
 							class="admin-notes-input"
 							data-id="${reservation.id}"
 							rows="3"
-							placeholder="Interne notitie (enkel zichtbaar voor beheerders)"
-						>${escapeHtml(reservation.adminNotities ?? "")}</textarea>
+							placeholder="Nieuwe interne notitie (enkel zichtbaar voor beheerders)"
+						></textarea>
 
 						<button
 							type="button"
 							class="save-notes-btn"
 							data-id="${reservation.id}"
 						>
-							Notitie opslaan
+							Notitie toevoegen
 						</button>
 
 
@@ -1025,7 +1049,7 @@ export class ReservationList {
 							`.admin-notes-input[data-id="${button.dataset.id}"]`
 						);
 
-					this.handleUpdateNotes(
+					this.handleAddNote(
 						button.dataset.id,
 						textarea.value,
 						button
@@ -1598,15 +1622,21 @@ export class ReservationList {
 
 
 
-	async handleUpdateNotes(id, notes, element) {
+	async handleAddNote(id, notes, element) {
+
+		if (!notes || !notes.trim()) {
+
+			return;
+
+		}
 
 		try {
 
 			element.disabled = true;
 
-			if (this.onUpdateNotes) {
+			if (this.onAddNote) {
 
-				await this.onUpdateNotes(id, notes);
+				await this.onAddNote(id, notes);
 
 			}
 

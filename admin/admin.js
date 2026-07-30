@@ -258,11 +258,9 @@ reservationList =
 		async (id, notes) => {
 
 
-			await reservationService.update(
+			await reservationService.addNote(
 				id,
-				{
-					adminNotities: notes
-				}
+				notes
 			);
 
 

@@ -42,6 +42,17 @@ function mapReservation(row) {
 		opmerkingen: row.remarks,
 		adminNotities: row.admin_notes,
 
+		notities:
+			(row.reservation_notes ?? [])
+				.slice()
+				.sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+				.map(note => ({
+					id: note.id,
+					tekst: note.note,
+					auteurEmail: note.author_email,
+					aangemaaktOp: note.created_at
+				})),
+
 
 
 		prijs: {
@@ -155,6 +166,9 @@ export class SupabaseReservationRepository {
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
 					*
+				),
+				reservation_notes (
+					*
 				)
 			`)
 			.order('created_at', {
@@ -195,6 +209,9 @@ export class SupabaseReservationRepository {
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
 					*
+				),
+				reservation_notes (
+					*
 				)
 			`)
 			.eq('id', id)
@@ -213,6 +230,33 @@ export class SupabaseReservationRepository {
 	}
 
 
+
+
+
+
+	/**
+	 * Appends a note to the reservation's audit log, stamped with the
+	 * currently logged-in admin's email — never overwrites prior notes.
+	 */
+	async addNote(id, text) {
+
+		const { data: { user } } = await supabase.auth.getUser();
+
+		const { error: insertError } = await supabase
+			.from('reservation_notes')
+			.insert({
+				reservation_id: id,
+				author_email: user?.email ?? 'onbekend',
+				note: text
+			});
+
+		if (insertError) {
+			throw insertError;
+		}
+
+		return this.getById(id);
+
+	}
 
 
 
@@ -333,6 +377,9 @@ export class SupabaseReservationRepository {
 			),
 			reservation_items!reservation_items_reservation_id_fkey (
 				*
+			),
+			reservation_notes (
+				*
 			)
 		`)
 		.single();
@@ -392,6 +439,9 @@ export class SupabaseReservationRepository {
 					country
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
+					*
+				),
+				reservation_notes (
 					*
 				)
 			`)
@@ -465,6 +515,9 @@ export class SupabaseReservationRepository {
 					country
 				),
 				reservation_items!reservation_items_reservation_id_fkey (
+					*
+				),
+				reservation_notes (
 					*
 				)
 			`);

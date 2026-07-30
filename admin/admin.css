@@ -246,6 +246,47 @@ h5 {
 	background: #fff;
 }
 
+.admin-notes-list {
+	list-style: none;
+	margin: 0 0 0.7rem;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-height: 220px;
+	overflow-y: auto;
+}
+
+.admin-note {
+	border-radius: 12px;
+	border: 1px solid var(--color-border);
+	background: rgba(68, 68, 68, 0.04);
+	padding: 0.6rem 0.8rem;
+}
+
+.admin-note-empty {
+	color: var(--color-muted);
+	font-style: italic;
+}
+
+.admin-note-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
+	font-size: 0.8rem;
+	color: var(--color-muted);
+	margin-bottom: 0.25rem;
+}
+
+.admin-note-author {
+	font-weight: 600;
+}
+
+.admin-note-text {
+	margin: 0;
+	white-space: pre-wrap;
+}
+
 .admin-notes-input {
 	width: 100%;
 	border-radius: 14px;

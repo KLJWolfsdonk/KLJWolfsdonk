@@ -36,6 +36,14 @@
  */
 
 /**
+ * @typedef {Object} ReservationNote
+ * @property {string} id
+ * @property {string} tekst
+ * @property {string} auteurEmail
+ * @property {string} aangemaaktOp
+ */
+
+/**
  * @typedef {Object} ReservationProps
  * @property {string} [id]
  * @property {string} customerId
@@ -45,6 +53,7 @@
  * @property {string} [telefoon]
  * @property {string} [opmerkingen]
  * @property {string} [adminNotities]
+ * @property {ReservationNote[]} [notities]
  * @property {string} startDatum
  * @property {string} eindDatum
  * @property {ReservationProductLine[]} producten
@@ -86,6 +95,8 @@ export class Reservation {
 		this.opmerkingen = props.opmerkingen ?? '';
 		/** @type {string} */
 		this.adminNotities = props.adminNotities ?? '';
+		/** @type {ReservationNote[]} */
+		this.notities = Array.isArray(props.notities) ? props.notities : [];
 		/** @type {string} */
 		this.startDatum = props.startDatum ?? '';
 		/** @type {string} */
@@ -157,6 +168,7 @@ export class Reservation {
 			telefoon: this.telefoon,
 			opmerkingen: this.opmerkingen,
 			adminNotities: this.adminNotities,
+			notities: this.notities.map((note) => ({ ...note })),
 			startDatum: this.startDatum,
 			eindDatum: this.eindDatum,
 			producten: this.producten.map((line) => ({ ...line })),

@@ -46,6 +46,21 @@ export class ReservationService {
 
 
 
+	async addNote(id, text) {
+
+		if (!text || !text.trim()) {
+
+			throw new Error('Vul een notitie in.');
+
+		}
+
+		return this.reservations.addNote(id, text.trim());
+
+	}
+
+
+
+
 
 	async search(query) {
 
