@@ -2,15 +2,9 @@
 <html lang="en">
 	<head>
 		
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1EVSTQ7QGM"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'G-1EVSTQ7QGM');
-	</script>
+	<!-- Google tag (gtag.js), loaded only after cookie consent -->
+	<script>window.GA_MEASUREMENT_ID = "G-1EVSTQ7QGM";</script>
+	<script src="./assets/js/cookie-consent.js"></script>
 
 
 		<!-- Required meta tags -->
@@ -1115,7 +1109,12 @@
 						</div>
 					</div>
 					<footer>
-						<p>©2023, KLJ Wolfsdonk vzw</p>
+						<p>©2023, KLJ Wolfsdonk</p>
+						<p>
+							<a href="/verhuur/privacy.html">Privacyverklaring</a>
+							&middot;
+							<button type="button" onclick="window.reopenCookieConsent && window.reopenCookieConsent()" style="background:none;border:none;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:0;">Cookie-instellingen</button>
+						</p>
 					</footer>
 				</div>
 			</div>

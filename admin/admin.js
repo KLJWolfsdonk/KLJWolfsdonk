@@ -8,6 +8,12 @@ from "../src/services/ReservationService.js";
 import { ReservationList }
 from "./components/ReservationList.js";
 
+import { notifyCustomerOfConfirmation }
+from "../src/shared/notifications.js";
+
+import { productService }
+from "../src/services/ProductService.js";
+
 
 
 const container =
@@ -105,6 +111,21 @@ async function loadReservations(){
 
 
 
+async function loadProducts(){
+
+
+	const products =
+		await productService.getAllForAdmin();
+
+
+	reservationList.setProducts(products);
+
+
+}
+
+
+
+
 
 function renderFiltered(){
 
@@ -194,16 +215,24 @@ reservationList =
 		},
 
 
-		async (id) => {
+		async (id, paid) => {
 
 
 			await reservationService.update(
 				id,
 				{
-					betaling: {
-						status: "paid",
-						betaaldAt: new Date().toISOString()
-					}
+					betaling:
+						paid
+						?
+						{
+							status: "paid",
+							betaaldAt: new Date().toISOString()
+						}
+						:
+						{
+							status: "none",
+							betaaldAt: null
+						}
 				}
 			);
 
@@ -218,6 +247,79 @@ reservationList =
 
 
 			await reservationService.delete(id);
+
+
+			await loadReservations();
+
+
+		},
+
+
+		async (id, notes) => {
+
+
+			await reservationService.update(
+				id,
+				{
+					adminNotities: notes
+				}
+			);
+
+
+			await loadReservations();
+
+
+		},
+
+
+		async (id) => {
+
+
+			const reservation =
+				allReservations.find(
+					item => item.id === id
+				);
+
+			if (!reservation) {
+				return;
+			}
+
+			const verstuurd =
+				await notifyCustomerOfConfirmation(
+					reservation
+				);
+
+			if (!verstuurd) {
+
+				throw new Error(
+					"E-mail kon niet worden verstuurd (controleer EmailJS-configuratie en e-mailadres)."
+				);
+
+			}
+
+
+		},
+
+
+		async (id) => {
+
+
+			await reservationService.resetContract(id);
+
+
+			await loadReservations();
+
+
+		},
+
+
+		async (id, changes) => {
+
+
+			await reservationService.update(
+				id,
+				changes
+			);
 
 
 			await loadReservations();
@@ -263,5 +365,6 @@ if (deepLinkId) {
 if (session) {
 
 	loadReservations();
+	loadProducts();
 
 }

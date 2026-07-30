@@ -112,7 +112,7 @@ async function sendCustomerStatusEmail(reservation, content, failureLabel) {
 			`EmailJS is niet geconfigureerd, ${failureLabel} overgeslagen.`
 		);
 
-		return;
+		return false;
 
 	}
 
@@ -123,7 +123,7 @@ async function sendCustomerStatusEmail(reservation, content, failureLabel) {
 			reservation.id
 		);
 
-		return;
+		return false;
 
 	}
 
@@ -148,6 +148,8 @@ async function sendCustomerStatusEmail(reservation, content, failureLabel) {
 			}
 		);
 
+		return true;
+
 	}
 	catch (error) {
 
@@ -155,6 +157,8 @@ async function sendCustomerStatusEmail(reservation, content, failureLabel) {
 			`Kon ${failureLabel} niet versturen:`,
 			error
 		);
+
+		return false;
 
 	}
 
@@ -173,7 +177,7 @@ export async function notifyCustomerOfConfirmation(reservation) {
 		(reservation.waarborg?.totaal ?? 0);
 
 	const contractLink =
-		`${appConfig.siteUrl}/verhuur/contract.html?id=${reservation.id}`;
+		`${appConfig.siteUrl}/verhuur/contract.html?token=${reservation.accessToken}`;
 
 	const detailsMessage =
 		`Te betalen: <strong>${formatMoney(teBetalen)}</strong> ` +
@@ -183,7 +187,7 @@ export async function notifyCustomerOfConfirmation(reservation) {
 		`Gelieve ook het huurcontract te ondertekenen via deze link: ` +
 		`<a href="${contractLink}">${contractLink}</a>`;
 
-	await sendCustomerStatusEmail(
+	return sendCustomerStatusEmail(
 
 		reservation,
 

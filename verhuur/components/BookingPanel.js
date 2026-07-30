@@ -243,6 +243,15 @@ export class BookingPanel {
 
 			</div>
 
+			<label class="field-group field-group--checkbox">
+				<input type="checkbox" id="privacy-ack">
+				<span>
+					Ik heb de
+					<a href="./privacy.html" target="_blank" rel="noopener">privacyverklaring</a>
+					gelezen.
+				</span>
+			</label>
+
 			<button type="button" id="submit-reservation" class="ghost-button">
 				Aanvraag versturen
 			</button>

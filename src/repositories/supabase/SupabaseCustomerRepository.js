@@ -141,4 +141,37 @@ export class SupabaseCustomerRepository {
 		});
 	}
 
+
+
+	/**
+	 * GDPR data minimization: removes a customer's record once no
+	 * reservation references them anymore, so we don't keep personal data
+	 * around longer than needed.
+	 */
+	async deleteIfOrphan(customerId) {
+
+		const { count, error: countError } = await supabase
+			.from('reservations')
+			.select('id', { count: 'exact', head: true })
+			.eq('customer_id', customerId);
+
+		if (countError) {
+			throw countError;
+		}
+
+		if (count === 0) {
+
+			const { error } = await supabase
+				.from('customers')
+				.delete()
+				.eq('id', customerId);
+
+			if (error) {
+				throw error;
+			}
+
+		}
+
+	}
+
 }

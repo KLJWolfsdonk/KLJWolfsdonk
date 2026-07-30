@@ -132,6 +132,8 @@ export class Reservation {
 		this.contractSignatureData = props.contractSignatureData ?? null;
 		/** @type {Object | null} */
 		this.contractSnapshot = props.contractSnapshot ?? null;
+		/** @type {string | null} */
+		this.accessToken = props.accessToken ?? null;
 	}
 
 	/**
@@ -173,6 +175,7 @@ export class Reservation {
 			contractSignedAt: this.contractSignedAt,
 			contractSignatureData: this.contractSignatureData,
 			contractSnapshot: this.contractSnapshot,
+			accessToken: this.accessToken,
 		};
 	}
 }

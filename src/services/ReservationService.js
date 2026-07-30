@@ -62,21 +62,14 @@ export class ReservationService {
 	async create(input) {
 
 
-		const preparedReservation =
-			await this._prepareReservation(input);
-
-
-
-		const reservation =
-			await this.reservations.create(
-
-				preparedReservation.toJSON()
-
-			);
-
-
-
-		return reservation;
+		/*
+			Pricing, stock validation, and customer creation now happen
+			server-side (see sql/secure_reservation_creation.sql) so a client
+			can only pick products/quantities/dates — never the price. The
+			raw booking input is passed straight through instead of being
+			pre-priced here.
+		*/
+		return this.reservations.create(input);
 
 	}
 
@@ -245,7 +238,35 @@ export class ReservationService {
 	async delete(id) {
 
 
-		return this.reservations.delete(id);
+		const reservation =
+			await this.reservations.getById(id);
+
+
+		await this.reservations.delete(id);
+
+
+		if (reservation?.customerId) {
+
+			try {
+
+				await this.customers.deleteIfOrphan(
+					reservation.customerId
+				);
+
+			}
+			catch (error) {
+
+				console.warn(
+					"Kon klantgegevens niet opruimen na verwijderen reservatie:",
+					error
+				);
+
+			}
+
+		}
+
+
+		return true;
 
 
 	}
@@ -254,6 +275,15 @@ export class ReservationService {
 
 
 
+
+
+
+
+	async resetContract(id) {
+
+		return this.reservations.resetContract(id);
+
+	}
 
 
 
@@ -474,7 +504,9 @@ export class ReservationService {
 
 				this._buildReservationLines(
 
-					products
+					products,
+
+					aantalDagen
 
 				),
 
@@ -783,7 +815,7 @@ export class ReservationService {
 
 
 
-	_buildReservationLines(products) {
+	_buildReservationLines(products, days) {
 
 
 
@@ -843,7 +875,9 @@ export class ReservationService {
 
 				item.product.prijsPerDag *
 
-				item.quantity,
+				item.quantity *
+
+				days,
 
 
 
@@ -951,7 +985,9 @@ export class ReservationService {
 
 				"voltooid",
 
-				"geweigerd"
+				"geweigerd",
+
+				"aanvraag"
 
 			],
 

@@ -246,6 +246,137 @@ h5 {
 	background: #fff;
 }
 
+.admin-notes-input {
+	width: 100%;
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.7rem 0.9rem;
+	font: inherit;
+	background: #fff;
+	color: var(--color-text);
+	resize: vertical;
+	margin-bottom: 0.5rem;
+}
+
+.save-notes-btn {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.6rem 1rem;
+	font: inherit;
+	cursor: pointer;
+	background: rgba(68, 68, 68, 0.06);
+	color: var(--color-text);
+}
+
+.save-notes-btn:hover {
+	background: rgba(68, 68, 68, 0.12);
+}
+
+.reservation-actions .unmark-paid-btn {
+	color: var(--color-muted);
+}
+
+.contract-signature .reset-contract-btn {
+	background: rgba(245, 161, 56, 0.2);
+	color: #a86414;
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.6rem 1rem;
+	font: inherit;
+	cursor: pointer;
+}
+
+.contract-signature .reset-contract-btn:hover {
+	background: rgba(245, 161, 56, 0.32);
+}
+
+.reservation-edit {
+	background: rgba(0, 130, 191, 0.06);
+	border-radius: var(--radius-md);
+	padding: var(--space-3);
+	margin-top: var(--space-2);
+}
+
+.reservation-edit .inline-fields {
+	margin-bottom: 0.75rem;
+}
+
+.reservation-edit input[type="date"],
+.reservation-edit input[type="number"],
+.reservation-edit select {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.6rem 0.8rem;
+	font: inherit;
+	background: #fff;
+}
+
+.edit-products-list {
+	list-style: none;
+	margin: 0 0 0.75rem;
+	padding: 0;
+	display: grid;
+	gap: 0.5rem;
+}
+
+.edit-products-list li {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+	background: #fff;
+	border: 1px solid var(--color-border);
+	border-radius: 10px;
+	padding: 0.5rem 0.75rem;
+}
+
+.edit-products-list li span {
+	flex: 1 1 160px;
+}
+
+.edit-qty-input {
+	width: 4.5rem;
+}
+
+.edit-remove-product-btn,
+.edit-add-product-btn,
+.save-edit-btn,
+.cancel-edit-btn {
+	border-radius: 14px;
+	border: 1px solid var(--color-border);
+	padding: 0.55rem 0.9rem;
+	font: inherit;
+	cursor: pointer;
+	background: rgba(68, 68, 68, 0.06);
+	color: var(--color-text);
+}
+
+.edit-remove-product-btn:hover,
+.edit-add-product-btn:hover,
+.save-edit-btn:hover,
+.cancel-edit-btn:hover {
+	background: rgba(68, 68, 68, 0.12);
+}
+
+.save-edit-btn {
+	background: rgba(47, 125, 50, 0.14);
+	color: var(--color-confirm);
+	font-weight: 700;
+}
+
+.save-edit-btn:hover {
+	background: rgba(47, 125, 50, 0.22);
+}
+
+.reservation-actions .resend-confirmation-btn {
+	background: rgba(0, 130, 191, 0.12);
+	color: var(--color-info);
+}
+
+.reservation-actions .resend-confirmation-btn:hover {
+	background: rgba(0, 130, 191, 0.2);
+}
+
 .muted {
 	color: var(--color-muted);
 }

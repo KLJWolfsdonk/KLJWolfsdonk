@@ -9,13 +9,34 @@ export class ReservationList {
 		container,
 		onUpdated = null,
 		onMarkPaid = null,
-		onDelete = null
+		onDelete = null,
+		onUpdateNotes = null,
+		onResendConfirmation = null,
+		onResetContract = null,
+		onEditDetails = null
 	) {
 
 		this.container = container;
 		this.onUpdated = onUpdated;
 		this.onMarkPaid = onMarkPaid;
 		this.onDelete = onDelete;
+		this.onUpdateNotes = onUpdateNotes;
+		this.onResendConfirmation = onResendConfirmation;
+		this.onResetContract = onResetContract;
+		this.onEditDetails = onEditDetails;
+
+		this.allProducts = [];
+		this.editingId = null;
+		this.editDraft = null;
+
+	}
+
+
+
+
+	setProducts(products) {
+
+		this.allProducts = products ?? [];
 
 	}
 
@@ -206,23 +227,24 @@ export class ReservationList {
 
 
 
-						${
-							reservation.adminNotities
-							?
-							`
+						<h3>
+							Admin notities
+						</h3>
 
-							<h3>
-								Admin notities
-							</h3>
+						<textarea
+							class="admin-notes-input"
+							data-id="${reservation.id}"
+							rows="3"
+							placeholder="Interne notitie (enkel zichtbaar voor beheerders)"
+						>${escapeHtml(reservation.adminNotities ?? "")}</textarea>
 
-							<p>
-								${escapeHtml(reservation.adminNotities)}
-							</p>
-
-							`
-							:
-							""
-						}
+						<button
+							type="button"
+							class="save-notes-btn"
+							data-id="${reservation.id}"
+						>
+							Notitie opslaan
+						</button>
 
 
 					</section>
@@ -300,6 +322,7 @@ export class ReservationList {
 					</section>
 
 
+					${this._renderEditForm(reservation)}
 
 
 
@@ -380,6 +403,16 @@ export class ReservationList {
 								alt="Handtekening van ${klant}"
 								class="signature-image"
 							>
+
+							<p>
+								<button
+									type="button"
+									class="reset-contract-btn"
+									data-id="${reservation.id}"
+								>
+									Handtekening resetten (opnieuw laten ondertekenen)
+								</button>
+							</p>
 
 						</section>
 
@@ -470,6 +503,14 @@ export class ReservationList {
                     <section class="reservation-actions">
 
 
+                    <button
+                        class="edit-reservation-btn"
+                        data-id="${reservation.id}"
+                    >
+                        ${this.editingId === reservation.id ? "Bewerken annuleren" : "Bewerken"}
+                    </button>
+
+
                     ${
                         reservation.status === "aanvraag"
                         ?
@@ -517,6 +558,14 @@ export class ReservationList {
                             Terug naar aanvraag
                         </button>
 
+
+                        <button
+                            class="resend-confirmation-btn"
+                            data-id="${reservation.id}"
+                        >
+                            Bevestigingsmail opnieuw versturen
+                        </button>
+
                         `
                         :
                         ""
@@ -544,8 +593,19 @@ export class ReservationList {
 
 
                     ${
-                        reservation.betaling?.status !== "paid"
+                        reservation.betaling?.status === "paid"
                         ?
+                        `
+
+                        <button
+                            class="unmark-paid-btn"
+                            data-id="${reservation.id}"
+                        >
+                            Markeer als niet betaald
+                        </button>
+
+                        `
+                        :
                         `
 
                         <button
@@ -556,8 +616,6 @@ export class ReservationList {
                         </button>
 
                         `
-                        :
-                        ""
                     }
 
 
@@ -583,7 +641,8 @@ export class ReservationList {
 
                     ${
                         reservation.status === "voltooid" ||
-                        reservation.status === "geweigerd"
+                        reservation.status === "geweigerd" ||
+                        reservation.status === "aanvraag"
                         ?
                         `
 
@@ -611,6 +670,112 @@ export class ReservationList {
 
 
 		this.attachEvents();
+
+	}
+
+
+
+
+	_renderEditForm(reservation) {
+
+		if (this.editingId !== reservation.id) {
+			return "";
+		}
+
+		const draft = this.editDraft;
+
+		const usedProductIds =
+			new Set(draft.producten.map(item => item.productId));
+
+		const availableProducts =
+			this.allProducts.filter(
+				product => !usedProductIds.has(product.id)
+			);
+
+		return `
+
+			<section class="reservation-edit">
+
+				<h3>
+					Reservatie bewerken
+				</h3>
+
+				<div class="inline-fields">
+
+					<label>
+						Startdatum
+						<input type="date" class="edit-start-date" value="${draft.startDatum ?? ""}">
+					</label>
+
+					<label>
+						Einddatum
+						<input type="date" class="edit-end-date" value="${draft.eindDatum ?? ""}">
+					</label>
+
+				</div>
+
+				<ul class="edit-products-list">
+
+					${draft.producten.map(item => `
+
+						<li data-product-id="${item.productId}">
+
+							<span>${escapeHtml(item.naam)}</span>
+
+							<input
+								type="number"
+								min="1"
+								class="edit-qty-input"
+								data-product-id="${item.productId}"
+								value="${item.quantity}"
+							>
+
+							<button
+								type="button"
+								class="edit-remove-product-btn"
+								data-product-id="${item.productId}"
+							>
+								Verwijder
+							</button>
+
+						</li>
+
+					`).join("")}
+
+				</ul>
+
+				<div class="inline-fields">
+
+					<select class="edit-add-product-select">
+						<option value="">— product toevoegen —</option>
+						${availableProducts.map(product => `
+							<option value="${product.id}">${escapeHtml(product.naam)}</option>
+						`).join("")}
+					</select>
+
+					<button type="button" class="edit-add-product-btn" data-id="${reservation.id}">
+						Toevoegen
+					</button>
+
+				</div>
+
+				<p class="edit-error error-message" hidden></p>
+
+				<div class="inline-fields">
+
+					<button type="button" class="save-edit-btn" data-id="${reservation.id}">
+						Wijzigingen opslaan
+					</button>
+
+					<button type="button" class="cancel-edit-btn" data-id="${reservation.id}">
+						Annuleren
+					</button>
+
+				</div>
+
+			</section>
+
+		`;
 
 	}
 
@@ -771,7 +936,43 @@ export class ReservationList {
 
 					this.handleMarkPaid(
 						button.dataset.id,
-						button
+						button,
+						true
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".unmark-paid-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					const akkoord =
+						confirm(
+							"Weet je zeker dat je deze reservatie terug als niet betaald wilt markeren?"
+						);
+
+					if (!akkoord) {
+						return;
+					}
+
+					this.handleMarkPaid(
+						button.dataset.id,
+						button,
+						false
 					);
 
 
@@ -810,6 +1011,62 @@ export class ReservationList {
 
 
 		this.container
+		.querySelectorAll(".save-notes-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					const textarea =
+						this.container.querySelector(
+							`.admin-notes-input[data-id="${button.dataset.id}"]`
+						);
+
+					this.handleUpdateNotes(
+						button.dataset.id,
+						textarea.value,
+						button
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".resend-confirmation-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					this.handleResendConfirmation(
+						button.dataset.id,
+						button
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
 		.querySelectorAll(".download-contract-btn")
 		.forEach(button => {
 
@@ -832,7 +1089,346 @@ export class ReservationList {
 		});
 
 
+
+
+		this.container
+		.querySelectorAll(".reset-contract-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					const akkoord =
+						confirm(
+							"Weet je zeker dat je deze handtekening wilt resetten? De huurder kan dan opnieuw tekenen via dezelfde link. Dit kan niet ongedaan gemaakt worden."
+						);
+
+					if (!akkoord) {
+						return;
+					}
+
+					this.handleResetContract(
+						button.dataset.id,
+						button
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+
+
+		this.container
+		.querySelectorAll(".edit-reservation-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+					this.toggleEdit(button.dataset.id);
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".edit-remove-product-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+					this._syncEditDraftQuantities();
+
+					this.editDraft.producten =
+						this.editDraft.producten.filter(
+							item => item.productId !== button.dataset.productId
+						);
+
+					this.render(this.reservations);
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".edit-add-product-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+					const select =
+						this.container.querySelector(".edit-add-product-select");
+
+					const productId = select?.value;
+
+					if (!productId) {
+						return;
+					}
+
+					const product =
+						this.allProducts.find(item => item.id === productId);
+
+					if (!product) {
+						return;
+					}
+
+					this._syncEditDraftQuantities();
+
+					this.editDraft.producten.push({
+						productId: product.id,
+						naam: product.naam,
+						quantity: 1
+					});
+
+					this.render(this.reservations);
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".cancel-edit-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+					this.editingId = null;
+					this.editDraft = null;
+
+					this.render(this.reservations);
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".save-edit-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+					this.handleSaveEdit(
+						button.dataset.id,
+						button
+					);
+
+				}
+			);
+
+
+		});
+
+
 	}
+
+
+
+
+	_syncEditDraftQuantities() {
+
+		if (!this.editDraft) {
+			return;
+		}
+
+		this.container
+			.querySelectorAll(".edit-qty-input")
+			.forEach(input => {
+
+				const item =
+					this.editDraft.producten.find(
+						product => product.productId === input.dataset.productId
+					);
+
+				if (item) {
+
+					const quantity = parseInt(input.value, 10);
+
+					item.quantity =
+						Number.isFinite(quantity) && quantity > 0
+							? quantity
+							: 1;
+
+				}
+
+			});
+
+	}
+
+
+
+
+	toggleEdit(id) {
+
+		if (this.editingId === id) {
+
+			this.editingId = null;
+			this.editDraft = null;
+
+		}
+		else {
+
+			const reservation =
+				this.reservations?.find(item => item.id === id);
+
+			if (!reservation) {
+				return;
+			}
+
+			this.editingId = id;
+
+			this.editDraft = {
+				startDatum: reservation.startDatum,
+				eindDatum: reservation.eindDatum,
+				producten: (reservation.producten ?? []).map(item => ({
+					productId: item.productId,
+					naam: item.productNaamSnapshot,
+					quantity: item.quantity
+				}))
+			};
+
+		}
+
+		this.render(this.reservations);
+
+	}
+
+
+
+
+	async handleSaveEdit(id, element) {
+
+		this._syncEditDraftQuantities();
+
+		const startDatum =
+			this.container.querySelector(".edit-start-date")?.value;
+
+		const eindDatum =
+			this.container.querySelector(".edit-end-date")?.value;
+
+		const errorEl =
+			this.container.querySelector(".edit-error");
+
+		if (errorEl) {
+			errorEl.hidden = true;
+		}
+
+		if (!startDatum || !eindDatum || startDatum > eindDatum) {
+
+			if (errorEl) {
+
+				errorEl.textContent = "Kies een geldige periode.";
+				errorEl.hidden = false;
+
+			}
+
+			return;
+
+		}
+
+		if (!this.editDraft.producten || this.editDraft.producten.length === 0) {
+
+			if (errorEl) {
+
+				errorEl.textContent = "Kies minstens één product.";
+				errorEl.hidden = false;
+
+			}
+
+			return;
+
+		}
+
+		try {
+
+			element.disabled = true;
+
+			if (this.onEditDetails) {
+
+				await this.onEditDetails(id, {
+					startDatum,
+					eindDatum,
+					producten: this.editDraft.producten.map(item => ({
+						productId: item.productId,
+						quantity: item.quantity
+					}))
+				});
+
+			}
+
+			this.editingId = null;
+			this.editDraft = null;
+
+			this.render(this.reservations);
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Reservatie bewerken mislukt:",
+				error
+			);
+
+
+			if (errorEl) {
+
+				errorEl.textContent = `Kon wijzigingen niet opslaan: ${error.message}`;
+				errorEl.hidden = false;
+
+			}
+
+			element.disabled = false;
+
+			return;
+
+		}
+
+	}
+
+
 
 
 
@@ -907,7 +1503,7 @@ export class ReservationList {
 
 
 
-	async handleMarkPaid(id, element) {
+	async handleMarkPaid(id, element, paid) {
 
 		try {
 
@@ -917,7 +1513,7 @@ export class ReservationList {
 
 			if (this.onMarkPaid) {
 
-				await this.onMarkPaid(id);
+				await this.onMarkPaid(id, paid);
 
 			}
 
@@ -927,13 +1523,13 @@ export class ReservationList {
 
 
 			console.error(
-				"Markeren als betaald mislukt:",
+				"Betaalstatus aanpassen mislukt:",
 				error
 			);
 
 
 			alert(
-				`Kon niet als betaald markeren: ${error.message}`
+				`Kon betaalstatus niet aanpassen: ${error.message}`
 			);
 
 
@@ -955,7 +1551,7 @@ export class ReservationList {
 
 		const akkoord =
 			confirm(
-				"Weet je zeker dat je deze voltooide reservatie permanent wilt verwijderen? Dit kan niet ongedaan gemaakt worden."
+				"Weet je zeker dat je deze reservatie permanent wilt verwijderen? Dit kan niet ongedaan gemaakt worden."
 			);
 
 
@@ -994,6 +1590,125 @@ export class ReservationList {
 
 			element.disabled = false;
 
+
+		}
+
+	}
+
+
+
+
+	async handleUpdateNotes(id, notes, element) {
+
+		try {
+
+			element.disabled = true;
+
+			if (this.onUpdateNotes) {
+
+				await this.onUpdateNotes(id, notes);
+
+			}
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Notitie opslaan mislukt:",
+				error
+			);
+
+
+			alert(
+				`Kon notitie niet opslaan: ${error.message}`
+			);
+
+
+		}
+		finally {
+
+			element.disabled = false;
+
+		}
+
+	}
+
+
+
+
+	async handleResendConfirmation(id, element) {
+
+		try {
+
+			element.disabled = true;
+
+			if (this.onResendConfirmation) {
+
+				await this.onResendConfirmation(id);
+
+			}
+
+			alert("Bevestigingsmail opnieuw verstuurd.");
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Bevestigingsmail opnieuw versturen mislukt:",
+				error
+			);
+
+
+			alert(
+				`Kon bevestigingsmail niet opnieuw versturen: ${error.message}`
+			);
+
+
+		}
+		finally {
+
+			element.disabled = false;
+
+		}
+
+	}
+
+
+
+
+	async handleResetContract(id, element) {
+
+		try {
+
+			element.disabled = true;
+
+			if (this.onResetContract) {
+
+				await this.onResetContract(id);
+
+			}
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Handtekening resetten mislukt:",
+				error
+			);
+
+
+			alert(
+				`Kon handtekening niet resetten: ${error.message}`
+			);
+
+
+		}
+		finally {
+
+			element.disabled = false;
 
 		}
 

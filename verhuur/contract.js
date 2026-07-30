@@ -7,8 +7,8 @@ import { downloadContractPdf } from "../src/shared/contractPdf.js";
 const container =
 	document.getElementById("contract-content");
 
-const reservationId =
-	new URLSearchParams(window.location.search).get("id");
+const accessToken =
+	new URLSearchParams(window.location.search).get("token");
 
 
 
@@ -201,8 +201,6 @@ function renderContract(reservation) {
 
 function setupSignaturePad(reservation) {
 
-	const id = reservation.id;
-
 	const canvas =
 		document.getElementById("signature-pad");
 
@@ -334,7 +332,7 @@ function setupSignaturePad(reservation) {
 					await supabase.rpc(
 						"sign_reservation_contract",
 						{
-							p_id: id,
+							p_token: accessToken,
 							p_signature_data: signatureData,
 							p_contract_snapshot: contractSnapshot
 						}
@@ -377,9 +375,9 @@ function setupSignaturePad(reservation) {
 
 async function load() {
 
-	if (!reservationId) {
+	if (!accessToken) {
 
-		renderError("Geen reservatie opgegeven.");
+		renderError("Geen geldige contractlink opgegeven.");
 
 		return;
 
@@ -388,7 +386,7 @@ async function load() {
 	const { data, error } =
 		await supabase.rpc(
 			"get_reservation_for_contract",
-			{ p_id: reservationId }
+			{ p_token: accessToken }
 		);
 
 	if (error) {

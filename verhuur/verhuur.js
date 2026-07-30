@@ -490,8 +490,23 @@ async function submitReservation() {
 
 
 
+	const privacyAcknowledged =
+		document
+			.getElementById("privacy-ack")
+			.checked;
+
+
 	const validationErrors =
 		validateReservationInput(reservation);
+
+
+	if (!privacyAcknowledged) {
+
+		validationErrors.push(
+			"Bevestig dat je de privacyverklaring hebt gelezen."
+		);
+
+	}
 
 
 	if (validationErrors.length > 0) {
@@ -506,6 +521,14 @@ async function submitReservation() {
 
 	}
 
+
+
+	const submitButton =
+		document.getElementById("submit-reservation");
+
+	if (submitButton) {
+		submitButton.disabled = true;
+	}
 
 
 	try {
@@ -546,8 +569,14 @@ async function submitReservation() {
 
 
 		alert(
-			"Reservatie kon niet worden verstuurd."
+			error?.message
+				? `Reservatie kon niet worden verstuurd: ${error.message}`
+				: "Reservatie kon niet worden verstuurd."
 		);
+
+		if (submitButton) {
+			submitButton.disabled = false;
+		}
 
 
 	}

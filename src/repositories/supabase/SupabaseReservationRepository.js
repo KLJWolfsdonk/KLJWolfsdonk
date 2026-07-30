@@ -79,6 +79,7 @@ function mapReservation(row) {
 		contractSignedAt: row.contract_signed_at ?? null,
 		contractSignatureData: row.contract_signature_data ?? null,
 		contractSnapshot: row.contract_snapshot ?? null,
+		accessToken: row.access_token ?? null,
 
 
 
@@ -216,48 +217,35 @@ export class SupabaseReservationRepository {
 
 
 
-	async create(reservation) {
+	/**
+	 * Creates a reservation via the create_reservation() RPC, which looks
+	 * up current prices/deposit/stock in `products` itself and computes
+	 * every total server-side — the caller can only choose products,
+	 * quantities, dates, and contact details, never a price. See
+	 * sql/secure_reservation_creation.sql.
+	 */
+	async create(input) {
 
+		const { data, error } = await supabase
+			.rpc('create_reservation', {
 
-		const { data: reservationData, error } = await supabase
-			.from('reservations')
-			.insert({
+				p_klant: input.klant,
+				p_email: input.email,
+				p_telefoon: input.telefoon,
+				p_adres: input.adres ?? {},
 
-				customer_id: reservation.customerId,
+				p_start_date: input.startDatum,
+				p_end_date: input.eindDatum,
 
-				status: reservation.status,
+				p_opmerkingen: input.opmerkingen ?? null,
 
+				p_producten:
+					(input.producten ?? []).map(item => ({
+						productId: item.productId,
+						quantity: item.quantity ?? 1
+					}))
 
-				start_date: reservation.startDatum,
-
-				end_date: reservation.eindDatum,
-
-
-				remarks: reservation.opmerkingen,
-
-				admin_notes: reservation.adminNotities,
-
-
-
-				subtotal: reservation.prijs.subtotaal,
-
-				discount: reservation.prijs.korting,
-
-				total: reservation.prijs.totaal,
-
-				currency: reservation.prijs.valuta,
-
-
-
-				deposit_total: reservation.waarborg.totaal,
-
-
-				version: reservation.versie
-
-			})
-			.select('id, created_at, updated_at, version')
-			.single();
-
+			});
 
 
 		if (error) {
@@ -265,95 +253,7 @@ export class SupabaseReservationRepository {
 		}
 
 
-
-
-		const items =
-			reservation.producten.map(product => ({
-
-				reservation_id: reservationData.id,
-
-
-				product_id: product.productId,
-
-
-				product_name: product.productNaamSnapshot,
-
-				category: product.categorieSnapshot,
-
-
-				quantity: product.quantity,
-
-
-				price_per_day: product.prijsPerDagSnapshot,
-
-				deposit_per_item: product.waarborgPerStukSnapshot,
-
-
-				line_total: product.linePrijs,
-
-				line_deposit: product.lineWaarborg,
-
-
-				active: true
-
-			}));
-
-
-
-
-		const { error: itemError } = await supabase
-			.from('reservation_items')
-			.insert(items);
-
-
-
-		if (itemError) {
-			throw itemError;
-		}
-
-
-
-		/*
-			Anonymous visitors can't SELECT the full reservations/customers
-			rows (RLS), so the confirmation is built from data we already
-			know client-side plus the few server-generated fields above,
-			instead of re-fetching the row we just created.
-		*/
-		return mapReservation({
-
-			id: reservationData.id,
-			customer_id: reservation.customerId,
-
-			status: reservation.status,
-
-			start_date: reservation.startDatum,
-			end_date: reservation.eindDatum,
-
-			remarks: reservation.opmerkingen,
-			admin_notes: reservation.adminNotities,
-
-			subtotal: reservation.prijs.subtotaal,
-			discount: reservation.prijs.korting,
-			total: reservation.prijs.totaal,
-			currency: reservation.prijs.valuta,
-
-			deposit_total: reservation.waarborg.totaal,
-			deposit_status: reservation.waarborg.status,
-
-			version: reservationData.version,
-			created_at: reservationData.created_at,
-			updated_at: reservationData.updated_at,
-
-			customers: {
-				id: reservation.customerId,
-				name: reservation.klant,
-				email: reservation.email,
-				phone: reservation.telefoon
-			},
-
-			reservation_items: items
-
-		});
+		return mapReservation(data);
 
 	}
 
@@ -362,36 +262,25 @@ export class SupabaseReservationRepository {
 
 	/**
 	 * Lightweight, non-sensitive data for computing public availability:
-	 * no customer info, pricing, or admin fields — safe for anonymous reads.
+	 * no reservation id, customer info, pricing, or admin fields — safe for
+	 * anonymous reads. Goes through a SECURITY DEFINER RPC rather than a
+	 * direct table select, since anon has no direct SELECT grant on
+	 * `reservations`/`reservation_items` (see sql/security_hardening.sql).
 	 */
 	async getAllForAvailability() {
 
 		const { data, error } = await supabase
-			.from('reservations')
-			.select(`
-				id,
-				status,
-				start_date,
-				end_date,
-				reservation_items!reservation_items_reservation_id_fkey (
-					product_id,
-					quantity
-				)
-			`);
+			.rpc('get_availability');
 
 		if (error) {
 			throw error;
 		}
 
-		return data.map(row => ({
-			id: row.id,
+		return (data ?? []).map(row => ({
 			status: row.status,
-			startDatum: row.start_date,
-			eindDatum: row.end_date,
-			producten: (row.reservation_items ?? []).map(item => ({
-				productId: item.product_id,
-				quantity: item.quantity
-			}))
+			startDatum: row.startDatum,
+			eindDatum: row.eindDatum,
+			producten: row.producten ?? []
 		}));
 
 	}
@@ -435,7 +324,12 @@ export class SupabaseReservationRepository {
 				id,
 				name,
 				email,
-				phone
+				phone,
+				street,
+				house_number,
+				postal_code,
+				city,
+				country
 			),
 			reservation_items!reservation_items_reservation_id_fkey (
 				*
@@ -464,6 +358,52 @@ export class SupabaseReservationRepository {
 
 
 
+
+
+
+
+	/**
+	 * Clears a placed signature so the renter can sign again (e.g. the wrong
+	 * person signed, or a mistake was found afterwards). The reservation's
+	 * access_token doesn't change, so their original contract link keeps
+	 * working for the new signature.
+	 */
+	async resetContract(id) {
+
+		const { data, error } = await supabase
+			.from('reservations')
+			.update({
+				contract_signed_at: null,
+				contract_signature_data: null,
+				contract_snapshot: null
+			})
+			.eq('id', id)
+			.select(`
+				*,
+				customers (
+					id,
+					name,
+					email,
+					phone,
+					street,
+					house_number,
+					postal_code,
+					city,
+					country
+				),
+				reservation_items!reservation_items_reservation_id_fkey (
+					*
+				)
+			`)
+			.single();
+
+		if (error) {
+			throw error;
+		}
+
+		return mapReservation(data);
+
+	}
 
 
 

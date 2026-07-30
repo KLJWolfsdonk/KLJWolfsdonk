@@ -125,6 +125,17 @@ h5 {
 	width: 100%;
 }
 
+.field-group--checkbox {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.field-group--checkbox input {
+	width: auto;
+}
+
 .inline-fields input {
 	flex: 1 1 160px;
 }
