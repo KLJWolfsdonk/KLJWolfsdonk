@@ -13,7 +13,8 @@ export class ReservationList {
 		onAddNote = null,
 		onResendConfirmation = null,
 		onResetContract = null,
-		onEditDetails = null
+		onEditDetails = null,
+		onUpdateDepositStatus = null
 	) {
 
 		this.container = container;
@@ -24,6 +25,7 @@ export class ReservationList {
 		this.onResendConfirmation = onResendConfirmation;
 		this.onResetContract = onResetContract;
 		this.onEditDetails = onEditDetails;
+		this.onUpdateDepositStatus = onUpdateDepositStatus;
 
 		this.allProducts = [];
 		this.editingId = null;
@@ -146,6 +148,10 @@ export class ReservationList {
 								:
 								"Contract niet getekend"
 							}
+						</span>
+
+						<span class="status deposit-${reservation.waarborg?.status === "teruggegeven" ? "returned" : "open"}">
+							${reservation.waarborg?.status === "teruggegeven" ? "Waarborg teruggegeven" : "Waarborg open"}
 						</span>
 
 
@@ -645,6 +651,40 @@ export class ReservationList {
 
 
                     ${
+                        (reservation.waarborg?.totaal ?? 0) > 0
+                        ?
+                        (
+                            reservation.waarborg?.status === "teruggegeven"
+                            ?
+                            `
+
+                            <button
+                                class="mark-deposit-open-btn"
+                                data-id="${reservation.id}"
+                            >
+                                Markeer waarborg als open
+                            </button>
+
+                            `
+                            :
+                            `
+
+                            <button
+                                class="mark-deposit-returned-btn"
+                                data-id="${reservation.id}"
+                            >
+                                Markeer waarborg als teruggegeven
+                            </button>
+
+                            `
+                        )
+                        :
+                        ""
+                    }
+
+
+
+                    ${
                         reservation.contractSignedAt
                         ?
                         `
@@ -997,6 +1037,67 @@ export class ReservationList {
 						button.dataset.id,
 						button,
 						false
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".mark-deposit-returned-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					this.handleUpdateDepositStatus(
+						button.dataset.id,
+						button,
+						"teruggegeven"
+					);
+
+
+				}
+			);
+
+
+		});
+
+
+
+
+		this.container
+		.querySelectorAll(".mark-deposit-open-btn")
+		.forEach(button => {
+
+
+			button.addEventListener(
+				"click",
+				() => {
+
+
+					const akkoord =
+						confirm(
+							"Weet je zeker dat je deze waarborg terug als open wilt markeren?"
+						);
+
+					if (!akkoord) {
+						return;
+					}
+
+					this.handleUpdateDepositStatus(
+						button.dataset.id,
+						button,
+						"open"
 					);
 
 
@@ -1554,6 +1655,50 @@ export class ReservationList {
 
 			alert(
 				`Kon betaalstatus niet aanpassen: ${error.message}`
+			);
+
+
+		}
+		finally {
+
+
+			element.disabled = false;
+
+
+		}
+
+	}
+
+
+
+
+	async handleUpdateDepositStatus(id, element, status) {
+
+		try {
+
+
+			element.disabled = true;
+
+
+			if (this.onUpdateDepositStatus) {
+
+				await this.onUpdateDepositStatus(id, status);
+
+			}
+
+
+		}
+		catch (error) {
+
+
+			console.error(
+				"Waarborgstatus aanpassen mislukt:",
+				error
+			);
+
+
+			alert(
+				`Kon waarborgstatus niet aanpassen: ${error.message}`
 			);
 
 

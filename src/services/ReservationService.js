@@ -245,6 +245,49 @@ export class ReservationService {
 
 
 
+	/**
+	 * Changes dates/products on an existing reservation. Unlike update(),
+	 * this doesn't recompute anything client-side — it hands off straight
+	 * to update_reservation_details() (see sql/update_reservation_details.sql),
+	 * which is the only place that actually re-validates stock/overlap for
+	 * the new period and persists the new reservation_items/totals.
+	 */
+	async updateDetails(id, { startDatum, eindDatum, producten }) {
+
+		if (!startDatum || !eindDatum || startDatum > eindDatum) {
+
+			throw new Error('Kies een geldige periode.');
+
+		}
+
+		if (!Array.isArray(producten) || producten.length === 0) {
+
+			throw new Error('Kies minstens één product.');
+
+		}
+
+		return this.reservations.updateDetails(id, { startDatum, eindDatum, producten });
+
+	}
+
+
+
+
+	async updateDepositStatus(id, status) {
+
+		if (status !== 'open' && status !== 'teruggegeven') {
+
+			throw new Error('Ongeldige waarborgstatus.');
+
+		}
+
+		return this.reservations.updateDepositStatus(id, status);
+
+	}
+
+
+
+
 
 
 

@@ -321,20 +321,15 @@ function setupSignaturePad(reservation) {
 				const signatureData =
 					canvas.toDataURL("image/png");
 
-				const contractSnapshot = {
-					...reservation,
-					termsVersion: CONTRACT_TERMS_VERSION,
-					termsArticles: CONTRACT_ARTICLES,
-					generatedAt: new Date().toISOString()
-				};
-
 				const { data, error } =
 					await supabase.rpc(
 						"sign_reservation_contract",
 						{
 							p_token: accessToken,
 							p_signature_data: signatureData,
-							p_contract_snapshot: contractSnapshot
+							p_terms_version: CONTRACT_TERMS_VERSION,
+							p_terms_articles: CONTRACT_ARTICLES,
+							p_generated_at: new Date().toISOString()
 						}
 					);
 
@@ -346,7 +341,7 @@ function setupSignaturePad(reservation) {
 					...reservation,
 					contractSignedAt: data.contractSignedAt,
 					contractSignatureData: signatureData,
-					contractSnapshot
+					contractSnapshot: data.contractSnapshot
 				});
 
 			}

@@ -368,9 +368,24 @@ reservationList =
 		async (id, changes) => {
 
 
-			await reservationService.update(
+			await reservationService.updateDetails(
 				id,
 				changes
+			);
+
+
+			await loadReservations();
+
+
+		},
+
+
+		async (id, status) => {
+
+
+			await reservationService.updateDepositStatus(
+				id,
+				status
 			);
 
 

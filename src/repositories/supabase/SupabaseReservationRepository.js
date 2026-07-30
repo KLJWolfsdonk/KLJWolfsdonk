@@ -337,15 +337,13 @@ export class SupabaseReservationRepository {
 	async update(id, reservation) {
 
 
+	const currentVersion = reservation.versie ?? 1;
+
 	const { data, error } = await supabase
 		.from('reservations')
 		.update({
 
 			status: reservation.status,
-
-			start_date: reservation.startDatum,
-
-			end_date: reservation.eindDatum,
 
 
 			remarks: reservation.opmerkingen,
@@ -358,10 +356,11 @@ export class SupabaseReservationRepository {
 			paid_at: reservation.betaling?.betaaldAt ?? null,
 
 
-			version: (reservation.versie ?? 1) + 1
+			version: currentVersion + 1
 
 		})
 		.eq('id', id)
+		.eq('version', currentVersion)
 		.select(`
 			*,
 			customers (
@@ -393,6 +392,18 @@ export class SupabaseReservationRepository {
 			error
 		);
 
+		// PGRST116 = ".single()" matched zero rows, which (since `id` alone
+		// would otherwise match exactly one row) means the `version` guard
+		// above is what excluded it: someone else updated this reservation
+		// first and `reservation.versie` is stale.
+		if (error.code === 'PGRST116') {
+
+			throw new Error(
+				'Deze reservatie is ondertussen door iemand anders gewijzigd. Herlaad de pagina en probeer opnieuw.'
+			);
+
+		}
+
 		throw error;
 
 	}
@@ -405,6 +416,67 @@ export class SupabaseReservationRepository {
 
 
 
+
+
+
+
+	/**
+	 * Changes a reservation's dates and/or product lines via the
+	 * update_reservation_details() RPC, which re-validates stock/overlap
+	 * against every OTHER reservation for the new period and rewrites
+	 * reservation_items/totals server-side — see
+	 * sql/update_reservation_details.sql. Admin-only (authenticated).
+	 */
+	async updateDetails(id, { startDatum, eindDatum, producten }) {
+
+		const { error: rpcError } = await supabase
+			.rpc('update_reservation_details', {
+
+				p_reservation_id: id,
+
+				p_start_date: startDatum,
+
+				p_end_date: eindDatum,
+
+				p_producten:
+					(producten ?? []).map(item => ({
+						productId: item.productId,
+						quantity: item.quantity ?? 1
+					}))
+
+			});
+
+		if (rpcError) {
+			throw rpcError;
+		}
+
+		return this.getById(id);
+
+	}
+
+
+
+
+	/**
+	 * Sets the deposit's status ('open' or 'teruggegeven') — the only field
+	 * this touches, no pricing/version implications.
+	 */
+	async updateDepositStatus(id, status) {
+
+		const { error: updateError } = await supabase
+			.from('reservations')
+			.update({
+				deposit_status: status
+			})
+			.eq('id', id);
+
+		if (updateError) {
+			throw updateError;
+		}
+
+		return this.getById(id);
+
+	}
 
 
 
