@@ -36,6 +36,20 @@ const filterSelect =
 	);
 
 
+
+const paymentFilterSelect =
+	document.getElementById(
+		"reservation-payment-filter"
+	);
+
+
+
+const contractFilterSelect =
+	document.getElementById(
+		"reservation-contract-filter"
+	);
+
+
 const logoutButton =
 	document.getElementById(
 		"logout-button"
@@ -142,6 +156,16 @@ function renderFiltered(){
 
 
 
+	const paymentFilter =
+		paymentFilterSelect.value;
+
+
+
+	const contractFilter =
+		contractFilterSelect.value;
+
+
+
 
 	let filtered =
 		allReservations.filter(
@@ -171,9 +195,39 @@ function renderFiltered(){
 
 
 
+				const isPaid =
+					reservation.betaling?.status === "paid";
+
+
+
+				const matchesPayment =
+					paymentFilter === "alle"
+					||
+					(paymentFilter === "betaald" && isPaid)
+					||
+					(paymentFilter === "niet-betaald" && !isPaid);
+
+
+
+				const isSigned =
+					Boolean(reservation.contractSignedAt);
+
+
+
+				const matchesContract =
+					contractFilter === "alle"
+					||
+					(contractFilter === "getekend" && isSigned)
+					||
+					(contractFilter === "niet-getekend" && !isSigned);
+
+
+
 				return (
 					matchesSearch &&
-					matchesStatus
+					matchesStatus &&
+					matchesPayment &&
+					matchesContract
 				);
 
 			}
@@ -339,6 +393,20 @@ searchInput.addEventListener(
 
 
 filterSelect.addEventListener(
+	"change",
+	renderFiltered
+);
+
+
+
+paymentFilterSelect.addEventListener(
+	"change",
+	renderFiltered
+);
+
+
+
+contractFilterSelect.addEventListener(
 	"change",
 	renderFiltered
 );
