@@ -1,0 +1,32 @@
+name: Keep Supabase awake
+
+# Supabase free-tier projects auto-pause after 7 days with no API activity.
+# The site is static (GitHub Pages) and only ever gets pinged when a visitor
+# loads a page, so a quiet week pauses the database and the whole site stops
+# working. This just makes a real read request against the REST API often
+# enough that Supabase never sees 7 idle days.
+#
+# The key below is the "publishable" anon key already embedded client-side
+# in src/shared/config.js — it's meant to be public (that's how every
+# visitor's browser already uses it) and is not a secret, so it doesn't need
+# to be a GitHub Actions secret.
+
+on:
+  schedule:
+    - cron: "0 6 */3 * *" # every 3 days at 06:00 UTC — well under the 7-day pause window
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query a public table
+        env:
+          SUPABASE_URL: https://zlzluhqycboyxyvsbsmy.supabase.co
+          SUPABASE_ANON_KEY: sb_publishable_ixhvo5M26RhzBMJYxOAO3A_d1_xvnO3
+        run: |
+          curl -sf \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+            "$SUPABASE_URL/rest/v1/products?select=id&limit=1" \
+            -o /dev/null -w "Supabase responded: HTTP %{http_code}\n"

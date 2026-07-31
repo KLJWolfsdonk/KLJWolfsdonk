@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+KLJ Wolfsdonk Admin | Navigatie
+</title>
+
+<link rel="stylesheet" href="./admin.css">
+
+<script type="module" src="./navigation.js"></script>
+
+</head>
+
+
+<body>
+
+<main class="admin-shell">
+
+<header class="hero card">
+<div class="hero-actions">
+<div>
+<p class="eyebrow">KLJ Wolfsdonk</p>
+<h1>Navigatie</h1>
+<p>Beheer de links in de navigatiebalk van de website.</p>
+</div>
+<div class="hero-nav">
+<a href="./pages.html" class="ghost-button">Pagina's</a>
+<a href="./index.html" class="ghost-button">Reservaties</a>
+<a href="./products.html" class="ghost-button">Producten</a>
+<a href="./signature.html" class="ghost-button">Handtekening</a>
+<button type="button" id="logout-button" class="ghost-button" hidden>Uitloggen</button>
+</div>
+</div>
+</header>
+
+
+<section class="card">
+
+<p>
+	Het "Leiding"-dropdownmenu is een vast onderdeel van de navigatiebalk en
+	staat niet in onderstaande lijst &mdash; die kan hier niet aangepast worden.
+</p>
+
+<h2>Nieuw navigatie-item</h2>
+
+<form id="nav-form">
+
+	<div class="inline-fields">
+
+		<label class="field-group">
+			<span>Label</span>
+			<input id="new-label" required>
+		</label>
+
+		<label class="field-group">
+			<span>Link (bv. #nieuws of https://...)</span>
+			<input id="new-href" required>
+		</label>
+
+		<label class="field-group field-group--checkbox">
+			<input type="checkbox" id="new-visible" checked>
+			<span>Zichtbaar</span>
+		</label>
+
+	</div>
+
+	<div style="height: 1.25rem;"></div>
+
+	<p id="nav-form-error" class="error-message" hidden></p>
+
+	<button type="submit" class="ghost-button">Toevoegen</button>
+
+</form>
+
+</section>
+
+
+<div id="nav-manager-list"></div>
+
+</main>
+
+
+</body>
+
+</html>

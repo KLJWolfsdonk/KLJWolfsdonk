@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+KLJ Wolfsdonk Admin | Contact
+</title>
+
+<link rel="stylesheet" href="./admin.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css">
+
+<script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+<script type="module" src="./contact.js"></script>
+
+</head>
+
+
+<body>
+
+<main class="admin-shell">
+
+<header class="hero card">
+<div class="hero-actions">
+<div>
+<p class="eyebrow">KLJ Wolfsdonk</p>
+<h1>Contact</h1>
+<p>Beheer de contactgegevens en het clublokaal-adres.</p>
+</div>
+<div class="hero-nav">
+<a href="./pages.html" class="ghost-button">Pagina's</a>
+<a href="./index.html" class="ghost-button">Reservaties</a>
+<a href="./products.html" class="ghost-button">Producten</a>
+<a href="./navigation.html" class="ghost-button">Navigatie</a>
+<a href="./signature.html" class="ghost-button">Handtekening</a>
+<button type="button" id="logout-button" class="ghost-button" hidden>Uitloggen</button>
+</div>
+</div>
+</header>
+
+
+<section class="card">
+
+<h2>Adres</h2>
+
+<p>
+	Dit adres wordt gebruikt voor de kaart op zowel de Contact-pagina als het "Praktisch"-tabblad van de Over-pagina.
+</p>
+
+<form id="settings-form">
+
+	<label class="field-group">
+		<span>Locatie adres</span>
+		<input id="locatie-adres" placeholder="Straat, postcode gemeente">
+	</label>
+
+	<div style="height: 1.25rem;"></div>
+
+	<p id="settings-form-error" class="error-message" hidden></p>
+
+	<button type="submit" class="ghost-button">Opslaan</button>
+
+</form>
+
+</section>
+
+
+<section class="card">
+
+<h2>Contactgegevens</h2>
+
+<form id="intro-form">
+
+	<label class="field-group">
+		<span>Titel</span>
+		<input id="intro-title">
+	</label>
+
+	<div style="height: 1rem;"></div>
+
+	<div id="intro-editor"></div>
+
+	<div style="height: 1.25rem;"></div>
+
+	<p id="intro-error" class="error-message" hidden></p>
+
+	<button type="submit" class="ghost-button">Opslaan</button>
+
+</form>
+
+</section>
+
+</main>
+
+
+</body>
+
+</html>

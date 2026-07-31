@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>
+KLJ Wolfsdonk Admin | Foto's
+</title>
+
+<link rel="stylesheet" href="./admin.css">
+
+<script type="module" src="./fotos.js"></script>
+
+</head>
+
+
+<body>
+
+<main class="admin-shell">
+
+<header class="hero card">
+<div class="hero-actions">
+<div>
+<p class="eyebrow">KLJ Wolfsdonk</p>
+<h1>Foto's</h1>
+<p>Beheer de fotoalbums op de Foto's-pagina.</p>
+</div>
+<div class="hero-nav">
+<a href="./pages.html" class="ghost-button">Pagina's</a>
+<a href="./index.html" class="ghost-button">Reservaties</a>
+<a href="./products.html" class="ghost-button">Producten</a>
+<a href="./navigation.html" class="ghost-button">Navigatie</a>
+<a href="./signature.html" class="ghost-button">Handtekening</a>
+<button type="button" id="logout-button" class="ghost-button" hidden>Uitloggen</button>
+</div>
+</div>
+</header>
+
+
+<section class="card">
+
+<h2>Nieuw album</h2>
+
+<form id="album-form">
+
+	<label class="field-group">
+		<span>Titel</span>
+		<input id="new-album-titel" required placeholder="bv. Kamp Wolfsdonk 2026">
+	</label>
+
+	<div style="height: 1rem;"></div>
+
+	<label class="field-group">
+		<span>Omslagfoto</span>
+		<input id="new-album-afbeelding" type="file" accept="image/*" required>
+	</label>
+
+	<div style="height: 1rem;"></div>
+
+	<label class="field-group">
+		<span>Link (bv. Google Photos album)</span>
+		<input id="new-album-link" type="url" placeholder="https://photos.app.goo.gl/...">
+	</label>
+
+	<div style="height: 1.25rem;"></div>
+
+	<p id="album-form-error" class="error-message" hidden></p>
+
+	<button type="submit" class="ghost-button">Toevoegen</button>
+
+</form>
+
+</section>
+
+
+<div id="album-list"></div>
+
+</main>
+
+
+</body>
+
+</html>

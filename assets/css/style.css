@@ -200,3 +200,33 @@ padding:5px;
         max-width: 1200px;
     }
 }
+
+/*  NIEUWS / POSTS  */
+.post-card {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(68, 68, 68, 0.12);
+}
+.post-card:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.post-card-cover {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    margin: 0 auto 15px auto;
+    border-radius: 6px;
+}
+.post-card-date {
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+.post-card-content img {
+    max-width: 100%;
+    height: auto;
+}

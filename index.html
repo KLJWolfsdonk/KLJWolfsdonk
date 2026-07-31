@@ -76,7 +76,7 @@
 								<span class="navbar-toggler-icon"></span>
 							</button>
 							<div class="navbar-collapse collapse show" id="navbarSupportedContent">
-								<ul class="navbar-nav mr-auto">
+								<ul class="navbar-nav mr-auto" id="navbar-nav-list">
 									<li class="nav-item active">
 										<a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
 									</li>
@@ -187,6 +187,12 @@
 								<li>11/07-21/07/2026: Kamp</li>
 							</ul>
 
+							<h4><strong>Nieuws</strong></h4>
+							<hr />
+							<div id="posts-list">
+								<p class="text-muted">Nieuws laden...</p>
+							</div>
+
 							<!--<p>
 								
 							
@@ -215,33 +221,34 @@
 						<div id="kamp" class="page">
 							<h2><strong>Kamp 2026 </strong></h2>
 
-							<!--<img src="assets/img/images/kamp_2024_flyer.png" style="width: 70%; height: 70%; margin-left: 15%; margin-bottom: 5%;">-->
-							<p>Kamp 2026:
-								 Wolven, girrys: 12/07-17/07
-								 Squirrels, skunks, wapsis: 12/07-19/07
-								 Aspis: 12/07-21/07 (gaan met de leiding jaar huis)
-								 Hebben jullie er al zin in? Wij ook! Om al in de sfeer te komen kan je de aftermovies van vorige jaren hier al bekijken!
-								</p>
-							<h4>Inschrijvingslink</h4>
-							<p>
-								Je kan je inschrijven voor het kamp van 2026 via
-								<a href="https://docs.google.com/forms/d/e/1FAIpQLScPLHq_gdkAbOYySMIglBnunh1Tosmz_yS1VLbCAbkegrSMMw/viewform?usp=dialog" 
-								target="_blank"
-								rel="noopener noreferrer"
-								title="Inschrijvingsformulier"> deze link!</a>
-							</p>
+							<div id="kamp-posts-list">
+								<p class="text-muted">Nieuws laden...</p>
+							</div>
 
-							<h4>Kampboekje</h4>
-							<p>
-								Alle praktische informatie over het kamp van 2026 kan je terugvinden in het kampboekje dat je <a href="assets/bijlagen/kampboekje 2026.pdf" download>
-									hier</a> kan downloaden.
+							<!--<img src="assets/img/images/kamp_2024_flyer.png" style="width: 70%; height: 70%; margin-left: 15%; margin-bottom: 5%;">-->
+							<div id="kamp-description">
+								<p class="text-muted">Beschrijving laden...</p>
+							</div>
+
+							<h4>Inschrijvingslink</h4>
+							<div id="kamp-registration-link">
+								<p class="text-muted">Inschrijvingslink laden...</p>
+							</div>
+
+							<h4>Documenten</h4>
+							<div id="kamp-documents-list">
+								<p class="text-muted">Documenten laden...</p>
+							</div>
 
 							<h4>Locatie</h4>
-							<p>Dit jaar verblijven we bij Scouts Mastentop-eisden. Het adres is: z/n, Wipstraat, 3630 Maasmechelen.</p>
-							<iframe width="100%" height="400" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2511.2521408745642!2d5.6981028770032!3d50.99301264814998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0c4f937b9dc6f%3A0x4c5bcfdf76b6112d!2sScouts%20Mastentop%20Eisden!5e0!3m2!1snl!2sbe!4v1779794972681!5m2!1snl!2sbe" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+							<div id="kamp-map">
+								<p class="text-muted">Locatie laden...</p>
+							</div>
+
 							<h4>Aftermovie</h4>
-							<br><br>
-							<iframe width="100%" height="315" src="https://www.youtube.com/embed/tT-Tx5kbatg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+							<div id="kamp-aftermovie">
+								<p class="text-muted">Aftermovie laden...</p>
+							</div>
 
 							<hr />
 							<h5>Tegemoetkoming kampgeld Ziekenfonds</h5>
@@ -253,24 +260,17 @@
 							<br />
 
 							<p>
-								Voor<strong> Christelijke Mutualiteit (CM)</strong>:<br /><a
-									href="https://www.cm.be/diensten-en-voordelen/vakantie-en-vrije-tijd/vrije-tijd/jeugdvereniging.jsp"
+								Voor <strong>Christelijke Mutualiteit (CM)</strong>:<br /><a
+									href="https://www.cm.be/jongeren/op-eigen-benen/cm-voordeel-op-kamp-met-de-jeugdbeweging"
 									target="_blank"
-									>https://www.cm.be/diensten-en-voordelen/vakantie-en-vrije-tijd/vrije-tijd/jeugdvereniging.jsp</a
+									>https://www.cm.be/jongeren/op-eigen-benen/cm-voordeel-op-kamp-met-de-jeugdbeweging</a
 								>
 							</p>
 							<p>
-								Voor <strong>Partena</strong>:<br /><a
-									href="http://www.partena-ziekenfonds.be/nl/ziekenfonds-en-voordelen/voordelen-en-terugbetalingen/kampen-en-meerdaagse-activiteiten"
+								Voor <strong>Helan</strong> (voorheen Partena en OZ, sinds 2022 gefuseerd):<br /><a
+									href="https://www.helan.be/nl/ons-aanbod/ziekenfonds/voordelen-en-terugbetalingen/kampen-en-meerdaagse-activiteiten/"
 									target="_blank"
-									>http://www.partena-ziekenfonds.be/nl/ziekenfonds-en-voordelen/voordelen-en-terugbetalingen/kampen-en-meerdaagse-activiteiten</a
-								>
-							</p>
-							<p>
-								Voor <strong>Onafhankelijk Ziekenfonds (OZ)</strong>:<br /><a
-									href="https://www.oz.be/vakantie/voordelen/jeugdbewegingskampen"
-									target="_blank"
-									>https://www.oz.be/vakantie/voordelen/jeugdbewegingskampen</a
+									>https://www.helan.be/nl/ons-aanbod/ziekenfonds/voordelen-en-terugbetalingen/kampen-en-meerdaagse-activiteiten/</a
 								>
 							</p>
 							<p>
@@ -282,91 +282,23 @@
 							</p>
 							<p>
 								Voor <strong>Neutraal Ziekenfonds Vlaanderen</strong>:<br /><a
-									href="hhttps://www.nzvl.be/we-helpen-je-graag-met/voordelen-voor-kinderen"
+									href="https://www.nzvl.be/we-helpen-je-graag-met/voordelen-voor-kinderen"
 									target="_blank"
 									>https://www.nzvl.be/we-helpen-je-graag-met/voordelen-voor-kinderen</a
 								>
 							</p>
-							<br />
-							Voor <strong> Socialistische Mutualiteiten</strong>:<br />
 							<p>
-								De Voorzorg Antwerpen:<br /><a
-									href="http://www.devoorzorg.be/antwerpen/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/jongerenvoordeel/Pages/Jeugdbeweging.aspx"
+								Voor <strong>Solidaris</strong> (voorheen De Voorzorg, Bond Moyson en de Socialistische Mutualiteiten, sinds 2022 gefuseerd) &mdash; kies hieronder je regio:<br /><a
+									href="https://www.solidaris-vlaanderen.be/regiokeuze"
 									target="_blank"
-									>http://www.devoorzorg.be/antwerpen/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/jongerenvoordeel/Pages/Jeugdbeweging.aspx</a
+									>https://www.solidaris-vlaanderen.be/regiokeuze</a
 								>
 							</p>
 							<p>
-								De Voorzorg Limburg:<br /><a
-									href="http://www.devoorzorg.be/limburg/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/sport/Pages/default.aspx"
+								Voor <strong>Liberale Mutualiteit (LM)</strong>:<br /><a
+									href="https://www.lm-ml.be/nl/voordelen-en-diensten"
 									target="_blank"
-									>http://www.devoorzorg.be/limburg/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/sport/Pages/default.aspx</a
-								>
-							</p>
-							<p>
-								Bond Moyson Oost-Vlaanderen:<br /><a
-									href="http://www.bondmoyson.be/ovl/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/jongerenvoordeel/Pages/Speelplein-en-vakanties.aspx"
-									target="_blank"
-									>http://www.bondmoyson.be/ovl/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/jongerenvoordeel/Pages/Speelplein-en-vakanties.aspx</a
-								>
-							</p>
-							<p>
-								Bond Moyson West-Vlaanderen:<br /><a
-									href="http://www.bondmoyson.be/wvl/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/Bos-zee-sneeuwklas-sportkamp-speelpleinwerking/Pages/default.aspx"
-									target="_blank"
-									>http://www.bondmoyson.be/wvl/voordelen-advies/terugbetalingen-ledenvoordelen/terugbetalingen-voordelen/vrije-tijd/Bos-zee-sneeuwklas-sportkamp-speelpleinwerking/Pages/default.aspx</a
-								>
-							</p>
-							Socialistische Mutualiteit Brabant:<br />
-							geen info<br /><br />
-							<spam>Voor <strong>Liberale Mutualiteit</strong>:</spam><br />
-							<p>
-								Antwerpen:<br /><a
-									href="http://www.lm.be/Antwerpen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx"
-									target="_blank"
-									>http://www.lm.be/Antwerpen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx</a
-								>
-							</p>
-							<p>
-								Brabant:<br /><a
-									href="http://www.lm.be/BrabantNL/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/kinder-jongerenvakanties/Pages/DefaultArticle.aspx"
-									target="_blank"
-									>http://www.lm.be/BrabantNL/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/kinder-jongerenvakanties/Pages/DefaultArticle.aspx</a
-								>
-							</p>
-							<p>
-								Limburg:<br /><a
-									href="http://www.lm.be/Limburg/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx"
-									target="_blank"
-									>http://www.lm.be/Limburg/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx</a
-								>
-							</p>
-							<p>
-								Oost-Vlaanderen:<br /><a
-									href="http://www.lm.be/Oost-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/jeugdbeweging/Pages/DefaultArticle.aspx"
-									target="_blank"
-									>http://www.lm.be/Oost-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/jeugdbeweging/Pages/DefaultArticle.aspx</a
-								>
-								<br />
-								en <br />
-								<a
-									href="http://www.lm.be/Oost-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx"
-									target="_blank"
-									>http://www.lm.be/Oost-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx</a
-								>
-							</p>
-							<p>
-								West-Vlaanderen:<br /><a
-									href="http://www.lm.be/West-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx"
-									target="_blank"
-									>http://www.lm.be/West-Vlaanderen/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx</a
-								>
-							</p>
-							<p>
-								Vlaams gewest:<br /><a
-									href="http://www.lm.be/VlaamsGewest/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx"
-									target="_blank"
-									>http://www.lm.be/VlaamsGewest/Rubrieken/Voordelen-en-diensten/Kinderen-en-jongeren/Jeugdvakanties/Pages/Jeugdvakanties.aspx</a
+									>https://www.lm-ml.be/nl/voordelen-en-diensten</a
 								>
 							</p>
 						</div>
@@ -404,182 +336,22 @@
 							</ul>
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade" id="KLJ" role="tabpanel" aria-labelledby="KLJ-tab">
-									<h2>KLJ Wolfsdonk?</h2>
-									<hr />
-									<p>
-										Zijn jouw zaterdagen ook altijd zo lang en saai?<br />
-										Verveel jij je elk weekend weer, zit je de hele dag te suffen achter jouw computer?<br />
-										Wil jij ook iets meer halen uit die zaterdag?<br />
-										Rep je dan als de bliksem naar <span class="highlight">KLJ WOLFSDONK</span>!
-									</p>
-
-									<h4>KLJ wablief?!</h4>
-									<p>
-										KLJ Wolfsdonk natuurlijk!<br />
-										KLJ Wolfsdonk is een te gekke bende van kinderen en jongeren tussen 6 en 26 jaar. <br />
-										Elke zaterdag kan je ons vinden in Wolfsdonk en omstreken, waar we het hele dorp op stelten zetten met onze knotsgekke
-										activiteiten!
-									</p>
-
-									<h4>Voor wie?</h4>
-									<p>
-										KLJ is er voor iedereen, en dus ook voor jou!<br />
-										Wij, van KLJ Wolfsdonk, zijn verdeeld in zes leeftijdsgroepen: Wolfkes, Girry's, Squirrels, Skunks,Waspi's en Aspi's. Elke keer
-										opnieuw serveren onze leiders en leidsters alle zes de leeftijdsgroepen een activiteit om nooit meer te vergeten.
-										<br />
-										Want bij KLJ Wolfsdonk krijg je vlees op je bord, puur en onversneden!
-									</p>
-
-									<h4>Nieuwsgierig?</h4>
-									<p class="nobottomgap">
-										Hongerig naar meer?<br />
-										Klik dan op 'Praktisch' om alles te weten te komen over wie we zijn, wat we doen, wanneer we het doen, en hoe we het doen!
-									</p>
+									<div id="over-klj">
+										<p class="text-muted">Inhoud laden...</p>
+									</div>
 								</div>
 								<div class="tab-pane fade show active" id="praktisch" role="tabpanel" aria-labelledby="praktisch-tab">
-									<h2 class="notopgap">Praktische info</h2>
-									<p>
-										KLJ Wolfsdonk is een toffe bende die elke week een heel avontuur klaarstoomt voor uw kleine of al net iets minder kleine rakker.
-										<br />Mail ons als je je nog wilt inschrijven!. Onze werking is verdeeld in zes leeftijdsgroepen:
-									</p>
-
-									<ul>
-										<li><strong>Wolfkes:</strong> van 6 tot 8 jaar, dus 1e en 2e leerjaar;</li>
-										<li><strong>Girry's:</strong> van 8 tot 10 jaar, dus 3e en 4e leerjaar;</li>
-										<li><strong>Squirrels:</strong> van 10 tot 12 jaar, dus 5e en 6e leerjaar;</li>
-										<li><strong>Skunks:</strong> van 12 jaar tot 14 jaar, dus 1e en 2e middelbaar;</li>
-										<li><strong>Waspi's</strong>: van 14 jaar tot 16 jaar, dus 3e en 4e middelbaar;</li>
-										<li><strong>Aspi's:</strong> vanaf 16 jaar, dus vanaf het 5e middelbaar.</li>
-									</ul>
-									<p>
-										Afhankelijk van het aantal leden kunnen de groepen in het begin van elk werkjaar wel wat aangepast worden. Het is bovendien ook
-										steeds mogelijk om uw kind in een jongere leeftijdsgroep te plaatsen, als u of uw kind dat wenst. Voor meer informatie over de
-										(groeps)leiding kan u
-										<a class="internalLink" href="#leiding" title="Klik hier">hier</a> terecht.
-									</p>
-									<h4>Prijzen</h4>
-									<ul>
-										<li>Inschrijving 1e lid - 60 euro</li>
-										
-										<li>Zomerlid vanaf 15 maart - 30 euro</li>
-										<li>Pull - 25 euro</li>
-										<li>T-Shirt - 15 euro</li>
-										<li>Nieuw sjaaltje - 5 euro</li>
-									</ul>
-									
-									<p>We bieden ook tweedehands KLJ-kleding aan lagere prijzen. Voor meer informatie kan je de leiding aanspreken
-										voor of na een activiteit. </p>
-
-									<p>Rekeningnummer KLJ: <u>BE57 7343 5310 2035</u></p>
-
-									<h4>Jaarkalender</h4>
-									<p>Je kan de jaarkalender makkelijk toevoegen aan je google agenda via <a href="https://calendar.google.com/calendar/u/0?cid=a2xqd29sZnNkb25rQGhvdG1haWwuY29t">deze link</a>.</p>
-
-									<h4>Waar &amp; wanneer?</h4>
-									<p>Alle groepen beginnen aan ons lokaaltje om 14u en eindigen om 17u.</p>
-
-									<p>
-										<!--Benieuwd naar onze KLJ-werking? Kom gerust eens een kijkje nemen!<br />-->
-										Onze afdeling bevindt zich in het gewest Demerland.<br />
-										<!--Je vindt ons elke week terug in ons vaste lokaaltje: de Oude Jongensschool in
-														het landelijke Wolfsdonk.-->
-										Ons lokaaltje is gelegen tegenover de Wolfdonkse bibliotheek en heeft het volgende adres:
-									</p>
-									<p>
-										Weybroekstraat 2A<br />
-										3201 Wolfsdonk<br />
-										<br />
-									</p>
-									<iframe
-										style="width: 80%; margin-left: 10%"
-										frameborder="0"
-										scrolling="no"
-										marginheight="0"
-										marginwidth="0"
-										src="https://maps.google.nl/maps?f=q&amp;source=s_q&amp;hl=nl&amp;geocode=&amp;q=klj+wolfsdonk&amp;sll=52.462704,5.50415&amp;sspn=4.324857,10.909424&amp;ie=UTF8&amp;hq=klj+wolfsdonk&amp;hnear=&amp;ll=51.032785,4.917369&amp;spn=0.012145,0.021501&amp;z=15&amp;iwloc=A&amp;output=embed"
-									></iframe>
-									<br />
-									<small>
-										<a
-											href="http://maps.google.nl/maps?f=q&amp;source=embed&amp;hl=nl&amp;geocode=&amp;q=klj+wolfsdonk&amp;sll=52.462704,5.50415&amp;sspn=4.324857,10.909424&amp;ie=UTF8&amp;hq=klj+wolfsdonk&amp;hnear=&amp;ll=51.032785,4.917369&amp;spn=0.012145,0.021501&amp;z=15&amp;iwloc=A"
-											style="color: #0000ff; text-align: left"
-											>Grotere kaart weergeven</a
-										>
-									</small>
+									<div id="over-praktisch">
+										<p class="text-muted">Inhoud laden...</p>
+									</div>
+									<div id="over-map">
+										<p class="text-muted">Locatie laden...</p>
+									</div>
 								</div>
 								<div class="tab-pane fade" id="extra" role="tabpanel" aria-labelledby="extra-tab">
-									<h2 class="notopgap">Extra info</h2>
-									<p>
-										KLJ Wolfsdonk is een dolenthousiaste jeugdbeweging die elke zaterdag weer een spetterende activiteit in elkaar bokst. Maar, KLJ is
-										nog veel meer dan een jeugdbeweging alleen! Laten we even een verfrissende duik nemen in het hele KLJ-gebeuren.
-									</p>
-									<h4>De KLJ</h4>
-									<p>
-										<img style="float: right" src="assets/img/kljWolfsdonk_logo.png" alt="" width="150" height="171" />KLJ staat voor Katholieke
-										Landelijke Jeugd en bestaat al sinds 1927. Dat wil zeggen dat we dit jaar ons 96ste kaarsje mogen uitblazen! <br />
-										In onze 280 afdelingen komen er gemiddeld zo'n 30 000 jongeren bijeen. Dit maakt KLJ één van de grote jeugdbewegingen, en de
-										grootste jongerenbeweging in Vlaanderen.
-									</p>
-									<p>KLJ richt zich ook op drie grote doelen:</p>
-									<ul>
-										<li>jonge mensen samenbrengen;</li>
-										<li>werken aan persoonlijke vorming én de groepsvorming van de leden;</li>
-										<li>meewerken aan de opbouw van de samenleving.</li>
-									</ul>
-									<p>
-										Hierbij komt ook het werkthema ‘<i>KLJ voor iedereen</i>’. KLJ voor iedereen houdt in dat KLJ wil openstaan voor alle kinderen en
-										jongeren. Of je nu arm bent of rijk, groot of klein, of lijdt aan een handicap: bij KLJ Wolfsdonk is iedereen welkom!
-									</p>
-									<p>
-										Elke week opnieuw werkt de vertrouwde leiding aan deze doelen, met de hulp van een hele reeks inhoudelijke en methodische
-										speerpunten. Zo brengt KLJ Wolfsdonk niet alleen berg plezier voor de kinderen, maar leren de leden ook wat bij. Zo leren ze
-										meedraaien in hun eigen kleine maatschappij: sociale vaardigheden zijn in de huidige samenleving immers belangrijker dan ooit!
-									</p>
-									<h4>Historiek</h4>
-									<p class="nobottomgap">
-										Toen in 1927 de BJB (Boerenjeugdbond) opgericht werd, was KLJ Wolfsdonk hierin een van de voortrekkers. Anders gezegd; KLJ
-										Wolfsdonk is dus
-										<span class="highlight">één van de oudste KLJ's in het land!</span> De BJB was eigenlijk de huidige KLJ, maar de naam Katholieke
-										Landelijke Jeugd kwam pas in het jaar 1965 aangedraafd.<br />
-										KLJ Wolfsdonk zelf is pas echt beginnen groeien halverwege de jaren '80.
-									</p>
-								</div>
-								<div class="tab-pane fade" id="inschrijven" role="tabpanel" aria-labelledby="inschrijven-tab">
-									<h2 class="notopgap">Inschrijven</h2>
-									<p>
-										KLJ Wolfsdonk is een dolenthousiaste jeugdbeweging die elke zaterdag weer een spetterende activiteit in elkaar bokst. Maar, KLJ is
-										nog veel meer dan een jeugdbeweging alleen! Laten we even een verfrissende duik nemen in het hele KLJ-gebeuren.
-									</p>
-									<h4>De KLJ</h4>
-									<p>
-										<img style="float: right" src="assets/img/kljWolfsdonk_logo.png" alt="" width="150" height="171" />KLJ staat voor Katholieke
-										Landelijke Jeugd en bestaat al sinds 1927. Dat wil zeggen dat we dit jaar ons 94ste kaarsje mogen uitblazen! <br />
-										In onze 280 afdelingen komen er gemiddeld zo'n 30 000 jongeren bijeen. Dit maakt KLJ één van de grote jeugdbewegingen, en de
-										grootste jongerenbeweging in Vlaanderen.
-									</p>
-									<p>KLJ richt zich ook op drie grote doelen:</p>
-									<ul>
-										<li>jonge mensen samenbrengen;</li>
-										<li>werken aan persoonlijke vorming én de groepsvorming van de leden;</li>
-										<li>meewerken aan de opbouw van de samenleving.</li>
-									</ul>
-									<p>
-										Hierbij komt ook het werkthema ‘<i>KLJ voor iedereen</i>’. KLJ voor iedereen houdt in dat KLJ wil openstaan voor alle kinderen en
-										jongeren. Of je nu arm bent of rijk, groot of klein, of lijdt aan een handicap: bij KLJ Wolfsdonk is iedereen welkom!
-									</p>
-									<p>
-										Elke week opnieuw werkt de vertrouwde leiding aan deze doelen, met de hulp van een hele reeks inhoudelijke en methodische
-										speerpunten. Zo brengt KLJ Wolfsdonk niet alleen berg plezier voor de kinderen, maar leren de leden ook wat bij. Zo leren ze
-										meedraaien in hun eigen kleine maatschappij: sociale vaardigheden zijn in de huidige samenleving immers belangrijker dan ooit!
-									</p>
-									<h4>Historiek</h4>
-									<p class="nobottomgap">
-										Toen in 1927 de BJB (Boerenjeugdbond) opgericht werd, was KLJ Wolfsdonk hierin een van de voortrekkers. Anders gezegd; KLJ
-										Wolfsdonk is dus
-										<span class="highlight">één van de oudste KLJ's in het land!</span> De BJB was eigenlijk de huidige KLJ, maar de naam Katholieke
-										Landelijke Jeugd kwam pas in het jaar 1965 aangedraafd.<br />
-										KLJ Wolfsdonk zelf is pas echt beginnen groeien halverwege de jaren '80.
-									</p>
+									<div id="over-extra">
+										<p class="text-muted">Inhoud laden...</p>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -631,248 +403,14 @@
 
 						<!--    ACTIVITEITEN    -->
 						<div id="activiteiten" class="page">
-							<style>
-								blockquote {
-									padding: 0 0 5px 20px;
-								}
-							</style>
-							<h2 class="notopgap">Activiteiten</h2>
-							<hr />
-							<h4>Uitleg</h4>
-							<p>
-								Elke zaterdag vanaf onze startdag 16 september tot de winterpauze zaterdag 16 december. 
-								Daar nemen we een activiteitenpauze zodat onze studerende medeleiding (de grote meerderheid) kan blokken. 
-								<br><br>
-								17 februari hervatten we de reguliere activiteiten tot en met 25 mei waar we wederom de blok moeten induiken. 
-								<br><br>
-								Er zitten zeker wat specialere activiteiten tussen, de ‘speciaalste’ vind je onderaan deze pagina, 
-								een paar kleinere worden doorheen het jaar gecommuniceerd. 
-								<br><br>
-								De Skunks en Waspi’s zouden soms een avondactiviteit kunnen hebben, 
-								indien dit het geval is wordt dit ook op de gepaste manier gecommuniceerd naar de leden en ouders. 
-							</p>
-							<hr />
-							<h4>Activiteiten deze maand, per groep</h4>
-							<img src="./assets/img/images/acties/wolf.png" style="width: 49%; height: 40%;"/>
-							<img src="./assets/img/images/acties/girrys.png" style="width: 49%; height: 40%;"/>
-							<img src="./assets/img/images/acties/squirrels.png" style="width: 49%; height: 40%;"/>
-							<img src="./assets/img/images/acties/skunks.png" style="width: 49%; height: 40%;"/>
-							<img src="./assets/img/images/acties/waspis.png" style="width: 49%; height: 40%;"/>
-							<img src="./assets/img/images/acties/aspis.png" style="width: 49%; height: 40%;"/>
+							<div id="activiteiten-uitleg">
+								<p class="text-muted">Inhoud laden...</p>
+							</div>
 							<hr />
 							<h4>Specialere activiteiten</h4>
-							<p>Meer info volgt later!</p>
-							<!--<p>
-								<strong>17 februari</strong>: Herstartdag, 
-								de KLJ herbegint. 30 maart: Lenteschoonmaak, met alle leden en leiding op pad in Wolfsdonk en 
-								opkuisen wat te kuisen valt op straat. 
-								<br><br>
-								<strong>18 mei</strong>: Zwemmen! We gaan zwemmen in het zwembad van Aarschot
-								<br><br> 
-								<strong>29/30 juni</strong>: Pretweekend! De Wolfjes en Girry’s gaan zaterdag 29 juni naar een speeltuin, de Squirrels, 
-								Skunks en Waspi’s gaan 30 juni naar een pretpark.
-							</p>-->
-
-							<!-- <p>
-                Vanaf dit werkjaar kunnen we terug elke zaterdag beginnen om 14:00!<br />
-                Om dit mogelijk te maken met onze grote aantal leden zullen we het straatje naast de KLJ elke week afzetten!<br />
-                Zo kunnen de leden samen met de leiding buiten ons pleintje spelen!
-                Wolfkes: zaterdag 13u-16u
-												Girry's: zaterdag 14u-17u
-												Squirrels: zaterdag 15u-18u
-												Skunks: zondag 13u-16u
-												Waspi's: zondag 14u-17u
-												Aspi's: zondag 14u-17u-->
-							<!-- </p>
-              <ul>
-                <li>Wolfkes: zaterdag 14u</li>
-                <li>Girry's: zaterdag 14u</li>
-                <li>Squirrels: zaterdag 14u</li>
-                <li>Skunks: zaterdag 14u</li>
-                <li>Waspi's: zaterdag 14u</li>
-                <li>Aspi's: zaterdag 14u (of avondactiviteit)</li>
-              </ul>
-              <br /><br />
-              <hr /> -->
-							<!-- <h2><strong>Planning:</strong></h2>
-              <h5>Zaterdag 7 mei:</h5>
-              <blockquote>
-                <p>
-                  <strong>Vandaag is het voor de wolfjes, girry’s en squirrels geen activiteit!</strong> Veel van onze leden zitten namelijk volop te dansen op
-                  het schoolfeest van Onze School Wolfsdonk! Je vindt de leiding van deze groepen wel op het schoolfeest zelf want zij zullen zeker ook aanwezig
-                  zijn om mee te spelen na het schoolfeest! Als je niet in Wolfsdonk op school zit raden we je zeker aan om langs te komen, er is voor iedereen
-                  iets te doen! Wij zullen ook diezelfde dag aanwezig zijn op de Wolfse Wei van KIDS Wolfsdonk. Wij voorzien daar entertainment voor de kinderen
-                  dus zeker ook de moeite waard om een kijkje te nemen. De oudste groepen (Skunks, Waspi’s en Aspi’s) hebben vandaag avondactiviteit!
-                  <strong>Van 19u tot 22u</strong> aan het lokaaltje!
-                </p>
-              </blockquote>
-
-              <h5>Zaterdag 14 mei:</h5>
-              <blockquote>
-                <p>Na al dat dansen op het schoolfeest is het weer tijd om… Te spelen! 2-5 aan ons lokaaltje!</p>
-              </blockquote>
-              <h5>Zaterdag 21 mei:</h5>
-              <blockquote>
-                <p>
-                  Op deze dag viel er in 1987 nog sneeuw in de Hoge Venen, gebeurt dit in Wolfsdonk ook vandaag? Het zou ons alleszins niet verbazen maar kom
-                  het zelf eens zien 2-5 aan ons lokaaltje!
-                </p>
-              </blockquote>
-              <h5>Zaterdag 28 mei:</h5>
-              <blockquote>
-                <p>
-                  Dit is voorlopig de laatste activiteit, helaas begint het merendeel aan de leiding aan hun blok en lukt het niet om in juni verder te doen. We
-                  zijn volop aan het kijken of we toch vervanging kunnen vinden om ook in juni nog door te gaan! Moest dit zo zijn dan laten we dit op tijd
-                  weten maar momenteel valt de slotdag op deze dag. Niet getreurd want we sluiten uiteraard af in stijl! 2-5 aan ons lokaaltje!
-                </p>
-              </blockquote> -->
-
-							<!--<li>
-									<b>27 en 28 maart:</b>
-									<p>
-										Het is lente! Dat wil zeggen dat het weer wat beter weer wordt, dus de komende activiteiten gaan super leuk zijn in het zonnetje.
-										Zien wij jou aan het lokaalt?
-									</p>
-								</li>
-								<li>
-									<b>03 en 04 april:</b>
-									<p>Joepie, het is weer vakantie! Kom mee ravotten met ons in de bossen van Wolfsdonk en beleef een namiddag vol plezier!</p>
-								</li>
-								<li>
-									<b>10 en 11 april:</b>
-									<p>
-										Vandaag hebben we een leuk spel voor jullie in petto, ontdek het aan ons lokaaltje dit weekend! Vergeet de aangepaste uurregeling
-										zeker niet!
-									</p>
-								</li>
-								<li>
-									<b>17 en 18 april:</b>
-									<p>
-										Het is weer tijd om buiten te spelen, wij staan alvast klaar om ons uit te leven. Jij ook? Kom dan zeker naar de KLJ voor de dag
-										van je leven!
-									</p>
-								</li>
-								<li>
-									<b>24 en 25 april:</b>
-									<p>Het is Internationale Dag van de Dierenarts, laat jij je liefde voor dieren zien vandaag?</p>
-								</li>
-								<li>
-									<b>01 en 02 mei:</b>
-									<p>In mei leggen alle vogels een ei! Daarom vliegen we er weer in vandaag en beleef een leuke namiddag aan ons lokaaltje.</p>
-								</li>
-								<li>
-									<b>08 en 09 mei:</b>
-									<p>Ben jij ook zo benieuwd naar de activiteit van vandaag? Kom dan zeker meespelen met ons, wij hebben er al zin in!</p>
-								</li>
-								<li>
-									<b>15 en 16 mei:</b>
-									<p>
-										Helaas, vandaag is het onze laatste activiteit van dit KLJ jaar. MAAR er staat wel weer een super tof spel op jullie te wachten.
-										Houdt je al maar klaar want wij hebben vandaag heel veel energie en die moet eruit! Doe mee met ons en zet alles op alles.
-									</p>
-									
-								</li>-->
-
-							<!--
-												<p>Kleed je warm aan want het begint stillaan al wat kouder te worden.</p>
-												<p>
-													Aangezien we ons nu in code oranje bevinden zijn er een aantal dingen veranderd aan
-													de regels tijdens onze activiteiten, deze vind je hieronder terug. Volg deze goed op
-													zodat we op een veilige manier nog samen kunnen spelen. De nieuwe regels zijn
-													vetgedrukt zodat je ze makkelijk kan terugvinden. Volg onze facebookpagina voor de
-													laatste updates te krijgen!
-												</p>
-												<p class="fltrt">
-													<a href="assets/bijlagen/Nieuwsbrief-oktober-november-2020.pdf" target="_blank"
-													>Download hier de nieuwsbrief</a
-													>
-												</p>
-												<p>
-													Heb jij ook zo’n zin om al je energie uit je lijf te spelen? Ravotten in het bos of
-													leuke pleinspelletjes, er valt zooo veel te beleven op de KLJ. Kijk jij er ook zo
-													naar uit als wij? Dan is ons lokaaltje de plaats waar je moet zijn!
-												</p>
-												<hr />
-												<h5>Zaterdag 10 oktober:</h5>
-												<blockquote>
-													<p>
-														Wat is buitenspelen toch fijn! Vandaag kan dat weer op onze KLJ, maak je klaar
-														voor een superleuke activiteit want wij hebben er zin in!
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 17 oktober:</h5>
-												<blockquote>
-													<p>
-														Vandaag gaan we op zoek naar eeuwenoude schatten verborgen in de Egyptische
-														piramides, want het is de Internationale Dag van de Archeologie. Ben jij een echte
-														schattenzoeker en klaar voor een avontuur? Kom dan naar ons lokaaltje voor de
-														zoektocht van je leven.
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Vrijdag 23 oktober:</h5>
-												<blockquote>
-													<p>
-														Vandaag is het weer de Dag Van de Jeugdbeweging, trek je prachtig KLJ- uniform aan
-														en wees er trots op.
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 24 oktober:</h5>
-												<blockquote>
-													<p>
-														Vandaag kan je weer komen spelen aan ons lokaal, kom jij vandaag ook gezellig
-														meespelen? Vergeet niet dat nog steeds de speciale uren gelden!
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 31 oktober:</h5>
-												<blockquote>
-													<p>
-														Tijd om te griezelen want vandaag is het Halloween! Trek je griezeligste kostuum
-														aan om samen met de leiding een spookachtige dag vol plezier te beleven. Ben jij
-														er klaar voor? Kom dan zeker naar de KLJ om deze dag te vieren.
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 7 november:</h5>
-												<blockquote>
-													<p>
-														Het is weer herfstvakantie, dat betekent tijd voor een stevige boswandeling of
-														misschien wel een leuk bosspel. Wie weet? Kom jij het vandaag ontdekken aan ons
-														lokaal? Wij staan klaar voor een megatoffe namiddag.
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 14 november:</h5>
-												<blockquote>
-													<p>
-														Normaal was het vandaag onze jaarlijkse speculaasverkoop en gingen we van deur tot
-														deur onze lekkere speculaas verkopen om geld in te zamelen voor ons kamp. Dit kan
-														jammer genoeg niet doorgaan vanwege het corona virus, MAAR dit wil natuurlijk niet
-														zeggen dat er geen leuke activiteit op het programma staat. Je kan nog steeds met
-														ons op het koertje komen spelen zoals elke zaterdag!
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 21 november:</h5>
-												<blockquote>
-													<p>
-														Vandaag is het ‘Wereld Hallo Dag’, kom jij je medeleden en de leiding ook gedag
-														zeggen? Dan vind je ons aan het lokaaltje met een superleuke activiteit.
-													</p>
-												</blockquote>
-												<hr />
-												<h5>Zaterdag 28 november</h5>
-												<blockquote>
-													<p>
-														Vanaf morgen kunnen we weer aftellen naar kerst, want morgen begint te advent. Dit
-														wilt dus ook zeggen dat het kouder is buiten, kleed je daarom dus ook lekker warm
-														aan en bereid je voor op een actief spel om ons warm te houden. Zien wij jou
-														vandaag ook
-													</p>
-												</blockquote>-->
+							<div id="activiteiten-posts-list">
+								<p class="text-muted">Nieuws laden...</p>
+							</div>
 						</div>
 						
 						
@@ -889,222 +427,26 @@
 								kan je meer foto's vinden!
 							</p>
 
-							<div class="row">
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/oDaSNBgYYMp7hP6i9" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/images/omslagfoto_kamp_2025.jpg" alt="Album kamp 2025" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Nieuwpoort 2025</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/irXit67SadDE6JP1A" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/images/omslagfoto_weekend.jpg" alt="Album weelend 2025" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Mol 2025</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/1h7UUGfHsgJg2Lok6" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/images/kamp_2024_groepsfoto.JPG" alt="Album kamp 2024" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Opoeteren 2024</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/SMcdN4RSHmmTU8ZX7" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/fotos/weekend2024.JPG" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Schriek 2024</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.google.com/share/AF1QipNTZdD8dhXAGb08w2lpT_KMnkc_ZF-tCOswkd1_oQZ7EMmGMin1s24IivSmyIuWCg?key=eTNnVW9qUW10QjB6VW1HNHpoQmdva2NRVmxuaHRB" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/fotos/buitenlands2023.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Buitenlands kamp Kroatië 2023</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/6bhJyoWuip7GSBHQA" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/fotos/kleintjeskamp%202023.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Hoge Rielen 2023</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/pTQr2jQgtQXuK6pY7" target="_blank"
-									><img style="width: 300px; height: 200px" src="assets/img/fotos/weekend2023.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Langdorp 2023</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/wCE1LCqgaJ6FLsdi7" target="_blank"
-										><img style="width: 300px; height: 200px" src="assets/img/fotos/kamp2022.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Ravels-Eel 2022</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/VbYxzGTK2F8WfHPD8" target="_blank"
-										><img src="assets/img/fotos/weekend2022.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Zutendaal 2022</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/TZFTz25dLQdv1YPC6" target="_blank"
-										><img style="width: 300px; height: 200px" src="assets/img/fotos/kamp2021.jpeg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Linkeroever 2021</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/dm9NXiyXTSsgFYW99" target="_blank"
-										><img src="assets/img/fotos/kamp2020.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Arendonk 2020</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/1xM5CAcL8QyJvdpU6" target="_blank"
-										><img src="assets/img/fotos/kamp2019-2.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Slowakije 2019</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/zLMWPcurr2PYmat68" target="_blank"
-										><img src="assets/img/fotos/kamp2019.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Sint-Truiden 2019</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/1Sqhiro2Tfy76qYc8" target="_blank"
-										><img src="assets/img/fotos/Eindactiviteit2019.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Eindactiviteit 2019</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/MxiGSY69YDHoeXuA9" target="_blank"
-										><img src="assets/img/fotos/Weekend2019.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Balen 2019</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/QrJBP2H9KPqyHoaNA" target="_blank"
-										><img src="assets/img/fotos/startdag2018.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Startdag Speelgoedwinkel 2018</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/RikUzWEAWSF1s1rU7" target="_blank"
-										><img src="assets/img/fotos/kamp2018.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Neerpelt 2018</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/SMPXyXFJiWnVPs1z2" target="_blank"
-										><img src="assets/img/fotos/weekend2018.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Weekend Arendonk 2018</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/WYJoEGyqPhufh3Dy2" target="_blank"
-										><img src="assets/img/fotos/kamp2017.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Bornem 2017</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://goo.gl/photos/HNfBfkZdV8BqJy1q6" target="_blank"
-										><img src="assets/img/fotos/kamp2016.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Westmeerbeek 2016</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/dMykR46m9JeEMEpA9" target="_blank"
-										><img src="assets/img/fotos/kamp2015.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Hongarije 2015</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/oAFRuDvNcP166RQf6" target="_blank"
-										><img src="assets/img/fotos/startdag2015.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Startdag Jungle 2015</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/VCPMeYKHegJL33By6" target="_blank"
-										><img src="assets/img/fotos/kamp2014.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Meeuwen-Gruitrode 2014</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/qHCaNmhdTPBURey89" target="_blank"
-										><img src="assets/img/fotos/kamp2013.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Tollembeek 2013</h5>
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a href="https://photos.app.goo.gl/AM67Q7opSSdAj6fb9" target="_blank"
-										><img src="assets/img/fotos/kamp2012.jpg" class="img-thumbnail" />
-										<h5 class="text-center">Kamp Hoge Rielen 2012</h5>
-									</a>
-								</div>
+							<div class="row" id="foto-albums-list">
+								<p class="text-muted">Albums laden...</p>
 							</div>
 						</div>
 
 						<!--    CONTACT    -->
 						<div id="contact" class="page">
-							<h2>Contact</h2>
-							<hr />
-							<p>
-								Voor vragen en opmerkingen, contacteer ons via
-								<strong>kljwolfsdonk@hotmail.com</strong>
-							</p>
-							<p>
-								Mocht je dringende vragen hebben, dan kan je onze hoofdleiders telefonisch bereiken: <br />
-							    Liselot: 0492 06 50 97 <br />
-								Louis: 0483 11 07 82 <br />
-								<br>
-								Administratieve zaken: <br>
-								Lotteke: 0474 18 81 41
-							</p>
-							<!--<p>
-		Voor direct contact, kom gerust eens langs op zaterdagnamiddag<strong>
-			<br />
-			tussen 14u en 17u</strong
-			>, <br />
-			<strong>Weybroekstraat 2A, 3201 Wolfsdonk, tegenover de bib!</strong>
-			<br />
-			<em>Tip: volg de bruine pijl &quot;KLJ Wolfsdonk&quot;</em>
-		</p>-->
-							<iframe
-								style="width: 100%; height: 500px; max-width: 800px"
-								frameborder="0"
-								scrolling="no"
-								marginheight="0"
-								marginwidth="0"
-								src="https://maps.google.nl/maps?f=q&amp;source=s_q&amp;hl=nl&amp;geocode=&amp;q=klj+wolfsdonk&amp;sll=52.462704,5.50415&amp;sspn=4.324857,10.909424&amp;ie=UTF8&amp;hq=klj+wolfsdonk&amp;hnear=&amp;ll=51.032785,4.917369&amp;spn=0.012145,0.021501&amp;z=15&amp;iwloc=A&amp;output=embed"
-							></iframe>
-							<br />
-							<small
-								><a
-									href="http://maps.google.nl/maps?f=q&amp;source=embed&amp;hl=nl&amp;geocode=&amp;q=klj+wolfsdonk&amp;sll=52.462704,5.50415&amp;sspn=4.324857,10.909424&amp;ie=UTF8&amp;hq=klj+wolfsdonk&amp;hnear=&amp;ll=51.032785,4.917369&amp;spn=0.012145,0.021501&amp;z=15&amp;iwloc=A"
-									style="color: #0000ff; text-align: left"
-									>Grotere kaart weergeven</a
-								></small
-							>
+							<div id="contact-intro">
+								<p class="text-muted">Inhoud laden...</p>
+							</div>
+							<div id="contact-map">
+								<p class="text-muted">Locatie laden...</p>
+							</div>
 						</div>
 						<div id="sponsors" class="page">
 							<h2>Sponsors</h2>
 							<hr />
 							<p>Onze KLJ ontvangt regelmatig sponsoring van bedrijven die ons willen helpen onze werking uit te voeren. We willen ze graag uitlichten op deze pagina!</p>
-							<div class="row">
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a>
-										<img src="assets/img/images/sponsors/Logo_cera.jpg" alt="logo CERA" style="width: 100%; height: 100%;">
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a>
-										<img src="assets/img/images/sponsors/petersfrietkot.jpeg" alt="logo Peters frietkot" style="width: 100%; height: 100%;">
-									</a>
-								</div>
-								<div class="col-6 col-md-6 col-lg-3 mb-4">
-									<a>
-										<img src="assets/img/images/sponsors/meubelen_plu.jpg" alt="logo Meubelen PLU" style="width: 100%; height: 100%;">
-									</a>
-								</div>
+							<div class="row" id="sponsors-list">
+								<p class="text-muted">Sponsors laden...</p>
 							</div>
 						</div>
 					</div>
@@ -1232,7 +574,13 @@
 				});
 			});
 
-			$('.navbar-nav .nav-link, .internalLink').click(function (e) {
+			// Delegated (not directly bound) so nav-links rendered later by
+			// assets/js/navbar.js (after its async Supabase fetch resolves)
+			// are covered too, not just the ones present when this script
+			// ran. The [href^="#"] guard leaves external links (a future
+			// custom navbar item pointing off-site) alone instead of trying
+			// to $(selector).show() a full URL.
+			$(document).on('click', '.navbar-nav .nav-link[href^="#"], .internalLink', function (e) {
 				e.preventDefault();
 
 				var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + $(this).attr('href');
@@ -1251,5 +599,14 @@
 				$($(this).attr('href')).show();
 			});
 		</script>
+
+		<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+		<script type="module" src="./assets/js/navbar.js"></script>
+		<script type="module" src="./assets/js/posts-feed.js"></script>
+		<script type="module" src="./assets/js/kamp-settings.js"></script>
+		<script type="module" src="./assets/js/kamp-documents.js"></script>
+		<script type="module" src="./assets/js/site-content.js"></script>
+		<script type="module" src="./assets/js/foto-albums.js"></script>
+		<script type="module" src="./assets/js/sponsors.js"></script>
 	</body>
 </html>
