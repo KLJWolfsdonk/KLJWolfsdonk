@@ -188,11 +188,36 @@ const productList =
 			bookingPanel.render();
 
 
+			scrollToBookingPanelOnMobile();
+
+
 		},
 
 		(productId) => productService.getAvailabilityCalendarData(productId)
 
 	);
+
+
+
+
+//
+// SCROLL NAAR "GEKOZEN MATERIAAL" (mobiel)
+//
+
+function scrollToBookingPanelOnMobile() {
+
+	const isMobile =
+		window.matchMedia("(max-width: 900px)").matches;
+
+	if (!isMobile) {
+		return;
+	}
+
+	document
+		.getElementById("booking-panel")
+		.scrollIntoView({ behavior: "smooth", block: "start" });
+
+}
 
 
 
