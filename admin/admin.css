@@ -10,6 +10,8 @@
 	--color-warning: #f5a138;
 	--color-danger: #c0392b;
 	--color-info: #0082bf;
+	--color-verhuur: #0082bf;
+	--color-sitebeheer: #7d5ba6;
 	--shadow-soft: 0 6px 18px rgba(68, 68, 68, 0.15);
 	--radius-lg: 16px;
 	--radius-md: 12px;
@@ -79,6 +81,24 @@ h5 {
 	font-size: 0.78rem;
 	color: var(--color-accent);
 	font-weight: 700;
+}
+
+.eyebrow .group-tag {
+	display: inline-block;
+	margin-left: 0.5rem;
+	padding: 0.15rem 0.55rem;
+	border-radius: 999px;
+	font-size: 0.7rem;
+	letter-spacing: 0.06em;
+	color: #fff;
+}
+
+.eyebrow .group-tag--verhuur {
+	background: var(--color-verhuur);
+}
+
+.eyebrow .group-tag--sitebeheer {
+	background: var(--color-sitebeheer);
 }
 
 .toolbar {
@@ -591,8 +611,44 @@ h5 {
 .hero-nav {
 	display: flex;
 	align-items: center;
-	gap: 0.6rem;
+	gap: var(--space-2);
 	flex-wrap: wrap;
+}
+
+.nav-group {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	padding: 0.5rem 0.7rem;
+	border-radius: 14px;
+	border: 1px solid transparent;
+}
+
+.nav-group-label {
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	white-space: nowrap;
+}
+
+.nav-group--verhuur {
+	background: rgba(0, 130, 191, 0.08);
+	border-color: rgba(0, 130, 191, 0.28);
+}
+
+.nav-group--verhuur .nav-group-label {
+	color: var(--color-verhuur);
+}
+
+.nav-group--sitebeheer {
+	background: rgba(125, 91, 166, 0.1);
+	border-color: rgba(125, 91, 166, 0.3);
+}
+
+.nav-group--sitebeheer .nav-group-label {
+	color: var(--color-sitebeheer);
 }
 
 .hero-actions .ghost-button {
