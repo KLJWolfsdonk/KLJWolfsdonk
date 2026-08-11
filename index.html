@@ -358,46 +358,9 @@
 
 						<!--    LEIDING    -->
 						<div id="leiding" class="page">
-							<ul class="nav nav-tabs" id="leidingTab" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" id="wolfkes-tab" data-toggle="tab" href="#wolfkes" role="tab" aria-controls="home" aria-selected="true"
-										>Wolfkes</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="girrys-tab" data-toggle="tab" href="#girrys" role="tab" aria-controls="profile" aria-selected="false"
-										>Girry's</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="squirrels-tab" data-toggle="tab" href="#squirrels" role="tab" aria-controls="profile" aria-selected="false"
-										>Squirrels</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="skunks-tab" data-toggle="tab" href="#skunks" role="tab" aria-controls="profile" aria-selected="false"
-										>Skunks</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="waspis-tab" data-toggle="tab" href="#waspis" role="tab" aria-controls="profile" aria-selected="false"
-										>Waspi's & Aspi's</a
-									>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="vliegend-tab" data-toggle="tab" href="#vliegend" role="tab" aria-controls="profile" aria-selected="false"
-										>Vliegend</a
-									>
-								</li>
-							</ul>
+							<ul class="nav nav-tabs" id="leidingTab" role="tablist"></ul>
 							<div class="tab-content" id="leidingTab-content">
-								<div class="tab-pane fade show active" id="wolfkes" role="tabpanel" aria-labelledby="wolfkes-tab"></div>
-								<div class="tab-pane fade show" id="girrys" role="tabpanel" aria-labelledby="girrys-tab"></div>
-								<div class="tab-pane fade show" id="squirrels" role="tabpanel" aria-labelledby="squirrels-tab"></div>
-								<div class="tab-pane fade show" id="skunks" role="tabpanel" aria-labelledby="skunks-tab"></div>
-								<div class="tab-pane fade show" id="waspis" role="tabpanel" aria-labelledby="waspis-tab"></div>
-								<div class="tab-pane fade show" id="aspis" role="tabpanel" aria-labelledby="aspis-tab"></div>
-								<div class="tab-pane fade show" id="vliegend" role="tabpanel" aria-labelledby="vliegend-tab"></div>
+								<p class="text-muted">Leiding laden...</p>
 							</div>
 						</div>
 
@@ -495,83 +458,6 @@
 						.parent()
 						.addClass('active');
 				}
-
-				// Get leiding gegevens en plaats het op de site
-				leidingsgroepnamen = ['Wolfkes', "Girry's", 'Squirrels', 'Skunks', "Waspi's", "Aspi's", 'Vliegend'];
-				leidingsgroepid = ['wolfkes', 'girrys', 'squirrels', 'skunks', 'waspis', 'aspis', 'vliegend'];
-				$.getJSON('leiding.json', function (data) {
-					for (i = 0; i < data.leiding.length; i++) {
-						leidingsgroep = data.leiding[i];
-
-						// Begin info van groep
-						groepHTML =
-							'<h2>' +
-							leidingsgroepnamen[i] +
-							'</h2>' +
-							'<hr>' +
-							(leidingsgroep.groepFoto
-								? '<img src="assets/img/leiding/' +
-								  leidingsgroep.groepFoto +
-								  '" alt="Leiding ' +
-								  leidingsgroep.naam +
-								  '" class="img-fluid rounded shadow mx-auto d-block" width="563" height="376">'
-								: '') +
-							'<div class="row">';
-
-						for (j = 0; j < data.leiding[i].leiding.length; j++) {
-							leiding = data.leiding[i].leiding[j];
-							taken = '';
-							for (taak in leiding.taken) {
-								taken += '<span>' + leiding.taken[taak] + '</span><br />';
-							}
-
-							leidingHTML =
-								'<div class="col-md-12 col-lg-6">' +
-								'<div class="card my-3 p-2 shadow">' +
-								'<div class="row">' +
-								'<div class="col-6">' +
-								'<img class="img-fluid rounded" src="assets/img/leiding/' +
-								leiding.foto +
-								'" alt="foto ' +
-								leiding.voornaam +
-								' ' +
-								leiding.achternaam +
-								'">' +
-								'</div>' +
-								'<div class="col-6">' +
-								'<h4 class="card-title">' +
-								leiding.voornaam +
-								(leiding.bijnaam ? ' (' + leiding.bijnaam + ')' : '') +
-								'</h4>' +
-								'<p>' +
-								leiding.voornaam +
-								' ' +
-								leiding.achternaam +
-								'</p>' +
-								'<p><i class="fas fa-birthday-cake"></i> ' +
-								leiding.geboorte +
-								'</p>' +
-								(leiding.gsm ? '<p><b>GSM: </b>' + leiding.gsm + '</p>' : '') + // Enkel gsm toevoegen als het is toegevoegd
-								(leiding.studie ? '<p><b>Studie: </b>' + leiding.studie + '<br /></p>' : '') +
-								(leiding.werk ? '<p><b>Werk: </b>' + leiding.werk + '<br /></p>' : '') +
-								'<hr>' +
-								'<p><b>Taken bij KLJ:</b><br />' +
-								taken +
-								'</p>' +
-								'<p><b>Lievelingseten: </b>' +
-								leiding.eten +
-								'<br /></p>' +
-								'<p><b>Lievelingsspelletje: </b>' +
-								leiding.spel +
-								'<br /></p>' +
-								'</div></div></div></div>';
-							groepHTML += leidingHTML;
-						}
-						$('#' + leidingsgroepid[i]).append(groepHTML + '</div>');
-					}
-				}).fail(function () {
-					console.log('An error has occurred.');
-				});
 			});
 
 			// Delegated (not directly bound) so nav-links rendered later by
@@ -608,5 +494,6 @@
 		<script type="module" src="./assets/js/site-content.js"></script>
 		<script type="module" src="./assets/js/foto-albums.js"></script>
 		<script type="module" src="./assets/js/sponsors.js"></script>
+		<script type="module" src="./assets/js/leiding.js"></script>
 	</body>
 </html>

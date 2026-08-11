@@ -43,6 +43,9 @@ from './supabase/SupabaseFotoAlbumRepository.js';
 import { SupabaseSponsorRepository }
 from './supabase/SupabaseSponsorRepository.js';
 
+import { SupabaseLeidingRepository }
+from './supabase/SupabaseLeidingRepository.js';
+
 
 
 export function createRepositories() {
@@ -91,7 +94,11 @@ export function createRepositories() {
 
 
 			sponsors:
-				new SupabaseSponsorRepository()
+				new SupabaseSponsorRepository(),
+
+
+			leiding:
+				new SupabaseLeidingRepository()
 
 
 		};
