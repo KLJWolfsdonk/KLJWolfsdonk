@@ -8,12 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>
-KLJ Wolfsdonk Admin | Handtekening
+KLJ Wolfsdonk Admin | Leiding
 </title>
 
 <link rel="stylesheet" href="./admin.css">
 
-<script type="module" src="./signature.js"></script>
+<script type="module" src="./leiding.js"></script>
 
 </head>
 
@@ -25,18 +25,16 @@ KLJ Wolfsdonk Admin | Handtekening
 <header class="hero card">
 <div class="hero-actions">
 <div>
-<p class="eyebrow">KLJ Wolfsdonk <span class="group-tag group-tag--verhuur">Verhuur</span></p>
-<h1>Handtekening verhuurder</h1>
-<p>
-	Teken hieronder eenmalig de handtekening die automatisch op elk huurcontract
-	namens KLJ Wolfsdonk wordt geplaatst.
-</p>
+<p class="eyebrow">KLJ Wolfsdonk <span class="group-tag group-tag--sitebeheer">Sitebeheer</span></p>
+<h1>Leiding</h1>
+<p>Beheer de groepen (tabbladen) en de leiding-leden op de Leiding-pagina.</p>
 </div>
 <div class="hero-nav">
 <nav class="nav-group nav-group--verhuur" aria-label="Verhuur beheer">
 <span class="nav-group-label">Verhuur</span>
 <a href="./index.html" class="ghost-button">Reservaties</a>
 <a href="./products.html" class="ghost-button">Producten</a>
+<a href="./signature.html" class="ghost-button">Handtekening</a>
 </nav>
 <nav class="nav-group nav-group--sitebeheer" aria-label="Sitebeheer">
 <span class="nav-group-label">Sitebeheer</span>
@@ -51,21 +49,36 @@ KLJ Wolfsdonk Admin | Handtekening
 
 <section class="card">
 
-	<canvas id="signature-pad" width="600" height="200"></canvas>
+<h2>Nieuwe groep</h2>
 
-	<div class="inline-fields" style="margin-top: 1rem;">
-		<button type="button" id="clear-signature" class="ghost-button">Wis</button>
-		<button type="button" id="download-signature" class="ghost-button">Download PNG</button>
+<form id="groep-form">
+
+	<div class="inline-fields">
+
+		<label class="field-group">
+			<span>Naam</span>
+			<input id="new-groep-naam" required placeholder="bv. Wolfkes">
+		</label>
+
+		<label class="field-group">
+			<span>Groepsfoto (optioneel)</span>
+			<input id="new-groep-foto" type="file" accept="image/*">
+		</label>
+
 	</div>
 
-	<p id="signature-hint" class="muted" style="margin-top: 1rem;">
-		Na het downloaden: sla het bestand op als
-		<code>assets/img/verhuurder-handtekening.png</code> in de repository
-		(overschrijf het bestaande bestand als je opnieuw tekent) en commit/push die wijziging.
-		Deze handtekening wordt daarna automatisch gebruikt op elk contract.
-	</p>
+	<div style="height: 1.25rem;"></div>
+
+	<p id="groep-form-error" class="error-message" hidden></p>
+
+	<button type="submit" class="ghost-button">Toevoegen</button>
+
+</form>
 
 </section>
+
+
+<div id="leiding-groepen-list"></div>
 
 </main>
 
